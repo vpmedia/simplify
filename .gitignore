@@ -1,0 +1,12 @@
+#
+# Copyright (c) Andras Csizmadia <andras@vpmedia.hu> (www.vpmedia.hu)
+# author: Andras Csizmadia <andras@vpmedia.hu>
+# see: https://git-scm.com/docs/gitignore
+#
+
+coverage/
+build/
+dist/
+out/
+logs/
+node_modules/
