@@ -1,7 +1,7 @@
-import { underscoreToCamelcase } from './underscoreToCamelCase.js';
+import { underscoreToCamelCase } from './underscoreToCamelCase.js';
 
 test('TBD', () => {
-  expect(underscoreToCamelcase('test')).toBe('test');
-  expect(underscoreToCamelcase('test_variable')).toBe('testVariable');
-  expect(underscoreToCamelcase('test_variable_name')).toBe('testVariableName');
+  expect(underscoreToCamelCase('test')).toBe('test');
+  expect(underscoreToCamelCase('test_variable')).toBe('testVariable');
+  expect(underscoreToCamelCase('test_variable_name')).toBe('testVariableName');
 });
