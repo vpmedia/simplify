@@ -1,4 +1,4 @@
-import { sanitizeURLParam } from "./sanitizeURLParam.js";
+import { sanitizeURLParam } from './sanitizeURLParam.js';
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 

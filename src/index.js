@@ -1,6 +1,8 @@
 // core
-import { capitalizeFirstLetter } from './util/capitalize.js';
+import { capitalize } from './util/capitalize.js';
+import { getRandomInt } from './util/getRandomInt.js';
+import { getURLParam } from './util/getURLParam.js';
+import { sanitizeURLParam } from './util/sanitizeURLParam.js';
+import { underscoreToCamelcase } from './util/underscoreToCamelCase.js';
 // exports
-export {
-  capitalizeFirstLetter,
-};
+export { capitalize, getRandomInt, getURLParam, sanitizeURLParam, underscoreToCamelcase };

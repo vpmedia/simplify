@@ -1,6 +1,6 @@
-import { capitalizeFirstLetter } from './capitalize.js';
+import { capitalize } from './capitalize.js';
 
 test('Tests capitalize first letter', () => {
-  expect(capitalizeFirstLetter('test')).toBe('Test');
-  expect(capitalizeFirstLetter(null)).toBe(null);
+  expect(capitalize('test')).toBe('Test');
+  expect(capitalize(null)).toBe(null);
 });

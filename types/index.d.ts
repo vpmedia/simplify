@@ -1,3 +1,3 @@
-export { capitalizeFirstLetter };
-import { capitalizeFirstLetter } from './util/capitalize.js';
+export { capitalize };
+import { capitalize } from './util/capitalize.js';
 //# sourceMappingURL=index.d.ts.map

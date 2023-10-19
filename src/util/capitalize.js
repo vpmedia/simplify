@@ -3,7 +3,7 @@
  * @param {string} value - Ther input string.
  * @returns {string} TBD.
  */
-export function capitalizeFirstLetter(value) {
+export function capitalize(value) {
   if (!value || value.length === 0) {
     return value;
   }
