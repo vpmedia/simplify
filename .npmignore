@@ -12,7 +12,7 @@ out/
 logs/
 node_modules/
 .husky/
-.babelrc.json
+babel.config.js
 .browserslistrc
 .DS_Store
 .editorconfig
@@ -20,11 +20,11 @@ node_modules/
 .eslintrc.json
 .gitattributes
 .gitignore
-.lintstagedrc.json
+lint-staged.config.js
 .npmignore
 .npmrc
 .prettierignore
-.prettierrc.json
+prettier.config.js
 bitbucket-pipelines.yml
 jest.config.js
 tsconfig.json
