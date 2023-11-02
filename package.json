@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.23.2",
     "@jest/globals": "^29.7.0",
-    "@types/jest": "^29.5.6",
+    "@types/jest": "^29.5.7",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
