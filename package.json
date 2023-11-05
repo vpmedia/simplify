@@ -1,6 +1,6 @@
 {
   "name": "@vpmedia/simplify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "@vpmedia/simplify",
   "author": "Andras Csizmadia <andras@vpmedia.hu> (www.vpmedia.hu)",
   "license": "MIT",
@@ -15,7 +15,7 @@
   "keywords": [
     "utils"
   ],
-  "main": "./src/index.js",
+  "exports": "./src/index.js",
   "types": "./types/index.d.ts",
   "type": "module",
   "devDependencies": {
