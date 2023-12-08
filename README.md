@@ -1,7 +1,7 @@
 # @vpmedia/simplify
 
 [![npm version](https://badge.fury.io/js/@vpmedia%2Fsimplify.svg?v=1.0.4)](https://badge.fury.io/js/@vpmedia%2Fsimplify)
-[![Node.js CI](https://github.com/vpmedia/simplify/actions/workflows/node.js.yml/badge.svg)](https://github.com/vpmedia/simplify/actions/workflows/node.js.yml)
+[![Node.js CI](https://github.com/vpmedia/simplify/actions/workflows/ci.yml/badge.svg)](https://github.com/vpmedia/simplify/actions/workflows/ci.yml)
 
 @vpmedia/simplify TBD
 
