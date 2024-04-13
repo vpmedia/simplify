@@ -18,7 +18,21 @@ export class Logger {
    */
   constructor(name) {
     this.name = name;
-    const appEnvironment = process?.env.APP_ENVIRONMENT || 'local';
+    let appEnvironment = 'local';
+    try {
+      if (import.meta['env']) {
+        appEnvironment = import.meta['env'].APP_ENVIRONMENT;
+      }
+    } catch {
+      // pass
+    }
+    try {
+      if (process?.env) {
+        appEnvironment = process.env.APP_ENVIRONMENT;
+      }
+    } catch {
+      // pass
+    }
     const isProduction = appEnvironment === 'production' || appEnvironment === 'release';
     const defaultLevel = isProduction ? LEVEL_SILENT : LEVEL_DEBUG;
     const parameterName = `log_${this.name.toLowerCase()}`;
