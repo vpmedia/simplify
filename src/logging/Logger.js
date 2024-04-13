@@ -20,8 +20,8 @@ export class Logger {
     this.name = name;
     let appEnvironment = 'local';
     try {
-      if (import.meta['env'].APP_ENVIRONMENT) {
-        appEnvironment = import.meta['env'].APP_ENVIRONMENT;
+      if (import.meta['env'].VITE_APP_ENVIRONMENT) {
+        appEnvironment = import.meta['env'].VITE_APP_ENVIRONMENT;
       }
     } catch {
       // pass
