@@ -4,7 +4,7 @@
  * @returns {string} The output string in camel case.
  */
 export function underscoreToCamelCase(value) {
-  return value.replace(/(_\w)/g, function (m) {
+  return value.replaceAll(/(_\w)/g, (m) => {
     return m[1].toUpperCase();
   });
 }

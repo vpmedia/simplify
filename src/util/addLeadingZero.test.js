@@ -7,5 +7,5 @@ test('Tests add leading zero', () => {
   expect(addLeadingZero('21')).toBe('21');
   expect(addLeadingZero(21)).toBe('21');
   expect(addLeadingZero(null)).toBe(null);
-  expect(addLeadingZero(undefined)).toBe(undefined);
+  expect(addLeadingZero()).toBe(undefined);
 });

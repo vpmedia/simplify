@@ -57,15 +57,12 @@ export default [
       'unicorn/filename-case': 'off',
       'unicorn/no-null': 'off',
       'unicorn/prevent-abbreviations': 'off',
-      'unicorn/no-useless-undefined': 'warn',
-      'unicorn/better-regex': 'warn',
-      'unicorn/prefer-string-replace-all': 'warn',
       'no-unused-vars': 'warn',
-      'prefer-arrow-callback': 'warn',
-      'prefer-template': 'warn',
+      'prefer-arrow-callback': 'error',
+      'prefer-template': 'error',
       'import/extensions': ['warn', 'always'],
       'jsdoc/require-jsdoc': [
-        'warn',
+        'error',
         {
           require: {
             FunctionDeclaration: true,

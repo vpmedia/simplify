@@ -7,5 +7,5 @@ export function sanitizeURLParam(input) {
   if (!input) {
     return input;
   }
-  return input.replace(/[^a-zA-Z0-9-_]/gi, '');
+  return input.replaceAll(/[^\w-]/gi, '');
 }
