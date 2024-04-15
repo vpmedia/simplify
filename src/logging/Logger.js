@@ -1,4 +1,5 @@
 import { getURLParam } from '../util/getURLParam.js';
+import { getAppEnvironment } from './getAppEnvironment.js';
 
 export const LEVEL_DEBUG = 4;
 export const LEVEL_INFO = 3;
@@ -18,27 +19,11 @@ export class Logger {
    */
   constructor(name) {
     this.name = name;
-    let appEnvironment = 'local';
-    try {
-      if (import.meta['env'].VITE_APP_ENVIRONMENT) {
-        appEnvironment = import.meta['env'].VITE_APP_ENVIRONMENT;
-      }
-    } catch {
-      // pass
-    }
-    try {
-      if (process.env.APP_ENVIRONMENT) {
-        appEnvironment = process.env.APP_ENVIRONMENT;
-      }
-    } catch {
-      // pass
-    }
+    const appEnvironment = getAppEnvironment();
     const isProduction = appEnvironment === 'production' || appEnvironment === 'release';
     const defaultLevel = isProduction ? LEVEL_SILENT : LEVEL_DEBUG;
     const parameterName = `log_${this.name.toLowerCase()}`;
-    this.level = Number.parseInt(getURLParam(parameterName, defaultLevel), 10);
-    const allLevel = Number.parseInt(getURLParam('log_all', LEVEL_SILENT), 10);
-    this.level = allLevel || this.level;
+    this.level = Number.parseInt(getURLParam(parameterName, getURLParam('log_all', defaultLevel)), 10);
   }
 
   /**
