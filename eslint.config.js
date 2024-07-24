@@ -57,7 +57,7 @@ export default [
       'unicorn/filename-case': 'off',
       'unicorn/no-null': 'off',
       'unicorn/prevent-abbreviations': 'off',
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
       'prefer-arrow-callback': 'error',
       'prefer-template': 'error',
       // 'import/extensions': ['warn', 'always'],
