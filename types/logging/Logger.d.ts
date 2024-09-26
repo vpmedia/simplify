@@ -7,7 +7,7 @@ export class Logger {
     /**
      * @type {(error) => {}}
      */
-    static exceptionHandler: (error) => {};
+    static exceptionHandler: (error: any) => {};
     /**
      * Creates a new Logger instance.
      * @param {string} name - The logger name.
