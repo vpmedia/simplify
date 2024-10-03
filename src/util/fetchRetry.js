@@ -7,7 +7,7 @@ const logger = new Logger('fetch');
  * Fetch with retry.
  * @param {string | URL | Request} resource - Fetch URL.
  * @param {RequestInit} [fetchOptions] - Fetch options.
- * @param {{ delay?: number, numTries?: number, isLog?: boolean}} [retryOptions] - Retry options.
+ * @param {{delay?: number, numTries?: number}} [retryOptions] - Retry options.
  * @returns {Promise<Response>} Fetch result.
  */
 export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
