@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.5.2
+
+- Improved fetch retry helper logging
+
 ## 1.5.1
 
 - Bugfixes for fetch retry helper
