@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.4.0
+
+- Added fetch retry helper
+
 ## 1.3.0
 
 - Changed logger level initialization strategy
