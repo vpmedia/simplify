@@ -57,6 +57,7 @@ export default [
       'unicorn/filename-case': 'off',
       'unicorn/no-null': 'off',
       'unicorn/prevent-abbreviations': 'off',
+      'unicorn/prefer-global-this': 'off',
       'no-unused-vars': 'off',
       'prefer-arrow-callback': 'error',
       'prefer-template': 'error',
