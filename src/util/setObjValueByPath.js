@@ -5,7 +5,7 @@
  * @param {*} value - TBD.
  * @throws {SyntaxError} Error when illegal path value has been provided.
  */
-export function setObjValueByPath(obj, path, value) {
+export const setObjValueByPath = (obj, path, value) => {
   if (!obj || !path) {
     return;
   }
@@ -18,4 +18,4 @@ export function setObjValueByPath(obj, path, value) {
     obj[nextKey] = value;
   }
   setObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'), value);
-}
+};

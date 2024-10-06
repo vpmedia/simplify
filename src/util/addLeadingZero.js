@@ -4,7 +4,7 @@
  * @param {number} size - TBD.
  * @returns {string} TBD.
  */
-export function addLeadingZero(value, size = 2) {
+export const addLeadingZero = (value, size = 2) => {
   if (value === null || value === undefined) {
     // @ts-ignore: Type 'string | number' is not assignable to type 'string'.
     return value;
@@ -14,4 +14,4 @@ export function addLeadingZero(value, size = 2) {
     value = `0${value}`;
   }
   return value;
-}
+};

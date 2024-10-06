@@ -9,7 +9,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
  * @param {boolean} isSanitize - TBD.
  * @returns {string} TBD.
  */
-export function getURLParam(key, defaultValue = null, isSanitize = true) {
+export const getURLParam = (key, defaultValue = null, isSanitize = true) => {
   const paramValue = urlSearchParams.get(key);
   if (paramValue === null || paramValue === undefined) {
     return defaultValue;
@@ -18,4 +18,4 @@ export function getURLParam(key, defaultValue = null, isSanitize = true) {
     return sanitizeURLParam(paramValue);
   }
   return paramValue;
-}
+};

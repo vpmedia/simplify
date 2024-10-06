@@ -3,9 +3,9 @@
  * @param {string} input - The input string to be sanitized.
  * @returns {string} The sanitized output string.
  */
-export function sanitizeURLParam(input) {
+export const sanitizeURLParam = (input) => {
   if (!input) {
     return input;
   }
   return input.replaceAll(/[^\w-]/gi, '');
-}
+};

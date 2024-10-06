@@ -3,8 +3,8 @@
  * @param {string} value - The input string in underscore case.
  * @returns {string} The output string in camel case.
  */
-export function underscoreToCamelCase(value) {
+export const underscoreToCamelCase = (value) => {
   return value.replaceAll(/(_\w)/g, (m) => {
     return m[1].toUpperCase();
   });
-}
+};

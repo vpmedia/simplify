@@ -4,7 +4,7 @@
  * @param {string} path - TBD.
  * @returns {*} TBD.
  */
-export function getObjValueByPath(obj, path) {
+export const getObjValueByPath = (obj, path) => {
   if (!obj || !path) {
     return;
   }
@@ -14,4 +14,4 @@ export function getObjValueByPath(obj, path) {
     return obj[nextKey];
   }
   return getObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'));
-}
+};

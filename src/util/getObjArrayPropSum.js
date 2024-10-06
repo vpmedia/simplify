@@ -4,8 +4,8 @@
  * @param {string} prop - The object property key.
  * @returns {number} The sum value.
  */
-export function getObjArrayPropSum(arr, prop) {
+export const getObjArrayPropSum = (arr, prop) => {
   return arr.reduce((accumulator, object) => {
     return accumulator + object[prop];
   }, 0);
-}
+};

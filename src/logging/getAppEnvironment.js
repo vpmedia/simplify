@@ -2,7 +2,7 @@
  * Returns the application environment identifier.
  * @returns {string} TBD.
  */
-export function getAppEnvironment() {
+export const getAppEnvironment = () => {
   let appEnvironment = 'local';
   try {
     if (import.meta['env'].VITE_APP_ENVIRONMENT) {
@@ -19,4 +19,4 @@ export function getAppEnvironment() {
     // pass
   }
   return appEnvironment;
-}
+};
