@@ -12,4 +12,3 @@ export { getURLParam } from './util/getURLParam.js';
 export { sanitizeURLParam } from './util/sanitizeURLParam.js';
 export { setObjValueByPath } from './util/setObjValueByPath.js';
 export { underscoreToCamelCase } from './util/underscoreToCamelCase.js';
-
