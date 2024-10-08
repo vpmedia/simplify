@@ -2,7 +2,7 @@ export * from "./const/http_status.js";
 export { Logger } from "./logging/Logger.js";
 export { addLeadingZero } from "./util/addLeadingZero.js";
 export { capitalize } from "./util/capitalize.js";
-export { deg2rot } from "./util/deg2rot.js";
+export { deg2rad } from "./util/deg2rot.js";
 export { delayPromise } from "./util/delayPromise.js";
 export { getObjValueByPath } from "./util/getObjValueByPath.js";
 export { getRandomInt } from "./util/getRandomInt.js";

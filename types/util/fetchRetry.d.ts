@@ -1,3 +1,4 @@
+export const HTTP_0_ANY: 0;
 export class FetchError extends Error {
     /**
      * Creates a new FetchError instance.

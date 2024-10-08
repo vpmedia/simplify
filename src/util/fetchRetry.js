@@ -4,6 +4,8 @@ import { delayPromise } from './delayPromise.js';
 
 const logger = new Logger('fetch');
 
+export const HTTP_0_ANY = 0;
+
 export class FetchError extends Error {
   /**
    * Creates a new FetchError instance.
@@ -50,7 +52,9 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
       retryOptions.numTries -= 1;
       if (
         retryOptions.numTries === 0 ||
-        (typedError instanceof FetchError && retryOptions.statusExcludes.includes(typedError.response.status))
+        (typedError instanceof FetchError &&
+          (retryOptions.statusExcludes.includes(typedError.response.status) ||
+            retryOptions.statusExcludes.includes(HTTP_0_ANY)))
       ) {
         throw error;
       }

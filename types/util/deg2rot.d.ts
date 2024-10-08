@@ -1,2 +1,2 @@
-export function deg2rot(deg: number): number;
+export function deg2rad(deg: number): number;
 //# sourceMappingURL=deg2rot.d.ts.map
