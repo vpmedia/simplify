@@ -5,7 +5,7 @@ export { addLeadingZero } from './util/addLeadingZero.js';
 export { capitalize } from './util/capitalize.js';
 export { deg2rad } from './util/deg2rot.js';
 export { delayPromise } from './util/delayPromise.js';
-export { FetchError, fetchRetry } from './util/fetchRetry.js';
+export { FetchError, HTTP_0_ANY, fetchRetry } from './util/fetchRetry.js';
 export { getObjValueByPath } from './util/getObjValueByPath.js';
 export { getRandomInt } from './util/getRandomInt.js';
 export { getURLParam } from './util/getURLParam.js';

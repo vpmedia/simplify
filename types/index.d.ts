@@ -12,5 +12,5 @@ export { sanitizeURLParam } from "./util/sanitizeURLParam.js";
 export { saveAsFile } from "./util/saveAsFile.js";
 export { setObjValueByPath } from "./util/setObjValueByPath.js";
 export { underscoreToCamelCase } from "./util/underscoreToCamelCase.js";
-export { FetchError, fetchRetry } from "./util/fetchRetry.js";
+export { FetchError, HTTP_0_ANY, fetchRetry } from "./util/fetchRetry.js";
 //# sourceMappingURL=index.d.ts.map
