@@ -4,6 +4,7 @@ export { addLeadingZero } from "./util/addLeadingZero.js";
 export { capitalize } from "./util/capitalize.js";
 export { deg2rad } from "./util/deg2rad.js";
 export { delayPromise } from "./util/delayPromise.js";
+export { fixFloatPrecision } from "./util/fixFloatPrecision.js";
 export { getObjValueByPath } from "./util/getObjValueByPath.js";
 export { getRandomInt } from "./util/getRandomInt.js";
 export { getURLParam } from "./util/getURLParam.js";
@@ -13,4 +14,5 @@ export { saveAsFile } from "./util/saveAsFile.js";
 export { setObjValueByPath } from "./util/setObjValueByPath.js";
 export { underscoreToCamelCase } from "./util/underscoreToCamelCase.js";
 export { FetchError, HTTP_0_ANY, fetchRetry } from "./util/fetchRetry.js";
+export { addFloat, fixFloat, subFloat } from "./util/safeFloat.js";
 //# sourceMappingURL=index.d.ts.map
