@@ -3,7 +3,7 @@ export * from './const/http_status.js';
 export { Logger } from './logging/Logger.js';
 export { addLeadingZero } from './util/addLeadingZero.js';
 export { capitalize } from './util/capitalize.js';
-export { deg2rad } from './util/deg2rot.js';
+export { deg2rad } from './util/deg2rad.js';
 export { delayPromise } from './util/delayPromise.js';
 export { FetchError, HTTP_0_ANY, fetchRetry } from './util/fetchRetry.js';
 export { getObjValueByPath } from './util/getObjValueByPath.js';
