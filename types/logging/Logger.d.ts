@@ -9,9 +9,9 @@ export class Logger {
      */
     static exceptionHandler: (error: Error) => void;
     /**
-     * @type {(level: string, message: string, extraData: object) => void}
+     * @type {(target: string, level: string, message: string, extraData: object) => void}
      */
-    static suppressedLogHandler: (level: string, message: string, extraData: object) => void;
+    static suppressedLogHandler: (target: string, level: string, message: string, extraData: object) => void;
     /**
      * Creates a new Logger instance.
      * @param {string} name - The logger name.

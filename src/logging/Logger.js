@@ -13,7 +13,7 @@ export class Logger {
    */
   static exceptionHandler = null;
   /**
-   * @type {(level: string, message: string, extraData: object) => void}
+   * @type {(target: string, level: string, message: string, extraData: object) => void}
    */
   static suppressedLogHandler = null;
 
@@ -38,7 +38,7 @@ export class Logger {
   debug(message, extraData = null) {
     if (this.level < LEVEL_DEBUG) {
       if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler('debug', message, extraData);
+        Logger.suppressedLogHandler(this.name, 'debug', message, extraData);
       }
       return;
     }
@@ -58,7 +58,7 @@ export class Logger {
   info(message, extraData = null) {
     if (this.level < LEVEL_INFO) {
       if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler('info', message, extraData);
+        Logger.suppressedLogHandler(this.name, 'info', message, extraData);
       }
       return;
     }
@@ -78,7 +78,7 @@ export class Logger {
   warn(message, extraData = null) {
     if (this.level < LEVEL_WARN) {
       if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler('warning', message, extraData);
+        Logger.suppressedLogHandler(this.name, 'warning', message, extraData);
       }
       return;
     }
@@ -98,7 +98,7 @@ export class Logger {
   error(message, extraData = null) {
     if (this.level < LEVEL_ERROR) {
       if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler('error', message, extraData);
+        Logger.suppressedLogHandler(this.name, 'error', message, extraData);
       }
       return;
     }
