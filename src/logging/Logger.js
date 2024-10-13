@@ -9,9 +9,13 @@ export const LEVEL_SILENT = 0;
 
 export class Logger {
   /**
-   * @type {(error) => {}}
+   * @type {(error: Error) => {}}
    */
   static exceptionHandler = null;
+  /**
+   * @type {(level: string, message: string, extraData: object) => {}}
+   */
+  static suppressedLogHandler = null;
 
   /**
    * Creates a new Logger instance.
@@ -33,6 +37,9 @@ export class Logger {
    */
   debug(message, extraData = null) {
     if (this.level < LEVEL_DEBUG) {
+      if (Logger.suppressedLogHandler) {
+        Logger.suppressedLogHandler('debug', message, extraData);
+      }
       return;
     }
     const logMessage = `${Date.now()} [${this.name}] ${message}`;
@@ -50,6 +57,9 @@ export class Logger {
    */
   info(message, extraData = null) {
     if (this.level < LEVEL_INFO) {
+      if (Logger.suppressedLogHandler) {
+        Logger.suppressedLogHandler('info', message, extraData);
+      }
       return;
     }
     const logMessage = `${Date.now()} [${this.name}] ${message}`;
@@ -67,6 +77,9 @@ export class Logger {
    */
   warn(message, extraData = null) {
     if (this.level < LEVEL_WARN) {
+      if (Logger.suppressedLogHandler) {
+        Logger.suppressedLogHandler('warning', message, extraData);
+      }
       return;
     }
     const logMessage = `${Date.now()} [${this.name}] ${message}`;
@@ -84,6 +97,9 @@ export class Logger {
    */
   error(message, extraData = null) {
     if (this.level < LEVEL_ERROR) {
+      if (Logger.suppressedLogHandler) {
+        Logger.suppressedLogHandler('error', message, extraData);
+      }
       return;
     }
     const logMessage = `${Date.now()} [${this.name}] ${message}`;
