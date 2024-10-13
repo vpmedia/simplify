@@ -9,11 +9,11 @@ export const LEVEL_SILENT = 0;
 
 export class Logger {
   /**
-   * @type {(error: Error) => {}}
+   * @type {(error: Error) => void}
    */
   static exceptionHandler = null;
   /**
-   * @type {(level: string, message: string, extraData: object) => {}}
+   * @type {(level: string, message: string, extraData: object) => void}
    */
   static suppressedLogHandler = null;
 

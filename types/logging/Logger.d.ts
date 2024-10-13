@@ -5,13 +5,13 @@ export const LEVEL_ERROR: 1;
 export const LEVEL_SILENT: 0;
 export class Logger {
     /**
-     * @type {(error: Error) => {}}
+     * @type {(error: Error) => void}
      */
-    static exceptionHandler: (error: Error) => {};
+    static exceptionHandler: (error: Error) => void;
     /**
-     * @type {(level: string, message: string, extraData: object) => {}}
+     * @type {(level: string, message: string, extraData: object) => void}
      */
-    static suppressedLogHandler: (level: string, message: string, extraData: object) => {};
+    static suppressedLogHandler: (level: string, message: string, extraData: object) => void;
     /**
      * Creates a new Logger instance.
      * @param {string} name - The logger name.
