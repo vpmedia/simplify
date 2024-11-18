@@ -36,7 +36,7 @@ let callbacks = {};
  * @param {import('./typedef.js').DocumentState | import('./typedef.js').PageLifecycleState} state - Callback state condition.
  * @param {() => void} callback - Callback function.
  */
-export const addCallback = (state, callback) => {
+export const addPageLifecycleCallback = (state, callback) => {
   const stateCallbacks = callbacks[state] ?? [];
   stateCallbacks.push(callback);
   callbacks[state] = stateCallbacks;
@@ -147,8 +147,20 @@ export const getDocumentState = () => {
 /**
  * Returns the event emitter instance.
  * @returns {EventEmitter} Event emitter instance.
+ * @deprecated
  */
 export const getEventEmitter = () => {
+  if (!isInitialized) {
+    initPageLifecycle();
+  }
+  return eventEmitter;
+};
+
+/**
+ * Returns the event emitter instance.
+ * @returns {EventEmitter} Event emitter instance.
+ */
+export const getPageLifecycleEventEmitter = () => {
   if (!isInitialized) {
     initPageLifecycle();
   }
@@ -159,6 +171,6 @@ export const getEventEmitter = () => {
  * Returns the page lifecycle observer initialized state.
  * @returns {boolean} Page lifecycle observer initialized flag.
  */
-export const isObserverInitialized = () => {
+export const isPageLifecycleInitialized = () => {
   return isInitialized;
 };
