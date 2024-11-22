@@ -10,12 +10,15 @@ export class FetchError extends Error {
   /**
    * Creates a new FetchError instance.
    * @param {string} message - Error message.
-   * @param {RequestInit} request - Fetch request object.
-   * @param {Response} response - Fetch response object.
+   * @param {string | URL | Request} resource - Fetch URL.
+   * @param {RequestInit} fetchOptions - Fetch options.
+   * @param {Response} response - Fetch response.
    */
-  constructor(message, request, response) {
+  constructor(message, resource, fetchOptions, response) {
     super(message);
-    this.request = request;
+    this.name = 'FetchError';
+    this.resource = resource;
+    this.fetchOptions = fetchOptions;
     this.response = response;
   }
 }
@@ -42,7 +45,12 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
       const response = await fetch(resource, fetchOptions);
       if (!response.ok) {
         logger.warn('failure', response);
-        throw new FetchError(`fetch ${response.url} returned status ${response.status}`, fetchOptions, response);
+        throw new FetchError(
+          `fetch ${response.url} returned status ${response.status}`,
+          resource,
+          fetchOptions,
+          response
+        );
       }
       logger.info('success', response);
       return response;

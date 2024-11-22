@@ -2,7 +2,6 @@ export function addPageLifecycleCallback(state: import("./typedef.js").DocumentS
 export function initPageLifecycle(): void;
 export function getPageLifecycleState(): string;
 export function getDocumentState(): import("./typedef.js").DocumentState;
-export function getEventEmitter(): EventEmitter;
 export function getPageLifecycleEventEmitter(): EventEmitter;
 export function isPageLifecycleInitialized(): boolean;
 import { EventEmitter } from 'eventemitter3';

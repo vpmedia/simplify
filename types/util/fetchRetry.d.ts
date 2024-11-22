@@ -3,11 +3,13 @@ export class FetchError extends Error {
     /**
      * Creates a new FetchError instance.
      * @param {string} message - Error message.
-     * @param {RequestInit} request - Fetch request object.
-     * @param {Response} response - Fetch response object.
+     * @param {string | URL | Request} resource - Fetch URL.
+     * @param {RequestInit} fetchOptions - Fetch options.
+     * @param {Response} response - Fetch response.
      */
-    constructor(message: string, request: RequestInit, response: Response);
-    request: RequestInit;
+    constructor(message: string, resource: string | URL | Request, fetchOptions: RequestInit, response: Response);
+    resource: string | URL | Request;
+    fetchOptions: RequestInit;
     response: Response;
 }
 export function fetchRetry(resource: string | URL | Request, fetchOptions?: RequestInit, retryOptions?: {

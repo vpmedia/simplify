@@ -147,18 +147,6 @@ export const getDocumentState = () => {
 /**
  * Returns the event emitter instance.
  * @returns {EventEmitter} Event emitter instance.
- * @deprecated
- */
-export const getEventEmitter = () => {
-  if (!isInitialized) {
-    initPageLifecycle();
-  }
-  return eventEmitter;
-};
-
-/**
- * Returns the event emitter instance.
- * @returns {EventEmitter} Event emitter instance.
  */
 export const getPageLifecycleEventEmitter = () => {
   if (!isInitialized) {
