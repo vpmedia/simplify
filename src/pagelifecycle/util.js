@@ -109,21 +109,23 @@ export const initPageLifecycle = () => {
     return;
   }
   logger.info('initPageLifecycle');
-  // DEV: capturing events are mandatory to propagate events to root window
-  const options = { capture: true };
   onPageLifecycleStateChange(detectPageLifecycleState());
-  for (const eventType of ['pageshow', 'focus', 'blur', 'visibilitychange', 'resume']) {
-    window.addEventListener(eventType, () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
-  }
-  window.addEventListener('freeze', () => onPageLifecycleStateChange(PAGE_LIFECYCLE_STATE_FROZEN), options);
+  onDocumentStateChange(document.readyState);
+  const options = { capture: true };
+  document.addEventListener('visibilitychange', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
+  window.addEventListener('pageshow', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
+  window.addEventListener('focus', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
+  window.addEventListener('blur', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
+  document.addEventListener('resume', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
+  document.addEventListener('freeze', () => onPageLifecycleStateChange(PAGE_LIFECYCLE_STATE_FROZEN), options);
   window.addEventListener(
     'pagehide',
     (event) =>
       onPageLifecycleStateChange(event.persisted ? PAGE_LIFECYCLE_STATE_FROZEN : PAGE_LIFECYCLE_STATE_TERMINATED),
     options
   );
-  window.addEventListener('DOMContentLoaded', () => onDocumentStateChange(DOCUMENT_STATE_DOM_LOADED), options);
-  window.addEventListener('readystatechange', () => onDocumentStateChange(document.readyState), options);
+  document.addEventListener('DOMContentLoaded', () => onDocumentStateChange(DOCUMENT_STATE_DOM_LOADED), options);
+  document.addEventListener('readystatechange', () => onDocumentStateChange(document.readyState), options);
   window.addEventListener('load', () => onDocumentStateChange(DOCUMENT_STATE_FULLY_LOADED), options);
   isInitialized = true;
 };
