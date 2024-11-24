@@ -113,7 +113,7 @@ export const initPageLifecycle = () => {
   onDocumentStateChange(document.readyState);
   const options = { capture: true };
   document.addEventListener('visibilitychange', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
-  window.addEventListener('popstate', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
+  // window.addEventListener('popstate', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
   window.addEventListener('pageshow', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
   window.addEventListener('focus', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
   window.addEventListener('blur', () => onPageLifecycleStateChange(detectPageLifecycleState()), options);
