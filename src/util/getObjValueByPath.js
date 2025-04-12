@@ -1,6 +1,6 @@
 /**
  * Get object value by path.
- * @param {object} obj - TBD.
+ * @param {{}} obj - TBD.
  * @param {string} path - TBD.
  * @returns {*} TBD.
  */

@@ -1,2 +1,2 @@
-export function deepMerge(target: object, source: object): object;
+export function deepMerge(target: {}, source: {}): {};
 //# sourceMappingURL=deepMerge.d.ts.map

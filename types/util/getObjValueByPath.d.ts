@@ -1,2 +1,2 @@
-export function getObjValueByPath(obj: object, path: string): any;
+export function getObjValueByPath(obj: {}, path: string): any;
 //# sourceMappingURL=getObjValueByPath.d.ts.map
