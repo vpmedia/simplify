@@ -15,7 +15,7 @@ export const serverDataToState = (data, isRecursive = false) => {
     const result = {};
     for (const [key, value] of Object.entries(data)) {
       const clientKey = underscoreToCamelCase(key);
-      result[clientKey] = isRecursive ? serverDataToState(value) : value;
+      result[clientKey] = isRecursive ? serverDataToState(value, isRecursive) : value;
     }
     return result;
   }
