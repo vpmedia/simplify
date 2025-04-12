@@ -1,2 +1,2 @@
-export function serverDataToState(data: object): object;
+export function serverDataToState(data: {}): {};
 //# sourceMappingURL=serverDataToState.d.ts.map

@@ -2,14 +2,22 @@ import { underscoreToCamelCase } from './underscoreToCamelCase.js';
 
 /**
  * Maps server data to client data.
- * @param {object} data - The server input data.
- * @returns {object} The output data.
+ * @param {{}} data - The server input data.
+ * @returns {{}} The output data.
  */
 export const serverDataToState = (data) => {
-  const result = {};
-  for (const serverKey of Object.keys(data)) {
-    const clientKey = underscoreToCamelCase(serverKey);
-    result[clientKey] = data[serverKey];
+  if (Array.isArray(data)) {
+    return data.map((entry) => serverDataToState(entry));
   }
-  return result;
+
+  if (data !== null && typeof data === 'object') {
+    const result = {};
+    for (const [key, value] of Object.entries(data)) {
+      const clientKey = underscoreToCamelCase(key);
+      result[clientKey] = serverDataToState(value);
+    }
+    return result;
+  }
+
+  return data; // Return primitives as-is
 };
