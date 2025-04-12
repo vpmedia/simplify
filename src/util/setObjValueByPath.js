@@ -1,6 +1,6 @@
 /**
  * Get object value by path.
- * @param {{}} obj - TBD.
+ * @param {object} obj - TBD.
  * @param {string} path - TBD.
  * @param {*} value - TBD.
  * @throws {SyntaxError} Error when illegal path value has been provided.

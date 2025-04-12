@@ -1,6 +1,6 @@
 /**
  * Purges object properties to free up memory.
- * @param {{}} target - The target object.
+ * @param {object} target - The target object.
  */
 export const purgeObject = (target) => {
   if (!target) {

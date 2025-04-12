@@ -22,27 +22,27 @@ export class Logger {
     /**
      * TBD.
      * @param {string} message - TBD.
-     * @param {{}} extraData - TBD.
+     * @param {object} extraData - TBD.
      */
-    debug(message: string, extraData?: {}): void;
+    debug(message: string, extraData?: object): void;
     /**
      * TBD.
      * @param {string} message - TBD.
-     * @param {{}} extraData - TBD.
+     * @param {object} extraData - TBD.
      */
-    info(message: string, extraData?: {}): void;
+    info(message: string, extraData?: object): void;
     /**
      * TBD.
      * @param {string} message - TBD.
-     * @param {{}} extraData - TBD.
+     * @param {object} extraData - TBD.
      */
-    warn(message: string, extraData?: {}): void;
+    warn(message: string, extraData?: object): void;
     /**
      * TBD.
      * @param {string} message - TBD.
-     * @param {{}} extraData - TBD.
+     * @param {object} extraData - TBD.
      */
-    error(message: string, extraData?: {}): void;
+    error(message: string, extraData?: object): void;
     /**
      * TBD.
      * @param {string} message - TBD.

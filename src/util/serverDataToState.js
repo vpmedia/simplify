@@ -2,8 +2,8 @@ import { underscoreToCamelCase } from './underscoreToCamelCase.js';
 
 /**
  * Maps server data to client data.
- * @param {{}} data - The server input data.
- * @returns {{}} The output data.
+ * @param {object} data - The server input data.
+ * @returns {object} The output data.
  */
 export const serverDataToState = (data) => {
   if (Array.isArray(data)) {

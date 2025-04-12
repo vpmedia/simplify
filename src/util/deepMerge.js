@@ -1,8 +1,8 @@
 /**
  * Merge two objects.
- * @param {{}} target - Target merge object.
- * @param {{}} source - Source merge object.
- * @returns {{}} Merged result object.
+ * @param {object} target - Target merge object.
+ * @param {object} source - Source merge object.
+ * @returns {object} Merged result object.
  */
 export const deepMerge = (target, source) => {
   if (typeof target !== 'object' || target === null) return source;

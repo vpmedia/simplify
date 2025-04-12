@@ -33,7 +33,7 @@ export class Logger {
   /**
    * TBD.
    * @param {string} message - TBD.
-   * @param {{}} extraData - TBD.
+   * @param {object} extraData - TBD.
    */
   debug(message, extraData = null) {
     if (this.level < LEVEL_DEBUG) {
@@ -53,7 +53,7 @@ export class Logger {
   /**
    * TBD.
    * @param {string} message - TBD.
-   * @param {{}} extraData - TBD.
+   * @param {object} extraData - TBD.
    */
   info(message, extraData = null) {
     if (this.level < LEVEL_INFO) {
@@ -73,7 +73,7 @@ export class Logger {
   /**
    * TBD.
    * @param {string} message - TBD.
-   * @param {{}} extraData - TBD.
+   * @param {object} extraData - TBD.
    */
   warn(message, extraData = null) {
     if (this.level < LEVEL_WARN) {
@@ -93,7 +93,7 @@ export class Logger {
   /**
    * TBD.
    * @param {string} message - TBD.
-   * @param {{}} extraData - TBD.
+   * @param {object} extraData - TBD.
    */
   error(message, extraData = null) {
     if (this.level < LEVEL_ERROR) {
