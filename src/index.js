@@ -12,6 +12,7 @@ export { deg2rad } from './util/deg2rad.js';
 export { delayPromise } from './util/delayPromise.js';
 export { FetchError, fetchRetry, HTTP_0_ANY } from './util/fetchRetry.js';
 export { fixFloatPrecision } from './util/fixFloatPrecision.js';
+export { getErrorDetails } from './util/getErrorDetails.js';
 export { getObjValueByPath } from './util/getObjValueByPath.js';
 export { getRandomInt } from './util/getRandomInt.js';
 export { getURLParam } from './util/getURLParam.js';

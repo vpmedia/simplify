@@ -6,6 +6,7 @@ import {
 } from '../const/http_status.js';
 import { Logger } from '../logging/Logger.js';
 import { delayPromise } from './delayPromise.js';
+import { getErrorDetails } from './getErrorDetails.js';
 
 const logger = new Logger('fetch');
 
@@ -63,6 +64,7 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
     } catch (error) {
       const typedError = error instanceof Error ? error : new Error(String(error));
       logger.error('error', typedError);
+      logger.info('errorDetails', getErrorDetails(typedError));
       retryOptions.numTries -= 1;
       if (
         retryOptions.numTries === 0 ||
