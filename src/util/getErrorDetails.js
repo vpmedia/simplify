@@ -6,8 +6,15 @@
  */
 export const getErrorDetails = (error, excludes = ['stack']) => {
   const errorDetails = {
-    type: error.constructor?.name || typeof error, // e.g., "TypeError"
+    name: error.name,
+    type: error.constructor?.name ?? typeof error,
   };
+  if (error.message) {
+    errorDetails.message = error.message;
+  }
+  if (error.cause) {
+    errorDetails.cause = error.cause;
+  }
   for (const key of Object.getOwnPropertyNames(error)) {
     if (!excludes.includes(key)) {
       errorDetails[key] = error[key];
