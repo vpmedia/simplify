@@ -33,11 +33,12 @@ export class FetchError extends Error {
  * Fetch with retry.
  * @param {string | URL | Request} resource - Fetch URL.
  * @param {RequestInit} [fetchOptions] - Fetch options.
- * @param {{delay?: number, numTries?: number, statusExcludes?: number[]}} [retryOptions] - Retry options.
+ * @param {{delay?: number, numTries?: number, statusExcludes?: number[], timeout?: number}} [retryOptions] - Retry options.
  * @returns {Promise<Response>} Fetch result.
  */
 export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   retryOptions = retryOptions ?? {};
+  retryOptions.timeout = Math.max(retryOptions.timeout ?? 10000, 1000);
   retryOptions.delay = Math.max(retryOptions.delay ?? 500, 1);
   retryOptions.numTries = Math.max(retryOptions.numTries ?? 3, 1);
   retryOptions.statusExcludes = retryOptions.statusExcludes ?? [
@@ -48,6 +49,9 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   ];
   while (retryOptions.numTries > 0) {
     logger.info('request', { resource, fetchOptions, retryOptions });
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), retryOptions.timeout);
+    fetchOptions.signal = controller.signal;
     try {
       const response = await fetch(resource, fetchOptions);
       if (!response.ok) {
@@ -76,6 +80,8 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
       }
       await delayPromise(retryOptions.delay);
       retryOptions.delay *= 2;
+    } finally {
+      clearTimeout(timeoutId);
     }
   }
 };
