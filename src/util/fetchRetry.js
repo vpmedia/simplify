@@ -38,7 +38,7 @@ export class FetchError extends Error {
  */
 export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   retryOptions = retryOptions ?? {};
-  retryOptions.timeout = Math.max(retryOptions.timeout ?? 10000, 1000);
+  retryOptions.timeout = Math.max(retryOptions.timeout ?? 10000, 1);
   retryOptions.delay = Math.max(retryOptions.delay ?? 500, 1);
   retryOptions.numTries = Math.max(retryOptions.numTries ?? 3, 1);
   retryOptions.statusExcludes = retryOptions.statusExcludes ?? [
