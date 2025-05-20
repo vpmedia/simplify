@@ -50,7 +50,7 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   while (retryOptions.numTries > 0) {
     logger.info('request', { resource, fetchOptions, retryOptions });
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), retryOptions.timeout);
+    const timeoutId = setTimeout(() => controller.abort('Fetch is timed out'), retryOptions.timeout);
     fetchOptions.signal = controller.signal;
     try {
       const response = await fetch(resource, fetchOptions);
