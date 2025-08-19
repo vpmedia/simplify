@@ -7,4 +7,4 @@
 
 ## Getting started
 
-    $ npm install --save @vpmedia/simplify
+    $ pnpm add @vpmedia/simplify
