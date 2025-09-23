@@ -9,6 +9,7 @@ export const deepMerge = (target, source) => {
   if (typeof source !== 'object' || source === null) return target;
 
   for (const key of Object.keys(source)) {
+    if (key === '__proto__' || key === 'constructor') continue;
     if (typeof source[key] === 'object' && source[key] !== null) {
       if (!target[key] || typeof target[key] !== 'object') {
         target[key] = {};
