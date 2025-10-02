@@ -44,7 +44,7 @@
     "iOS >= 14"
   ],
   "dependencies": {
-    "@types/node": "^24.6.1",
+    "@types/node": "^24.6.2",
     "eventemitter3": "^5.0.1"
   }
 }
