@@ -39,8 +39,8 @@ export class FetchError extends Error {
 export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   retryOptions = retryOptions ?? {};
   retryOptions.timeout = Math.max(retryOptions.timeout ?? 30000, 1);
-  retryOptions.delay = Math.max(retryOptions.delay ?? 500, 1);
-  retryOptions.numTries = Math.max(retryOptions.numTries ?? 3, 1);
+  retryOptions.delay = Math.max(retryOptions.delay ?? 1000, 1);
+  retryOptions.numTries = Math.max(retryOptions.numTries ?? 1, 1);
   retryOptions.statusExcludes = retryOptions.statusExcludes ?? [
     HTTP_401_UNAUTHORIZED,
     HTTP_403_FORBIDDEN,
