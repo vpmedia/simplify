@@ -1,15 +1,5 @@
 export class Logger {
     /**
-     * @type {(error: Error) => void}
-     * @deprecated
-     */
-    static exceptionHandler: (error: Error) => void;
-    /**
-     * @type {(target: string, level: string, message: string, extraData: object) => void}
-     * @deprecated
-     */
-    static suppressedLogHandler: (target: string, level: string, message: string, extraData: object) => void;
-    /**
      * @type {import('./AbstractLogHandler.js').AbstractLogHandler[]}
      */
     static handlers: import("./AbstractLogHandler.js").AbstractLogHandler[];
@@ -20,50 +10,56 @@ export class Logger {
     static addHandler: (handler: import("./AbstractLogHandler.js").AbstractLogHandler) => void;
     /**
      * Emit log record.
-     * @param {string} target - Log target.
+     * @param {Logger} logger - Log target.
      * @param {number} level - Log level.
      * @param {string} message - Log message.
-     * @param {object} extraData - Log extra data.
-     * @param {Error} [exception] - Log extra data.
+     * @param {object} extra - Log extra data.
+     * @param {Error} [error] - Log exception.
      */
-    static emit: (target: string, level: number, message: string, extraData: object, exception?: Error) => void;
+    static emit: (logger: Logger, level: number, message: string, extra: object, error?: Error) => void;
     /**
      * Creates a new Logger instance.
-     * @param {string} name - The logger name.
+     * @param {string} [name] - The logger name.
      */
-    constructor(name: string);
+    constructor(name?: string);
     name: string;
     level: number;
     /**
-     * TBD.
-     * @param {string} message - TBD.
-     * @param {object} [extraData] - TBD.
+     * Emit debug log.
+     * @param {string} message - Log message.
+     * @param {object} [extra] - Log extra data.
      */
-    debug(message: string, extraData?: object): void;
+    debug(message: string, extra?: object): void;
     /**
-     * TBD.
-     * @param {string} message - TBD.
-     * @param {object} [extraData] - TBD.
+     * Emit info log.
+     * @param {string} message - Log message.
+     * @param {object} [extra] - Log extra data.
      */
-    info(message: string, extraData?: object): void;
+    info(message: string, extra?: object): void;
     /**
-     * TBD.
-     * @param {string} message - TBD.
-     * @param {object} [extraData] - TBD.
+     * Emit warning log.
+     * @param {string} message - Log message.
+     * @param {object} [extra] - Log extra data.
      */
-    warn(message: string, extraData?: object): void;
+    warn(message: string, extra?: object): void;
     /**
-     * TBD.
-     * @param {string} message - TBD.
-     * @param {object} [extraData] - TBD.
+     * Emit warning log.
+     * @param {string} message - Log message.
+     * @param {object} [extra] - Log extra data.
      */
-    error(message: string, extraData?: object): void;
+    warning(message: string, extra?: object): void;
     /**
-     * TBD.
-     * @param {string} message - TBD.
-     * @param {Error} exception - TBD.
-     * @param {object} [extraData] - TBD.
+     * Emit error log.
+     * @param {string} message - Log message.
+     * @param {object} [extra] - Log extra data.
      */
-    exception(message: string, exception: Error, extraData?: object): void;
+    error(message: string, extra?: object): void;
+    /**
+     * Emit exception log.
+     * @param {string} message - Log message.
+     * @param {Error} error - Log error.
+     * @param {object} [extra] - Log extra data.
+     */
+    exception(message: string, error: Error, extra?: object): void;
 }
 //# sourceMappingURL=Logger.d.ts.map

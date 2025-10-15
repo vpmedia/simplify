@@ -5,6 +5,7 @@ export * from "./pagelifecycle/event.js";
 export * from "./pagelifecycle/typedef.js";
 export * from "./pagelifecycle/util.js";
 export { AbstractLogHandler } from "./logging/AbstractLogHandler.js";
+export { ConsoleLogHandler } from "./logging/ConsoleLogHandler.js";
 export { Logger } from "./logging/Logger.js";
 export { addLeadingZero } from "./util/addLeadingZero.js";
 export { capitalize } from "./util/capitalize.js";
@@ -23,6 +24,7 @@ export { saveAsFile } from "./util/saveAsFile.js";
 export { serverDataToState } from "./util/serverDataToState.js";
 export { setObjValueByPath } from "./util/setObjValueByPath.js";
 export { underscoreToCamelCase } from "./util/underscoreToCamelCase.js";
+export { formatLogMessage, getLogLevelName } from "./logging/util.js";
 export { FetchError, fetchRetry, HTTP_0_ANY } from "./util/fetchRetry.js";
 export { addFloat, fixFloat, subFloat } from "./util/safeFloat.js";
 //# sourceMappingURL=index.d.ts.map

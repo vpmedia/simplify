@@ -33,10 +33,11 @@
   },
   "scripts": {
     "build": "exit 0",
-    "test": "vitest --coverage --pass-with-no-tests",
+    "check": "pnpm lint && pnpm test && pnpm typecheck",
+    "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,md,css}\"",
     "lint": "eslint \"**/*.{js,jsx}\"",
-    "typecheck": "tsc",
-    "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,md,css}\""
+    "test": "vitest --coverage",
+    "typecheck": "rm -rf types && tsc"
   },
   "browserslist": [
     "> 0.5%",

@@ -1,1 +1,1 @@
-{"version":3,"file":"AbstractLogHandler.d.ts","sourceRoot":"","sources":["../../src/logging/AbstractLogHandler.js"],"names":[],"mappings":"AAAA;IACE;;;OAGG;IACH,mBAFW,MAAM,EAIhB;IADC,cAAkB;IAGpB;;;;;;;;OAQG;IACH,aAPW,MAAM,aACN,MAAM,WACN,MAAM,aACN,MAAM,aACN,KAAK,QAKf;CACF"}
+{"version":3,"file":"AbstractLogHandler.d.ts","sourceRoot":"","sources":["../../src/logging/AbstractLogHandler.js"],"names":[],"mappings":"AAAA;IACE;;;OAGG;IACH,mBAFW,MAAM,EAIhB;IADC,cAAkB;IAGpB;;;;;;;;OAQG;IACH,aAPW,OAAO,aAAa,EAAE,MAAM,SAC5B,MAAM,WACN,MAAM,SACN,MAAM,SACN,KAAK,QAKf;CACF"}

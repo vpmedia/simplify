@@ -1,42 +1,44 @@
 import { AbstractLogHandler } from './AbstractLogHandler.js';
-import {
-  LOG_LEVEL_NAME_DEBUG,
-  LOG_LEVEL_NAME_ERROR,
-  LOG_LEVEL_NAME_INFO,
-  LOG_LEVEL_NAME_SILENT,
-  LOG_LEVEL_NAME_WARNING,
-} from './const.js';
+import { LOG_LEVEL_DEBUG } from './const.js';
 import { formatLogMessage } from './util.js';
 
-const CONSOLE_CALLER_MAP = {
-  [LOG_LEVEL_NAME_SILENT]: () => null,
-  [LOG_LEVEL_NAME_DEBUG]: console.debug,
-  [LOG_LEVEL_NAME_INFO]: console.info,
-  [LOG_LEVEL_NAME_WARNING]: console.warn,
-  [LOG_LEVEL_NAME_ERROR]: console.error,
-};
+const CONSOLE_FUNCTIONS = [
+  null, // silent
+  console.debug, // debug
+  console.info, // info
+  console.warn, // warning
+  console.error, // error
+  console.error, // fatal
+];
 
 export class ConsoleLogHandler extends AbstractLogHandler {
   /**
-   * Abstract log handler.
-   * @param {number} level - Log level.
+   * Console log handler.
+   * @param {number} level - Log handler level.
    */
-  constructor(level) {
+  constructor(level = LOG_LEVEL_DEBUG) {
     super(level);
   }
 
   /**
    * Emit log record.
-   * @param {string} target - Log target.
-   * @param {string} levelName - Log level.
+   * @param {import('./Logger.js').Logger} logger - Log target.
+   * @param {number} level - Log level.
    * @param {string} message - Log message.
-   * @param {object} extraData - Log extra data.
-   * @param {Error} exception - Log extra data.
+   * @param {object} extra - Log extra data.
+   * @param {Error} error - Log extra data.
    * @throws {Error}
    */
-  emit(target, levelName, message, extraData, exception) {
-    const logMessage = formatLogMessage(target, message);
-    const consoleCaller = CONSOLE_CALLER_MAP[levelName];
-    extraData === null ? consoleCaller(logMessage) : consoleCaller(logMessage, extraData);
+  emit(logger, level, message, extra, error) {
+    const logMessage = formatLogMessage(logger.name, message);
+    const consoleFunction = CONSOLE_FUNCTIONS[level];
+    if (consoleFunction === null) {
+      return;
+    }
+    if (error) {
+      extra === null ? consoleFunction(logMessage, error) : consoleFunction(logMessage, error, extra);
+      return;
+    }
+    extra === null ? consoleFunction(logMessage) : consoleFunction(logMessage, extra);
   }
 }

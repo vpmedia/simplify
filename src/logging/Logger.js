@@ -1,40 +1,29 @@
 import { getURLParam } from '../util/getURLParam.js';
+import { ConsoleLogHandler } from './ConsoleLogHandler.js';
 import {
   LOG_LEVEL_DEBUG,
   LOG_LEVEL_ERROR,
+  LOG_LEVEL_FATAL,
   LOG_LEVEL_INFO,
-  LOG_LEVEL_NAME_DEBUG,
-  LOG_LEVEL_NAME_ERROR,
-  LOG_LEVEL_NAME_INFO,
-  LOG_LEVEL_NAME_WARNING,
   LOG_LEVEL_SILENT,
   LOG_LEVEL_WARNING,
 } from './const.js';
-import { getAppEnvironment } from './getAppEnvironment.js';
-import { formatLogMessage, getLogLevelName } from './util.js';
+import { getAppEnvironment } from './util.js';
+
+const ROOT_LOGGER_NAME = 'root';
 
 export class Logger {
   /**
-   * @type {(error: Error) => void}
-   * @deprecated
-   */
-  static exceptionHandler = null;
-  /**
-   * @type {(target: string, level: string, message: string, extraData: object) => void}
-   * @deprecated
-   */
-  static suppressedLogHandler = null;
-  /**
    * @type {import('./AbstractLogHandler.js').AbstractLogHandler[]}
    */
-  static handlers = [];
+  static handlers = [new ConsoleLogHandler()];
 
   /**
    * Creates a new Logger instance.
-   * @param {string} name - The logger name.
+   * @param {string} [name] - The logger name.
    */
-  constructor(name) {
-    this.name = name;
+  constructor(name = ROOT_LOGGER_NAME) {
+    this.name = name ?? ROOT_LOGGER_NAME;
     const appEnvironment = getAppEnvironment();
     const isProduction = appEnvironment === 'production' || appEnvironment === 'release';
     const defaultLevel = isProduction ? LOG_LEVEL_SILENT : LOG_LEVEL_DEBUG;
@@ -52,119 +41,72 @@ export class Logger {
 
   /**
    * Emit log record.
-   * @param {string} target - Log target.
+   * @param {Logger} logger - Log target.
    * @param {number} level - Log level.
    * @param {string} message - Log message.
-   * @param {object} extraData - Log extra data.
-   * @param {Error} [exception] - Log extra data.
+   * @param {object} extra - Log extra data.
+   * @param {Error} [error] - Log exception.
    */
-  static emit = (target, level, message, extraData, exception) => {
+  static emit = (logger, level, message, extra, error) => {
     for (const handler of Logger.handlers) {
       if (handler.level >= level) {
-        handler.emit(target, getLogLevelName(level), message, extraData, exception);
+        handler.emit(logger, level, message, extra, error);
       }
     }
   };
 
   /**
-   * TBD.
-   * @param {string} message - TBD.
-   * @param {object} [extraData] - TBD.
+   * Emit debug log.
+   * @param {string} message - Log message.
+   * @param {object} [extra] - Log extra data.
    */
-  debug(message, extraData = null) {
-    Logger.emit(this.name, LOG_LEVEL_DEBUG, message, extraData);
-    if (this.level < LOG_LEVEL_DEBUG) {
-      if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler(this.name, LOG_LEVEL_NAME_DEBUG, message, extraData);
-      }
-      return;
-    }
-    const logMessage = formatLogMessage(this.name, message);
-    if (extraData !== null) {
-      console.debug(logMessage, extraData);
-      return;
-    }
-    console.debug(logMessage);
+  debug(message, extra = null) {
+    Logger.emit(this, LOG_LEVEL_DEBUG, message, extra);
   }
 
   /**
-   * TBD.
-   * @param {string} message - TBD.
-   * @param {object} [extraData] - TBD.
+   * Emit info log.
+   * @param {string} message - Log message.
+   * @param {object} [extra] - Log extra data.
    */
-  info(message, extraData = null) {
-    Logger.emit(this.name, LOG_LEVEL_INFO, message, extraData);
-    if (this.level < LOG_LEVEL_INFO) {
-      if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler(this.name, LOG_LEVEL_NAME_INFO, message, extraData);
-      }
-      return;
-    }
-    const logMessage = formatLogMessage(this.name, message);
-    if (extraData !== null) {
-      console.info(logMessage, extraData);
-      return;
-    }
-    console.info(logMessage);
+  info(message, extra = null) {
+    Logger.emit(this, LOG_LEVEL_INFO, message, extra);
   }
 
   /**
-   * TBD.
-   * @param {string} message - TBD.
-   * @param {object} [extraData] - TBD.
+   * Emit warning log.
+   * @param {string} message - Log message.
+   * @param {object} [extra] - Log extra data.
    */
-  warn(message, extraData = null) {
-    Logger.emit(this.name, LOG_LEVEL_WARNING, message, extraData);
-    if (this.level < LOG_LEVEL_WARNING) {
-      if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler(this.name, LOG_LEVEL_NAME_WARNING, message, extraData);
-      }
-      return;
-    }
-    const logMessage = formatLogMessage(this.name, message);
-    if (extraData !== null) {
-      console.warn(logMessage, extraData);
-      return;
-    }
-    console.warn(logMessage);
+  warn(message, extra = null) {
+    Logger.emit(this, LOG_LEVEL_WARNING, message, extra);
   }
 
   /**
-   * TBD.
-   * @param {string} message - TBD.
-   * @param {object} [extraData] - TBD.
+   * Emit warning log.
+   * @param {string} message - Log message.
+   * @param {object} [extra] - Log extra data.
    */
-  error(message, extraData = null) {
-    Logger.emit(this.name, LOG_LEVEL_ERROR, message, extraData);
-    if (this.level < LOG_LEVEL_ERROR) {
-      if (Logger.suppressedLogHandler) {
-        Logger.suppressedLogHandler(this.name, LOG_LEVEL_NAME_ERROR, message, extraData);
-      }
-      return;
-    }
-    const logMessage = formatLogMessage(this.name, message);
-    if (extraData !== null) {
-      console.error(logMessage, extraData);
-      return;
-    }
-    console.error(logMessage);
+  warning(message, extra = null) {
+    Logger.emit(this, LOG_LEVEL_WARNING, message, extra);
   }
 
   /**
-   * TBD.
-   * @param {string} message - TBD.
-   * @param {Error} exception - TBD.
-   * @param {object} [extraData] - TBD.
+   * Emit error log.
+   * @param {string} message - Log message.
+   * @param {object} [extra] - Log extra data.
    */
-  exception(message, exception, extraData = null) {
-    Logger.emit(this.name, LOG_LEVEL_ERROR, message, extraData, exception);
-    if (Logger.exceptionHandler) {
-      Logger.exceptionHandler(exception);
-    }
-    if (this.level < LOG_LEVEL_ERROR) {
-      return;
-    }
-    const logMessage = formatLogMessage(this.name, message);
-    console.error(logMessage, exception);
+  error(message, extra = null) {
+    Logger.emit(this, LOG_LEVEL_ERROR, message, extra);
+  }
+
+  /**
+   * Emit exception log.
+   * @param {string} message - Log message.
+   * @param {Error} error - Log error.
+   * @param {object} [extra] - Log extra data.
+   */
+  exception(message, error, extra = null) {
+    Logger.emit(this, LOG_LEVEL_FATAL, message, extra, error);
   }
 }

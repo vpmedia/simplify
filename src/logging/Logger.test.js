@@ -1,5 +1,5 @@
 import { AbstractLogHandler } from './AbstractLogHandler.js';
-import { LOG_LEVEL_DEBUG, LOG_LEVEL_NAME_ERROR } from './const.js';
+import { LOG_LEVEL_DEBUG, LOG_LEVEL_ERROR, LOG_LEVEL_FATAL, LOG_LEVEL_INFO, LOG_LEVEL_WARNING } from './const.js';
 import { Logger } from './Logger.js';
 
 class TestLogHandler extends AbstractLogHandler {
@@ -8,27 +8,27 @@ class TestLogHandler extends AbstractLogHandler {
    */
   constructor() {
     super(LOG_LEVEL_DEBUG);
-    this.emitLogTarget = null;
-    this.emitLogLevelName = null;
+    this.emitLogLogger = null;
+    this.emitLogLevel = null;
     this.emitLogMessage = null;
-    this.emitLogExtraData = null;
-    this.emitLogException = null;
+    this.emitLogExtra = null;
+    this.emitLogError = null;
   }
 
   /**
    * Emit log record.
-   * @param {string} target - Log target.
-   * @param {string} levelName - Log level name.
+   * @param {import('./Logger.js').Logger} logger - Log target.
+   * @param {number} level - Log level name.
    * @param {string} message - Log message.
-   * @param {object} extraData - Log extra data.
-   * @param {Error} exception - Log extra data.
+   * @param {object} extra - Log extra data.
+   * @param {Error} error - Log extra data.
    */
-  emit(target, levelName, message, extraData, exception) {
-    this.emitLogTarget = target;
-    this.emitLogLevelName = levelName;
+  emit(logger, level, message, extra, error) {
+    this.emitLogLogger = logger;
+    this.emitLogLevel = level;
     this.emitLogMessage = message;
-    this.emitLogExtraData = extraData;
-    this.emitLogException = exception;
+    this.emitLogExtra = extra;
+    this.emitLogError = error;
   }
 }
 
@@ -37,29 +37,31 @@ test('Tests Logger default level', () => {
   expect(logger.level).toBe(LOG_LEVEL_DEBUG);
 });
 
-test('Tests Logger exception handler', () => {
-  const logger = new Logger('test');
-  expect(Logger.exceptionHandler).toBe(null);
-  /** @type {Error} */
-  let handledError = null;
-  /**
-   * Test exception handler.
-   * @param {Error} error - Error instance.
-   */
-  const exceptionHandler = (error) => {
-    handledError = error;
-  };
-  Logger.exceptionHandler = exceptionHandler;
-  logger.exception('test', new Error('test_error'));
-  expect(handledError.message).toBe('test_error');
-});
-
 test('Tests Logger custom handler', () => {
   const logger = new Logger('test');
   const testLogHandler = new TestLogHandler();
   Logger.addHandler(testLogHandler);
-  logger.exception('test', new Error('test_error'));
-  expect(testLogHandler.emitLogLevelName).toBe(LOG_LEVEL_NAME_ERROR);
+  // debug
+  logger.debug('debug');
+  expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_DEBUG);
+  expect(testLogHandler.emitLogMessage).toBe('debug');
+  // info
+  logger.info('info');
+  expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_INFO);
+  expect(testLogHandler.emitLogMessage).toBe('info');
+  // info
+  logger.warn('warning');
+  expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_WARNING);
+  expect(testLogHandler.emitLogMessage).toBe('warning');
+  // error
+  logger.error('error');
+  expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_ERROR);
+  expect(testLogHandler.emitLogMessage).toBe('error');
+  // exception
+  logger.exception('test', new Error('test_error'), { context: 'ctx' });
+  expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_FATAL);
   expect(testLogHandler.emitLogMessage).toBe('test');
-  expect(testLogHandler.emitLogException.message).toBe('test_error');
+  expect(testLogHandler.emitLogError.message).toBe('test_error');
+  expect(testLogHandler.emitLogLogger).toBe(logger);
+  expect(testLogHandler.emitLogExtra.context).toBe('ctx');
 });

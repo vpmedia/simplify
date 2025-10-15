@@ -1,3 +1,4 @@
-export function formatLogMessage(loggerName: string, logMessage: string): string;
-export function getLogLevelName(logLevel: number): string;
+export function formatLogMessage(name: string, message: string): string;
+export function getLogLevelName(level: number): string;
+export function getAppEnvironment(): string;
 //# sourceMappingURL=util.d.ts.map

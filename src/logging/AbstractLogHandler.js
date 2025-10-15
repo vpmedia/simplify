@@ -1,7 +1,7 @@
 export class AbstractLogHandler {
   /**
    * Abstract log handler.
-   * @param {number} level - Log level.
+   * @param {number} level - Log handler level.
    */
   constructor(level) {
     this.level = level;
@@ -9,14 +9,14 @@ export class AbstractLogHandler {
 
   /**
    * Emit log record.
-   * @param {string} target - Log target.
-   * @param {string} levelName - Log level.
+   * @param {import('./Logger.js').Logger} logger - Log target.
+   * @param {number} level - Log level.
    * @param {string} message - Log message.
-   * @param {object} extraData - Log extra data.
-   * @param {Error} exception - Log extra data.
+   * @param {object} extra - Log extra data.
+   * @param {Error} error - Log extra data.
    * @throws {Error}
    */
-  emit(target, levelName, message, extraData, exception) {
+  emit(logger, level, message, extra, error) {
     throw new Error('Not implemented.');
   }
 }

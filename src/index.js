@@ -1,8 +1,10 @@
 // core
 export * from './const/http_status.js';
 export { AbstractLogHandler } from './logging/AbstractLogHandler.js';
+export { ConsoleLogHandler } from './logging/ConsoleLogHandler.js';
 export * from './logging/const.js';
 export { Logger } from './logging/Logger.js';
+export { formatLogMessage, getLogLevelName } from './logging/util.js';
 export * from './pagelifecycle/const.js';
 export * from './pagelifecycle/event.js';
 export * from './pagelifecycle/typedef.js';
