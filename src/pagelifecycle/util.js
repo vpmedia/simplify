@@ -28,7 +28,7 @@ let currentDocumentState = null;
 
 let isInitialized = false;
 
-/** @type {{[key: string]: Function[]}} */
+/** @type {{[key: string]: (() => void)[]}} */
 let callbacks = {};
 
 /**

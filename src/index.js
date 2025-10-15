@@ -1,5 +1,7 @@
 // core
 export * from './const/http_status.js';
+export { AbstractLogHandler } from './logging/AbstractLogHandler.js';
+export * from './logging/const.js';
 export { Logger } from './logging/Logger.js';
 export * from './pagelifecycle/const.js';
 export * from './pagelifecycle/event.js';
