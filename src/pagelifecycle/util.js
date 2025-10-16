@@ -16,7 +16,7 @@ import {
 } from './const.js';
 import { DOCUMENT_STATE_CHANGE_EVENT, PAGE_LIFECYCLE_STATE_CHANGE_EVENT } from './event.js';
 
-const logger = new Logger('PageLifecycle');
+const logger = new Logger('pagelifecycle');
 
 const eventEmitter = new EventEmitter();
 
