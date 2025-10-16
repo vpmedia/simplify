@@ -7,6 +7,7 @@ export * from "./pagelifecycle/util.js";
 export { AbstractLogHandler } from "./logging/AbstractLogHandler.js";
 export { ConsoleLogHandler } from "./logging/ConsoleLogHandler.js";
 export { Logger } from "./logging/Logger.js";
+export { OpenTelemetryLogHandler } from "./logging/OpenTelemetryLogHandler.js";
 export { addLeadingZero } from "./util/addLeadingZero.js";
 export { capitalize } from "./util/capitalize.js";
 export { deepMerge } from "./util/deepMerge.js";

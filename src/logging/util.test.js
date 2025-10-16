@@ -15,7 +15,9 @@ import {
 import { formatLogMessage, getLogLevelName } from './util.js';
 
 test('formatLogMessage()', () => {
-  expect(formatLogMessage('loggerName', 'logMessage').endsWith('[loggerName] logMessage')).toBe(true);
+  expect(
+    formatLogMessage({ name: 'loggerName' }, Date.now, LOG_LEVEL_INFO, 'logMessage').endsWith('[loggerName] logMessage')
+  ).toBe(true);
 });
 
 test('getLogLevelName()', () => {

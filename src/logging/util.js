@@ -2,11 +2,13 @@ import { LOG_LEVEL_NAMES } from './const.js';
 
 /**
  * Format log message.
- * @param {string} name - Log target name.
- * @param {string} message - Log target message.
+ * @param {import('./Logger.js').Logger} logger - Logger target name.
+ * @param {number} timestamp - Log timestamp.
+ * @param {number} level - Log level.
+ * @param {string} message - Log message.
  * @returns {string} Formatted log message.
  */
-export const formatLogMessage = (name, message) => `${Date.now()} [${name}] ${message}`;
+export const formatLogMessage = (logger, timestamp, level, message) => `${timestamp} [${logger.name}] ${message}`;
 
 /**
  * Get log level name.

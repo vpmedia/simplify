@@ -10,7 +10,7 @@ export class Logger {
     static addHandler: (handler: import("./AbstractLogHandler.js").AbstractLogHandler) => void;
     /**
      * Emit log record.
-     * @param {Logger} logger - Log target.
+     * @param {Logger} logger - Logger instance.
      * @param {number} level - Log level.
      * @param {string} message - Log message.
      * @param {object} extra - Log extra data.

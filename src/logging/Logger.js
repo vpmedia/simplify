@@ -1,5 +1,4 @@
 import { getURLParam } from '../util/getURLParam.js';
-import { ConsoleLogHandler } from './ConsoleLogHandler.js';
 import {
   LOG_LEVEL_DEBUG,
   LOG_LEVEL_ERROR,
@@ -16,7 +15,7 @@ export class Logger {
   /**
    * @type {import('./AbstractLogHandler.js').AbstractLogHandler[]}
    */
-  static handlers = [new ConsoleLogHandler()];
+  static handlers = [];
 
   /**
    * Creates a new Logger instance.
@@ -41,16 +40,17 @@ export class Logger {
 
   /**
    * Emit log record.
-   * @param {Logger} logger - Log target.
+   * @param {Logger} logger - Logger instance.
    * @param {number} level - Log level.
    * @param {string} message - Log message.
    * @param {object} extra - Log extra data.
    * @param {Error} [error] - Log exception.
    */
   static emit = (logger, level, message, extra, error) => {
+    const timestamp = Date.now();
     for (const handler of Logger.handlers) {
       if (handler.level >= level) {
-        handler.emit(logger, level, message, extra, error);
+        handler.emit(logger, timestamp, level, message, extra, error);
       }
     }
   };

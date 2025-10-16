@@ -9,6 +9,7 @@ class TestLogHandler extends AbstractLogHandler {
   constructor() {
     super(LOG_LEVEL_DEBUG);
     this.emitLogLogger = null;
+    this.emitLogTimestamp = null;
     this.emitLogLevel = null;
     this.emitLogMessage = null;
     this.emitLogExtra = null;
@@ -17,14 +18,16 @@ class TestLogHandler extends AbstractLogHandler {
 
   /**
    * Emit log record.
-   * @param {import('./Logger.js').Logger} logger - Log target.
-   * @param {number} level - Log level name.
+   * @param {import('./Logger.js').Logger} logger - Logger instance.
+   * @param {number} timestamp - Log timestamp.
+   * @param {number} level - Log level.
    * @param {string} message - Log message.
    * @param {object} extra - Log extra data.
    * @param {Error} error - Log extra data.
    */
-  emit(logger, level, message, extra, error) {
+  emit(logger, timestamp, level, message, extra, error) {
     this.emitLogLogger = logger;
+    this.emitLogTimestamp = timestamp;
     this.emitLogLevel = level;
     this.emitLogMessage = message;
     this.emitLogExtra = extra;
