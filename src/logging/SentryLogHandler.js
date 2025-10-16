@@ -1,6 +1,6 @@
-import { addBreadcrumb, captureException } from '@sentry/browser';
+import { addBreadcrumb, captureException, captureMessage } from '@sentry/browser';
 import { AbstractLogHandler } from './AbstractLogHandler.js';
-import { LOG_LEVEL_DEBUG } from './const.js';
+import { LOG_LEVEL_DEBUG, LOG_LEVEL_WARNING } from './const.js';
 import { getLogLevelName } from './util.js';
 
 const BREADCRUMB_CATEGORY = 'log';
@@ -42,6 +42,10 @@ export class SentryLogHandler extends AbstractLogHandler {
     }
     if (error) {
       extra?.tags ? captureException(error, { tags: extra.tags }) : captureException(error);
+    } else if (level === LOG_LEVEL_WARNING) {
+      extra?.tags
+        ? captureMessage(logMessage, { level: 'warning', tags: extra.tags })
+        : captureMessage(logMessage, { level: 'warning' });
     }
   }
 }
