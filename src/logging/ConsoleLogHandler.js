@@ -4,11 +4,11 @@ import { formatLogMessage } from './util.js';
 
 const CONSOLE_FUNCTIONS = [
   null, // silent
-  console.debug, // debug
-  console.info, // info
-  console.warn, // warning
-  console.error, // error
   console.error, // fatal
+  console.error, // error
+  console.warn, // warning
+  console.info, // info
+  console.debug, // debug
 ];
 
 export class ConsoleLogHandler extends AbstractLogHandler {
