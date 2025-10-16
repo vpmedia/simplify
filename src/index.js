@@ -5,6 +5,7 @@ export { ConsoleLogHandler } from './logging/ConsoleLogHandler.js';
 export * from './logging/const.js';
 export { Logger } from './logging/Logger.js';
 export { OpenTelemetryLogHandler } from './logging/OpenTelemetryLogHandler.js';
+export { SentryLogHandler } from './logging/SentryLogHandler.js';
 export { formatLogMessage, getLogLevelName } from './logging/util.js';
 export * from './pagelifecycle/const.js';
 export * from './pagelifecycle/event.js';
