@@ -31,6 +31,9 @@ export class ConsoleLogHandler extends AbstractLogHandler {
    * @throws {Error}
    */
   emit(logger, timestamp, level, message, extra, error) {
+    if (logger.level < level) {
+      return;
+    }
     const logMessage = formatLogMessage(logger, timestamp, level, message);
     const consoleFunction = CONSOLE_FUNCTIONS[level];
     if (consoleFunction === null) {
