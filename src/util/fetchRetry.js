@@ -55,7 +55,6 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
     try {
       const response = await fetch(resource, fetchOptions);
       if (!response.ok) {
-        logger.warn('failure', response);
         throw new FetchError(
           `fetch ${response.url} returned status ${response.status}`,
           resource,
@@ -63,12 +62,11 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
           response
         );
       }
-      logger.info('success', response);
+      logger.info('response', response);
       return response;
     } catch (error) {
       const typedError = error instanceof Error ? error : new Error(String(error));
-      logger.error('error', typedError);
-      logger.info('errorDetails', getErrorDetails(typedError));
+      logger.debug('error', getErrorDetails(typedError));
       retryOptions.numTries -= 1;
       if (
         retryOptions.numTries === 0 ||
