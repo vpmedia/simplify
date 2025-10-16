@@ -41,7 +41,7 @@ export class SentryLogHandler extends AbstractLogHandler {
       addBreadcrumb(breadcrumb);
     }
     if (error) {
-      captureException(error);
+      extra?.tags ? captureException(error, { tags: extra.tags }) : captureException(error);
     }
   }
 }
