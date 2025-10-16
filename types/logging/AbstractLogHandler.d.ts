@@ -12,7 +12,7 @@ export class AbstractLogHandler {
      * @param {number} level - Log level.
      * @param {string} message - Log message.
      * @param {object} extra - Log extra data.
-     * @param {Error} error - Log extra data.
+     * @param {Error} error - Log error.
      * @throws {Error}
      */
     emit(logger: import("./Logger.js").Logger, timestamp: number, level: number, message: string, extra: object, error: Error): void;

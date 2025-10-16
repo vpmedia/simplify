@@ -19,7 +19,7 @@ export class OpenTelemetryLogHandler extends AbstractLogHandler {
    * @param {number} level - Log level.
    * @param {string} message - Log message.
    * @param {object} extra - Log extra data.
-   * @param {Error} error - Log extra data.
+   * @param {Error} error - Log error.
    * @throws {Error}
    */
   emit(logger, timestamp, level, message, extra, error) {
