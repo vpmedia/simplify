@@ -27,7 +27,7 @@ export class Logger {
     const isProduction = appEnvironment === 'production' || appEnvironment === 'release';
     const defaultLevel = isProduction ? LOG_LEVEL_SILENT : LOG_LEVEL_DEBUG;
     const parameterName = `log_${this.name.toLowerCase()}`;
-    this.level = Number.parseInt(getURLParam(parameterName, getURLParam('log_all', defaultLevel)), 10);
+    this.level = Number.parseInt(getURLParam(parameterName, getURLParam('log_all', defaultLevel.toString())), 10);
   }
 
   /**
