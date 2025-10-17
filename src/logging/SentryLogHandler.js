@@ -32,7 +32,7 @@ export class SentryLogHandler extends AbstractLogHandler {
       category: 'console',
       message: logMessage,
       level: levelName,
-      data: { context: extra },
+      data: { extra },
     };
     if (logger.level < level) {
       // only capture breadcrumbs if logger is silenced with this level,
