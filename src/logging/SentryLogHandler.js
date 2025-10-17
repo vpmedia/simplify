@@ -3,8 +3,6 @@ import { AbstractLogHandler } from './AbstractLogHandler.js';
 import { LOG_LEVEL_DEBUG, LOG_LEVEL_WARNING } from './const.js';
 import { getLogLevelName } from './util.js';
 
-const BREADCRUMB_CATEGORY = 'log';
-
 export class SentryLogHandler extends AbstractLogHandler {
   /**
    * Console log handler.
@@ -30,14 +28,15 @@ export class SentryLogHandler extends AbstractLogHandler {
     const levelName = getLogLevelName(level);
     const logMessage = `[${logger.name}] ${message}`;
     const breadcrumb = {
-      category: BREADCRUMB_CATEGORY,
+      type: 'default',
+      category: 'console',
       message: logMessage,
       level: levelName,
-      data: extra,
+      data: { context: extra },
     };
     if (logger.level < level) {
       // only capture breadcrumbs if logger is silenced with this level,
-      // so no console logs are present for Sentry.
+      // so no console logs are present for Sentry to capture directly.
       addBreadcrumb(breadcrumb);
     }
     if (error) {
