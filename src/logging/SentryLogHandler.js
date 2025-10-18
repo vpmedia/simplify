@@ -32,7 +32,7 @@ export class SentryLogHandler extends AbstractLogHandler {
       category: 'console',
       message: logMessage,
       level: levelName,
-      data: extra === undefined ? undefined : { extra },
+      data: extra,
     };
     addBreadcrumb(breadcrumb);
     if (error) {
