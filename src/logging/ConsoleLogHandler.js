@@ -40,9 +40,9 @@ export class ConsoleLogHandler extends AbstractLogHandler {
       return;
     }
     if (error) {
-      extra === null ? consoleFunction(logMessage, error) : consoleFunction(logMessage, error, extra);
+      extra === undefined ? consoleFunction(logMessage, error) : consoleFunction(logMessage, error, extra);
       return;
     }
-    extra === null ? consoleFunction(logMessage) : consoleFunction(logMessage, extra);
+    extra === undefined ? consoleFunction(logMessage) : consoleFunction(logMessage, extra);
   }
 }

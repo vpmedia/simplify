@@ -60,7 +60,7 @@ export class Logger {
    * @param {string} message - Log message.
    * @param {object} [extra] - Log extra data.
    */
-  debug(message, extra = null) {
+  debug(message, extra) {
     Logger.emit(this, LOG_LEVEL_DEBUG, message, extra);
   }
 
@@ -69,7 +69,7 @@ export class Logger {
    * @param {string} message - Log message.
    * @param {object} [extra] - Log extra data.
    */
-  info(message, extra = null) {
+  info(message, extra) {
     Logger.emit(this, LOG_LEVEL_INFO, message, extra);
   }
 
@@ -78,7 +78,7 @@ export class Logger {
    * @param {string} message - Log message.
    * @param {object} [extra] - Log extra data.
    */
-  warn(message, extra = null) {
+  warn(message, extra) {
     Logger.emit(this, LOG_LEVEL_WARNING, message, extra);
   }
 
@@ -87,7 +87,7 @@ export class Logger {
    * @param {string} message - Log message.
    * @param {object} [extra] - Log extra data.
    */
-  warning(message, extra = null) {
+  warning(message, extra) {
     Logger.emit(this, LOG_LEVEL_WARNING, message, extra);
   }
 
@@ -96,7 +96,7 @@ export class Logger {
    * @param {string} message - Log message.
    * @param {object} [extra] - Log extra data.
    */
-  error(message, extra = null) {
+  error(message, extra) {
     Logger.emit(this, LOG_LEVEL_ERROR, message, extra);
   }
 
@@ -106,7 +106,7 @@ export class Logger {
    * @param {Error} error - Log error.
    * @param {object} [extra] - Log extra data.
    */
-  exception(message, error, extra = null) {
+  exception(message, error, extra) {
     Logger.emit(this, LOG_LEVEL_FATAL, message, extra, error);
   }
 }

@@ -32,13 +32,9 @@ export class SentryLogHandler extends AbstractLogHandler {
       category: 'console',
       message: logMessage,
       level: levelName,
-      data: { extra },
+      data: extra === undefined ? undefined : { extra },
     };
-    if (logger.level < level) {
-      // only capture breadcrumbs if logger is silenced with this level,
-      // so no console logs are present for Sentry to capture directly.
-      addBreadcrumb(breadcrumb);
-    }
+    addBreadcrumb(breadcrumb);
     if (error) {
       extra?.tags ? captureException(error, { tags: extra.tags }) : captureException(error);
     } else if (level === LOG_LEVEL_WARNING) {
