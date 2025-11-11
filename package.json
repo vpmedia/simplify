@@ -22,7 +22,7 @@
     "eventemitter3": "^5.0.1"
   },
   "optionalDependencies": {
-    "@sentry/browser": "^10.24.0"
+    "@sentry/browser": "^10.25.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.28.5",
