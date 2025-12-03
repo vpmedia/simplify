@@ -27,4 +27,3 @@ prettier.config.js
 bitbucket-pipelines.yml
 vitest.config.js
 tsconfig.json
-webpack.config.babel.js

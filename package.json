@@ -25,7 +25,6 @@
     "@sentry/browser": "^10.27.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.28.5",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.39.1",
