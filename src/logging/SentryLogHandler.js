@@ -24,7 +24,7 @@ export class SentryLogHandler extends AbstractLogHandler {
    */
   emit(logger, timestamp, level, message, extra, error) {
     /** @type {import('@sentry/browser').SeverityLevel} */
-    // @ts-ignore
+    // @ts-expect-error
     const levelName = getLogLevelName(level);
     const logMessage = `[${logger.name}] ${message}`;
     const breadcrumb = {

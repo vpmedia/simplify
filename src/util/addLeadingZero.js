@@ -6,7 +6,7 @@
  */
 export const addLeadingZero = (value, size = 2) => {
   if (value === null || value === undefined) {
-    // @ts-ignore: Type 'string | number' is not assignable to type 'string'.
+    // @ts-expect-error
     return value;
   }
   value = value.toString();
