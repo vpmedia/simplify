@@ -12,7 +12,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 export const getURLParam = (key, defaultValue = null, isSanitize = true) => {
   const paramValue = urlSearchParams.get(key);
   if (paramValue === null || paramValue === undefined) {
-    return null;
+    return defaultValue;
   }
   if (isSanitize) {
     return sanitizeURLParam(paramValue);
