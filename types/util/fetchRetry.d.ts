@@ -12,10 +12,10 @@ export class FetchError extends Error {
     fetchOptions: RequestInit;
     response: Response;
 }
-export function fetchRetry(resource: string | URL | Request, fetchOptions?: RequestInit, retryOptions?: {
+export function fetchRetry(resource: string | URL | Request, fetchOptions: RequestInit, retryOptions?: {
     delay?: number;
     numTries?: number;
     statusExcludes?: number[];
     timeout?: number;
-}): Promise<Response>;
+}): Promise<Response | undefined>;
 //# sourceMappingURL=fetchRetry.d.ts.map

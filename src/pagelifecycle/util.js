@@ -20,10 +20,10 @@ const logger = new Logger('pagelifecycle');
 
 const eventEmitter = new EventEmitter();
 
-/** @type {import('./typedef.js').PageLifecycleState} */
+/** @type {import('./typedef.js').PageLifecycleState | null | undefined} */
 let currentPageLifecycleState = null;
 
-/** @type {import('./typedef.js').DocumentState} */
+/** @type {import('./typedef.js').DocumentState | null | undefined} */
 let currentDocumentState = null;
 
 let isInitialized = false;
@@ -133,7 +133,7 @@ export const initPageLifecycle = () => {
 
 /**
  * Returns the current page lifecycle state.
- * @returns {string} Current page lifecycle state.
+ * @returns {string | null | undefined} Current page lifecycle state.
  */
 export const getPageLifecycleState = () => {
   return currentPageLifecycleState;
@@ -141,7 +141,7 @@ export const getPageLifecycleState = () => {
 
 /**
  * Returns the current document state.
- * @returns {import('./typedef.js').DocumentState} Current document state.
+ * @returns {import('./typedef.js').DocumentState | null | undefined} Current document state.
  */
 export const getDocumentState = () => {
   return currentDocumentState;

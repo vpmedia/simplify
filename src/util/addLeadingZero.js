@@ -1,13 +1,12 @@
 /**
  * TBD.
- * @param {number|string} value - TBD.
+ * @param {number | string | null | undefined} value - TBD.
  * @param {number} size - TBD.
- * @returns {string} TBD.
+ * @returns {string | null} TBD.
  */
 export const addLeadingZero = (value, size = 2) => {
   if (value === null || value === undefined) {
-    // @ts-expect-error
-    return value;
+    return null;
   }
   value = value.toString();
   while (value.length < size) {

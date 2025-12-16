@@ -26,8 +26,8 @@ export class ConsoleLogHandler extends AbstractLogHandler {
    * @param {number} timestamp - Log timestamp.
    * @param {number} level - Log level.
    * @param {string} message - Log message.
-   * @param {object} extra - Log extra data.
-   * @param {Error} error - Log error.
+   * @param {object | null | undefined} extra - Log extra data.
+   * @param {Error | null | undefined} error - Log error.
    * @throws {Error}
    */
   emit(logger, timestamp, level, message, extra, error) {

@@ -1,7 +1,7 @@
 /**
  * Capitalize a string.
- * @param {string} value - Ther input string.
- * @returns {string} TBD.
+ * @param {string | null | undefined} value - Ther input string.
+ * @returns {string | null | undefined} TBD.
  */
 export const capitalize = (value) => {
   if (!value || value?.length === 0) {

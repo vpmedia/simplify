@@ -2,11 +2,11 @@
  * Get object value by path.
  * @param {object} obj - TBD.
  * @param {string} path - TBD.
- * @returns {*} TBD.
+ * @returns {object | null} TBD.
  */
 export const getObjValueByPath = (obj, path) => {
   if (!obj || !path) {
-    return;
+    return null;
   }
   const keyParts = path.split('.');
   const nextKey = keyParts[0];

@@ -5,14 +5,14 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 /**
  * TBD.
  * @param {string} key - TBD.
- * @param {string} defaultValue - TBD.
+ * @param {string | null | undefined} defaultValue - TBD.
  * @param {boolean} isSanitize - TBD.
- * @returns {string} TBD.
+ * @returns {string | null} TBD.
  */
 export const getURLParam = (key, defaultValue = null, isSanitize = true) => {
   const paramValue = urlSearchParams.get(key);
   if (paramValue === null || paramValue === undefined) {
-    return defaultValue;
+    return null;
   }
   if (isSanitize) {
     return sanitizeURLParam(paramValue);

@@ -2,7 +2,7 @@
  * Get object value by path.
  * @param {object} obj - TBD.
  * @param {string} path - TBD.
- * @param {*} value - TBD.
+ * @param {object | null | undefined} value - TBD.
  * @throws {SyntaxError} Error when illegal path value has been provided.
  */
 export const setObjValueByPath = (obj, path, value) => {

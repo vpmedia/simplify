@@ -27,7 +27,10 @@ export class Logger {
     const isProduction = appEnvironment === 'production' || appEnvironment === 'release';
     const defaultLevel = isProduction ? LOG_LEVEL_SILENT : LOG_LEVEL_DEBUG;
     const parameterName = `log_${this.name.toLowerCase()}`;
-    this.level = Number.parseInt(getURLParam(parameterName, getURLParam('log_all', defaultLevel.toString())), 10);
+    const paramLevel =
+      getURLParam(parameterName, getURLParam('log_all', defaultLevel.toString())) ?? defaultLevel.toString();
+    /** @type {number} */
+    this.level = Number.parseInt(paramLevel, 10);
   }
 
   /**
@@ -44,7 +47,7 @@ export class Logger {
    * @param {number} level - Log level.
    * @param {string} message - Log message.
    * @param {object} extra - Log extra data.
-   * @param {Error} [error] - Log exception.
+   * @param {Error | null | undefined} [error] - Log exception.
    */
   static emit = (logger, level, message, extra, error) => {
     const timestamp = Date.now();
@@ -58,7 +61,7 @@ export class Logger {
   /**
    * Emit debug log.
    * @param {string} message - Log message.
-   * @param {object} [extra] - Log extra data.
+   * @param {object | null | undefined} [extra] - Log extra data.
    */
   debug(message, extra) {
     Logger.emit(this, LOG_LEVEL_DEBUG, message, extra);
@@ -67,7 +70,7 @@ export class Logger {
   /**
    * Emit info log.
    * @param {string} message - Log message.
-   * @param {object} [extra] - Log extra data.
+   * @param {object | null | undefined} [extra] - Log extra data.
    */
   info(message, extra) {
     Logger.emit(this, LOG_LEVEL_INFO, message, extra);
@@ -76,7 +79,7 @@ export class Logger {
   /**
    * Emit warning log.
    * @param {string} message - Log message.
-   * @param {object} [extra] - Log extra data.
+   * @param {object | null | undefined} [extra] - Log extra data.
    */
   warn(message, extra) {
     Logger.emit(this, LOG_LEVEL_WARNING, message, extra);
@@ -85,7 +88,7 @@ export class Logger {
   /**
    * Emit warning log.
    * @param {string} message - Log message.
-   * @param {object} [extra] - Log extra data.
+   * @param {object | null | undefined} [extra] - Log extra data.
    */
   warning(message, extra) {
     Logger.emit(this, LOG_LEVEL_WARNING, message, extra);
@@ -94,7 +97,7 @@ export class Logger {
   /**
    * Emit error log.
    * @param {string} message - Log message.
-   * @param {object} [extra] - Log extra data.
+   * @param {object | null | undefined} [extra] - Log extra data.
    */
   error(message, extra) {
     Logger.emit(this, LOG_LEVEL_ERROR, message, extra);
@@ -104,7 +107,7 @@ export class Logger {
    * Emit exception log.
    * @param {string} message - Log message.
    * @param {Error} error - Log error.
-   * @param {object} [extra] - Log extra data.
+   * @param {object | null | undefined} [extra] - Log extra data.
    */
   exception(message, error, extra) {
     Logger.emit(this, LOG_LEVEL_FATAL, message, extra, error);

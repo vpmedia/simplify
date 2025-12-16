@@ -32,9 +32,9 @@ export class FetchError extends Error {
 /**
  * Fetch with retry.
  * @param {string | URL | Request} resource - Fetch URL.
- * @param {RequestInit} [fetchOptions] - Fetch options.
+ * @param {RequestInit} fetchOptions - Fetch options.
  * @param {{delay?: number, numTries?: number, statusExcludes?: number[], timeout?: number}} [retryOptions] - Retry options.
- * @returns {Promise<Response>} Fetch result.
+ * @returns {Promise<Response | undefined>} Fetch result.
  */
 export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   retryOptions = retryOptions ?? {};

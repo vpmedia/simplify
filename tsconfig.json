@@ -16,7 +16,6 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": false,
-    "strictNullChecks": false,
     "skipLibCheck": true
   },
   "include": ["./src/**/*", "./typedefs/**/*"],

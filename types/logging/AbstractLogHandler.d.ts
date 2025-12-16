@@ -11,10 +11,10 @@ export class AbstractLogHandler {
      * @param {number} timestamp - Log timestamp.
      * @param {number} level - Log level.
      * @param {string} message - Log message.
-     * @param {object} extra - Log extra data.
-     * @param {Error} error - Log error.
+     * @param {object | null | undefined} extra - Log extra data.
+     * @param {Error | null | undefined} error - Log error.
      * @throws {Error}
      */
-    emit(logger: import("./Logger.js").Logger, timestamp: number, level: number, message: string, extra: object, error: Error): void;
+    emit(logger: import("./Logger.js").Logger, timestamp: number, level: number, message: string, extra: object | null | undefined, error: Error | null | undefined): void;
 }
 //# sourceMappingURL=AbstractLogHandler.d.ts.map

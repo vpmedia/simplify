@@ -1,2 +1,2 @@
-export function addLeadingZero(value: number | string, size?: number): string;
+export function addLeadingZero(value: number | string | null | undefined, size?: number): string | null;
 //# sourceMappingURL=addLeadingZero.d.ts.map
