@@ -1,3 +1,13 @@
+## [1.51.0] - 2025-12-16
+
+### 🐛 Bug Fixes
+
+- Added missing fallback value to get url param
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.51.0
 ## [1.50.0] - 2025-12-16
 
 ### ⚙️ Miscellaneous Tasks
