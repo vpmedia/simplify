@@ -1,9 +1,12 @@
 /**
  * Capitalize a string.
  * @param {string | null | undefined} value - Ther input string.
- * @returns {string | null | undefined} TBD.
+ * @returns {string | null} TBD.
  */
 export const capitalize = (value) => {
+  if (value === null || value === undefined) {
+    return null;
+  }
   if (!value || value?.length === 0) {
     return value;
   }
