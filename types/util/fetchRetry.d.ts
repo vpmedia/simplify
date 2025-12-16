@@ -17,5 +17,5 @@ export function fetchRetry(resource: string | URL | Request, fetchOptions: Reque
     numTries?: number;
     statusExcludes?: number[];
     timeout?: number;
-}): Promise<Response | undefined>;
+}): Promise<Response>;
 //# sourceMappingURL=fetchRetry.d.ts.map
