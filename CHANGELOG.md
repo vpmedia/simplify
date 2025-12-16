@@ -1,3 +1,10 @@
+## [1.48.0] - 2025-12-16
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Revert type def change for fetch retry
+- *(release)* V1.48.0
 ## [1.47.0] - 2025-12-16
 
 ### 💼 Other
