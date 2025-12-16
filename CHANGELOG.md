@@ -1,3 +1,10 @@
+## [1.50.0] - 2025-12-16
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Improve type checking
+- *(release)* V1.50.0
 ## [1.49.0] - 2025-12-16
 
 ### ⚙️ Miscellaneous Tasks
