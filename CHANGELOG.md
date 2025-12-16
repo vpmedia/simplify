@@ -1,3 +1,9 @@
+## [1.49.0] - 2025-12-16
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.49.0
 ## [1.48.0] - 2025-12-16
 
 ### ⚙️ Miscellaneous Tasks
