@@ -1,3 +1,14 @@
+## [1.52.0] - 2025-12-16
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Improve type checking
+- *(release)* V1.52.0
 ## [1.51.0] - 2025-12-16
 
 ### 🐛 Bug Fixes
