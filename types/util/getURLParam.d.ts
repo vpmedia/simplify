@@ -1,2 +1,2 @@
-export function getURLParam(key: string, defaultValue?: string | null | undefined, isSanitize?: boolean): string | null;
+export function getURLParam<T>(key: string, defaultValue?: T, isSanitize?: boolean): string | T;
 //# sourceMappingURL=getURLParam.d.ts.map

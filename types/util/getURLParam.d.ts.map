@@ -1,1 +1,1 @@
-{"version":3,"file":"getURLParam.d.ts","sourceRoot":"","sources":["../../src/util/getURLParam.js"],"names":[],"mappings":"AAWO,iCALI,MAAM,iBACN,MAAM,GAAG,IAAI,GAAG,SAAS,eACzB,OAAO,GACL,MAAM,GAAG,IAAI,CAWzB"}
+{"version":3,"file":"getURLParam.d.ts","sourceRoot":"","sources":["../../src/util/getURLParam.js"],"names":[],"mappings":"AAYO,4BANM,CAAC,OACH,MAAM,iBACN,CAAC,eACD,OAAO,GACL,MAAM,GAAG,CAAC,CAWtB"}

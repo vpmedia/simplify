@@ -4,10 +4,11 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 
 /**
  * TBD.
+ * @template T
  * @param {string} key - TBD.
- * @param {string | null | undefined} defaultValue - TBD.
+ * @param {T} defaultValue - TBD.
  * @param {boolean} isSanitize - TBD.
- * @returns {string | null} TBD.
+ * @returns {string | T} TBD.
  */
 export const getURLParam = (key, defaultValue = null, isSanitize = true) => {
   const paramValue = urlSearchParams.get(key);
