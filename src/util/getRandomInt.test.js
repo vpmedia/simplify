@@ -1,5 +1,5 @@
 import { getRandomInt } from './getRandomInt.js';
 
-test('TBD', () => {
+test('Gets random integer within range', () => {
   expect(getRandomInt(1, 1)).toBe(1);
 });

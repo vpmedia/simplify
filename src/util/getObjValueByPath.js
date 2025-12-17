@@ -1,8 +1,8 @@
 /**
  * Get object value by path.
- * @param {object} obj - TBD.
- * @param {string} path - TBD.
- * @returns {object | null} TBD.
+ * @param {object} obj - The source object to get the value from.
+ * @param {string} path - The path to the property in dot notation (e.g. 'a.b.c').
+ * @returns {object | null} The value at the specified path or null if not found.
  */
 export const getObjValueByPath = (obj, path) => {
   if (!obj || !path) {

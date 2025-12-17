@@ -1,7 +1,7 @@
 /**
  * Capitalize a string.
- * @param {string | null | undefined} value - Ther input string.
- * @returns {string | null} TBD.
+ * @param {string | null | undefined} value - The input string to capitalize.
+ * @returns {string | null} The capitalized string or null if the input is null/undefined.
  */
 export const capitalize = (value) => {
   if (value === null || value === undefined) {
