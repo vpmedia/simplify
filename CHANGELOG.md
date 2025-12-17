@@ -1,3 +1,24 @@
+## [1.53.0] - 2025-12-17
+
+### 💼 Other
+
+- Update npmignore
+- *(deps)* Bump dependency versions
+- Update npmignore
+- *(deps)* Bump dependency versions
+
+### 📚 Documentation
+
+- Improve jsdoc comments
+
+### 🧪 Testing
+
+- Improve test coverage
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.53.0
 ## [1.52.0] - 2025-12-16
 
 ### 💼 Other
