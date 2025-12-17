@@ -11,7 +11,10 @@ export const getObjValueByPath = (obj, path) => {
   const keyParts = path.split('.');
   const nextKey = keyParts[0];
   if (keyParts.length === 1) {
-    return obj[nextKey];
+    return obj[nextKey] === undefined ? null : obj[nextKey];
+  }
+  if (obj[nextKey] === undefined || obj[nextKey] === null) {
+    return null;
   }
   return getObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'));
 };

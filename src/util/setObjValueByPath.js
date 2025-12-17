@@ -16,6 +16,11 @@ export const setObjValueByPath = (obj, path, value) => {
   }
   if (keyParts.length === 1) {
     obj[nextKey] = value;
+  } else {
+    // Create the nested object if it doesn't exist
+    if (obj[nextKey] === undefined || obj[nextKey] === null) {
+      obj[nextKey] = {};
+    }
+    setObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'), value);
   }
-  setObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'), value);
 };
