@@ -1,3 +1,19 @@
+## [1.54.0] - 2025-12-29
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bumped package versions
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.54.0
 ## [1.53.0] - 2025-12-17
 
 ### 💼 Other
