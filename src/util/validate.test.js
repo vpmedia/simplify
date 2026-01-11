@@ -15,6 +15,9 @@ import {
   isPositiveInteger,
   isNonNegativeNumber,
   isInstance,
+  typecheck,
+  ValidatorError,
+  isEnum,
 } from './validate.js';
 
 describe('validate', () => {
@@ -180,5 +183,25 @@ describe('validate', () => {
     class CustomError extends Error {}
     expect(isInstance(new CustomError(), Error)).toBe(true);
     expect(isInstance(new CustomError(), Number)).toBe(false);
+  });
+
+  test('isEnum', () => {
+    expect(isEnum('AB', ['AB', 'CD'])).toBe(true);
+    expect(isEnum('EF', ['AB', 'CD'])).toBe(false);
+    expect(isEnum('AB', { AB: 'AB', CD: 'CD' })).toBe(true);
+    expect(isEnum('EF', { AB: 'AB', CD: 'CD' })).toBe(false);
+    expect(isEnum('AB', new Set(['AB', 'CD']))).toBe(true);
+    expect(isEnum('EF', new Set(['AB', 'CD']))).toBe(false);
+    expect(isEnum('EF', null)).toBe(false);
+    expect(isEnum('EF', undefined)).toBe(false);
+    expect(isEnum('EF', 1)).toBe(false);
+    expect(isEnum('EF', 'string')).toBe(false);
+    expect(isEnum(false, 'string')).toBe(false);
+  });
+
+  test('typecheck', () => {
+    expect(() => typecheck(0.1, isNumber)).not.toThrowError(ValidatorError);
+    expect(() => typecheck(-0.1, isPositiveInteger)).toThrowError(ValidatorError);
+    expect(() => typecheck('string', isNumber)).toThrowError(ValidatorError);
   });
 });

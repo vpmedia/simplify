@@ -1,5 +1,27 @@
 /* eslint-disable jsdoc/reject-function-type */
 
+export class ValidatorError extends TypeError {
+  /**
+   * Creates a new ValidatorError instance.
+   * @param {string} message - Error message.
+   */
+  constructor(message) {
+    super(message);
+    this.name = 'ValidatorError';
+  }
+}
+
+/**
+ * Type check a value using a validator.
+ * @param {unknown} value - The value to check.
+ * @param {(value: unknown) => boolean} validator - The validator to check with.
+ */
+export const typecheck = (value, validator) => {
+  if (validator(value) === false) {
+    throw new ValidatorError(`Validation failed with ${validator.name} for ${value}`);
+  }
+};
+
 /**
  * Validates `value` as `boolean`.
  * @param {unknown} value - Input value.
@@ -92,15 +114,27 @@ export const isUndefined = (value) => value === undefined;
 export const isObject = (value) => typeof value === 'object' && isArray(value) === false && isNull(value) === false;
 
 /**
- * @template T
- * @typedef {new (...args: unknown[]) => T} Class<T>
- */
-
-/**
  * Validates `value` as `type`
  * @template T
  * @param {unknown} value - The value to test.
- * @param {new (...args: unknown[]) => T} type - A class or constructor function.
+ * @param {new (...args: any[]) => T} type - A class or constructor function.
  * @returns {value is T} `true` if `value` is an instance of `type`.
  */
 export const isInstance = (value, type) => value instanceof type;
+
+/**
+ * Validates `value` as `enum`.
+ * @param {unknown} value - Input value.
+ * @param {unknown[] | Set<string | number> | {[key: string | number]: unknown}} choices - Input value.
+ * @returns {boolean} `true` if `value` is `enum` type.
+ */
+export const isEnum = (value, choices) => {
+  if (isString(value) === false && isNumber(value) === false) {
+    return false;
+  }
+  return (
+    (isArray(choices) && choices.includes(value)) ||
+    (isObject(choices) && value in choices) ||
+    (isInstance(choices, Set) && choices.has(value))
+  );
+};
