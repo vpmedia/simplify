@@ -11,6 +11,7 @@ export class FetchError extends Error {
     resource: string | URL | Request;
     fetchOptions: RequestInit;
     response: Response;
+    cause: number;
 }
 export function fetchRetry(resource: string | URL | Request, fetchOptions: RequestInit, retryOptions?: {
     delay?: number;
