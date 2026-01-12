@@ -224,6 +224,7 @@ describe('validate', () => {
     expect(isInstance(new CustomError(), {})).toBe(false);
     expect(isInstance(new CustomError(), Error)).toBe(true);
     expect(isInstance(new CustomError(), Number)).toBe(false);
+    expect(isInstance(new Date(), Date)).toBe(true);
   });
 
   test('isEnum', () => {
@@ -246,11 +247,14 @@ describe('validate', () => {
   });
 
   test('isArrayOf', () => {
+    // @ts-expect-error
     expect(isArrayOf(0.1, isNumber)).toBe(false);
     expect(isArrayOf([0.1, 'string'], isNumber)).toBe(false);
     expect(isArrayOf([0.1, 0.2], isNumber)).toBe(true);
     expect(isArrayOf([0.1, 1, 2], isInteger)).toBe(false);
     expect(isArrayOf([1, 2], isInteger)).toBe(true);
+    expect(isArrayOf([1, 'string', undefined], isAnyOf(isInteger, isNullOrUndefined))).toBe(false);
+    expect(isArrayOf([1, null, undefined], isAnyOf(isInteger, isNullOrUndefined))).toBe(true);
   });
 
   test('isPlainObjectOf', () => {
