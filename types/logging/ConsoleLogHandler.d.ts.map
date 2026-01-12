@@ -1,1 +1,1 @@
-{"version":3,"file":"ConsoleLogHandler.d.ts","sourceRoot":"","sources":["../../src/logging/ConsoleLogHandler.js"],"names":[],"mappings":"AAaA;IACE;;;OAGG;IACH,oBAFW,MAAM,EAIhB;CA2BF;mCA/CkC,yBAAyB"}
+{"version":3,"file":"ConsoleLogHandler.d.ts","sourceRoot":"","sources":["../../src/logging/ConsoleLogHandler.js"],"names":[],"mappings":"AAaA;IACE;;;OAGG;IACH,oBAFW,MAAM,EAIhB;CA8BF;mCAlDkC,yBAAyB"}
