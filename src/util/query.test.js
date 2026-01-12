@@ -44,4 +44,15 @@ describe('sanitizeURLParam', () => {
   test('Handles unicode characters', () => {
     expect(sanitizeURLParam('test_äöü')).toBe('test_');
   });
+
+  test('Handles edge cases with various special characters', () => {
+    expect(sanitizeURLParam('test!!!@@@')).toBe('test');
+    expect(sanitizeURLParam('test_param-123')).toBe('test_param-123');
+    expect(sanitizeURLParam('test param')).toBe('testparam');
+  });
+
+  test('Handles very long parameter names', () => {
+    const longParam = 'a'.repeat(1000);
+    expect(typeof sanitizeURLParam(longParam)).toBe('string');
+  });
 });
