@@ -12,8 +12,9 @@ import {
   isNonNegativeNumber,
   isNull,
   isNumber,
-  isObject,
-  isObjectOf,
+  isPlainObject,
+  isPlainObjectOf,
+  isAnyOf,
   isPositiveInteger,
   isPositiveNumber,
   isString,
@@ -21,6 +22,11 @@ import {
   typeCheck,
   typeCheckArray,
   TypeCheckError,
+  isRefined as isRefined,
+  isNumberInRange,
+  isStringWithLength,
+  isArrayWithSize,
+  isIntegerInRange,
 } from './typeCheck.js';
 
 describe('validate', () => {
@@ -172,19 +178,19 @@ describe('validate', () => {
     expect(isUndefined(() => true)).toBe(false);
   });
 
-  test('isObject', () => {
-    expect(isObject('string')).toBe(false);
-    expect(isObject(() => true)).toBe(false);
-    expect(isObject([])).toBe(false);
-    expect(isObject([1, 2, 3])).toBe(false);
-    expect(isObject({ string: '1' })).toBe(true);
-    expect(isObject(0.1)).toBe(false);
-    expect(isObject(1)).toBe(false);
-    expect(isObject(false)).toBe(false);
-    expect(isObject(new Date())).toBe(false);
-    expect(isObject(null)).toBe(false);
-    expect(isObject(true)).toBe(false);
-    expect(isObject(undefined)).toBe(false);
+  test('isPlainObject', () => {
+    expect(isPlainObject('string')).toBe(false);
+    expect(isPlainObject(() => true)).toBe(false);
+    expect(isPlainObject([])).toBe(false);
+    expect(isPlainObject([1, 2, 3])).toBe(false);
+    expect(isPlainObject({ string: '1' })).toBe(true);
+    expect(isPlainObject(0.1)).toBe(false);
+    expect(isPlainObject(1)).toBe(false);
+    expect(isPlainObject(false)).toBe(false);
+    expect(isPlainObject(new Date())).toBe(false);
+    expect(isPlainObject(null)).toBe(false);
+    expect(isPlainObject(true)).toBe(false);
+    expect(isPlainObject(undefined)).toBe(false);
   });
 
   test('isInstance', () => {
@@ -220,12 +226,12 @@ describe('validate', () => {
     expect(isArrayOf([1, 2], isInteger)).toBe(true);
   });
 
-  test('isObjectOf', () => {
-    expect(isObjectOf(0.1, isNumber)).toBe(false);
-    expect(isObjectOf({ a: 0.1, b: 'string' }, isNumber)).toBe(false);
-    expect(isObjectOf({ a: 0.1, b: 0.2 }, isNumber)).toBe(true);
-    expect(isObjectOf({ a: 0.1, b: 1, c: 2 }, isInteger)).toBe(false);
-    expect(isObjectOf({ a: 1, b: 2 }, isInteger)).toBe(true);
+  test('isPlainObjectOf', () => {
+    expect(isPlainObjectOf(0.1, isNumber)).toBe(false);
+    expect(isPlainObjectOf({ a: 0.1, b: 'string' }, isNumber)).toBe(false);
+    expect(isPlainObjectOf({ a: 0.1, b: 0.2 }, isNumber)).toBe(true);
+    expect(isPlainObjectOf({ a: 0.1, b: 1, c: 2 }, isInteger)).toBe(false);
+    expect(isPlainObjectOf({ a: 1, b: 2 }, isInteger)).toBe(true);
   });
 
   test('typeCheck', () => {
@@ -239,5 +245,33 @@ describe('validate', () => {
     expect(() => typeCheckArray(['string'], isNumber)).toThrowError(TypeCheckError);
     expect(() => typeCheckArray(-0.1, isPositiveInteger)).toThrowError(TypeCheckError);
     expect(() => typeCheckArray('string', isNumber)).toThrowError(TypeCheckError);
+  });
+
+  test('isRefined', () => {
+    expect(isRefined(isNumber, (v) => v > 0)(-1)).toBe(false);
+    expect(isRefined(isNumber, (v) => v > 0)(1)).toBe(true);
+  });
+
+  test('isAnyOf', () => {
+    expect(isAnyOf(1, isNumber, isNull)).toBe(true);
+    expect(isAnyOf(null, isNumber, isNull)).toBe(true);
+    expect(isAnyOf('string', isNumber, isNull)).toBe(false);
+  });
+
+  test('isRefinedExtensions', () => {
+    expect(isNumberInRange(1, 3)(0)).toBe(false);
+    expect(isNumberInRange(1, 3)(1)).toBe(true);
+    expect(isNumberInRange(1, 3)(2)).toBe(true);
+    expect(isNumberInRange(1, 3)(3)).toBe(true);
+    expect(isNumberInRange(1, 3)(4)).toBe(false);
+
+    expect(isIntegerInRange(1, 3)(2.1)).toBe(false);
+    expect(isIntegerInRange(1, 3)(2)).toBe(true);
+
+    expect(isStringWithLength(3)('abc')).toBe(true);
+    expect(isStringWithLength(3)('abcd')).toBe(false);
+
+    expect(isArrayWithSize(3)([1, 2, 3])).toBe(true);
+    expect(isArrayWithSize(3)([1, 2, 3, 4])).toBe(false);
   });
 });
