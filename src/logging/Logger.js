@@ -1,4 +1,4 @@
-import { getURLParam } from '../util/getURLParam.js';
+import { getURLParam } from '../util/query.js';
 import {
   LOG_LEVEL_DEBUG,
   LOG_LEVEL_ERROR,

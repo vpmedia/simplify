@@ -44,12 +44,12 @@
     "vitest": "^4.0.16"
   },
   "scripts": {
-    "build": "exit 0",
-    "check": "pnpm lint && pnpm test && pnpm typecheck",
+    "build": "rm -rf types && tsc -p ./tsconfig.build.json",
+    "check": "pnpm build && pnpm lint && pnpm test && pnpm typecheck",
     "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,css}\"",
     "lint": "eslint \"**/*.{js,jsx}\"",
     "test": "vitest --coverage",
-    "typecheck": "rm -rf types && tsc"
+    "typecheck": "tsc"
   },
   "browserslist": [
     "> 0.5%",

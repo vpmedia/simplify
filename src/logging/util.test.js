@@ -12,11 +12,14 @@ import {
   LOG_LEVEL_SILENT,
   LOG_LEVEL_WARNING,
 } from './const.js';
+import { Logger } from './Logger.js';
 import { formatLogMessage, getLogLevelName } from './util.js';
 
 test('formatLogMessage()', () => {
   expect(
-    formatLogMessage({ name: 'loggerName' }, Date.now, LOG_LEVEL_INFO, 'logMessage').endsWith('[loggerName] logMessage')
+    formatLogMessage(new Logger('loggerName'), Date.now(), LOG_LEVEL_INFO, 'logMessage').endsWith(
+      '[loggerName] logMessage'
+    )
   ).toBe(true);
 });
 

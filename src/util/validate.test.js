@@ -37,6 +37,7 @@ import {
   isArrayLengthInRange,
   isStringLengthEqual,
   isStringLengthInRange,
+  isNullOrUndefined,
 } from './validate.js';
 
 describe('validate', () => {
@@ -188,6 +189,20 @@ describe('validate', () => {
     expect(isUndefined(() => true)).toBe(false);
   });
 
+  test('isNullOrUndefined', () => {
+    expect(isNullOrUndefined('string')).toBe(false);
+    expect(isNullOrUndefined([])).toBe(false);
+    expect(isNullOrUndefined([1, 2, 3])).toBe(false);
+    expect(isNullOrUndefined({ string: '1' })).toBe(false);
+    expect(isNullOrUndefined(0.1)).toBe(false);
+    expect(isNullOrUndefined(1)).toBe(false);
+    expect(isNullOrUndefined(false)).toBe(false);
+    expect(isNullOrUndefined(null)).toBe(true);
+    expect(isNullOrUndefined(true)).toBe(false);
+    expect(isNullOrUndefined(undefined)).toBe(true);
+    expect(isNullOrUndefined(() => true)).toBe(false);
+  });
+
   test('isPlainObject', () => {
     expect(isPlainObject('string')).toBe(false);
     expect(isPlainObject(() => true)).toBe(false);
@@ -205,8 +220,10 @@ describe('validate', () => {
 
   test('isInstance', () => {
     class CustomError extends Error {}
+    // @ts-expect-error
     expect(isInstance({}, {})).toBe(false);
     expect(isInstance({}, Number)).toBe(false);
+    // @ts-expect-error
     expect(isInstance(new CustomError(), {})).toBe(false);
     expect(isInstance(new CustomError(), Error)).toBe(true);
     expect(isInstance(new CustomError(), Number)).toBe(false);
@@ -223,8 +240,11 @@ describe('validate', () => {
     expect(isEnum('EF', new Set(['AB', 'CD']))).toBe(false);
     expect(isEnum('EF', null)).toBe(false);
     expect(isEnum('EF', undefined)).toBe(false);
+    // @ts-expect-error
     expect(isEnum('EF', 1)).toBe(false);
+    // @ts-expect-error
     expect(isEnum('EF', 'string')).toBe(false);
+    // @ts-expect-error
     expect(isEnum(false, 'string')).toBe(false);
   });
 
@@ -237,6 +257,7 @@ describe('validate', () => {
   });
 
   test('isPlainObjectOf', () => {
+    // @ts-expect-error
     expect(isPlainObjectOf(0.1, isNumber)).toBe(false);
     expect(isPlainObjectOf({ a: 0.1, b: 'string' }, isNumber)).toBe(false);
     expect(isPlainObjectOf({ a: 0.1, b: 0.2 }, isNumber)).toBe(true);
@@ -253,14 +274,16 @@ describe('validate', () => {
   test('typeCheckArray', () => {
     expect(() => typeCheckArray([0.1], isNumber)).not.toThrowError(TypeCheckError);
     expect(() => typeCheckArray(['string'], isNumber)).toThrowError(TypeCheckError);
+    // @ts-expect-error
     expect(() => typeCheckArray(-0.1, isPositiveInteger)).toThrowError(TypeCheckError);
+    // @ts-expect-error
     expect(() => typeCheckArray('string', isNumber)).toThrowError(TypeCheckError);
   });
 
   test('isAnyOf', () => {
-    expect(isAnyOf(1, isNumber, isNull)).toBe(true);
-    expect(isAnyOf(null, isNumber, isNull)).toBe(true);
-    expect(isAnyOf('string', isNumber, isNull)).toBe(false);
+    expect(isAnyOf(isNumber, isNull)(1)).toBe(true);
+    expect(isAnyOf(isNumber, isNull)(null)).toBe(true);
+    expect(isAnyOf(isNumber, isNull)('string')).toBe(false);
   });
 
   test('refineValidator', () => {

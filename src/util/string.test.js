@@ -1,0 +1,48 @@
+/* eslint-disable unicorn/no-useless-undefined */
+
+import { underscoreToCamelCase, capitalize, addLeadingZero } from './string.js';
+
+test('Tests add leading zero', () => {
+  expect(addLeadingZero(1)).toBe('01');
+  expect(addLeadingZero('1')).toBe('01');
+  expect(addLeadingZero(1, 3)).toBe('001');
+  expect(addLeadingZero('21')).toBe('21');
+  expect(addLeadingZero(21)).toBe('21');
+  expect(addLeadingZero(null)).toBe(null);
+  expect(addLeadingZero(undefined)).toBe(null);
+});
+
+describe('capitalize', () => {
+  test('Capitalizes first letter of string', () => {
+    expect(capitalize('test')).toBe('Test');
+    expect(capitalize('TEST')).toBe('Test');
+    expect(capitalize('tEST')).toBe('Test');
+  });
+
+  test('Handles null input', () => {
+    expect(capitalize(null)).toBe(null);
+  });
+
+  test('Handles empty string', () => {
+    expect(capitalize('')).toBe('');
+  });
+
+  test('Handles empty string with whitespace', () => {
+    expect(capitalize('   ')).toBe('   ');
+  });
+
+  test('Handles single character', () => {
+    expect(capitalize('a')).toBe('A');
+    expect(capitalize('A')).toBe('A');
+  });
+
+  test('Handles strings with numbers', () => {
+    expect(capitalize('test123')).toBe('Test123');
+  });
+});
+
+test('Converts underscore to camelCase', () => {
+  expect(underscoreToCamelCase('test')).toBe('test');
+  expect(underscoreToCamelCase('test_variable')).toBe('testVariable');
+  expect(underscoreToCamelCase('test_variable_name')).toBe('testVariableName');
+});

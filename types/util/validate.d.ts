@@ -19,6 +19,7 @@ export function isString(value: unknown): value is string;
 export function isArray<T>(value: unknown): value is T[];
 export function isNull(value: unknown): value is null;
 export function isUndefined(value: unknown): value is undefined;
+export function isNullOrUndefined(value: unknown): value is null | undefined;
 export function isPlainObject(value: unknown): value is Record<string, unknown>;
 export function isInstance<T>(value: unknown, type: new (...args: any[]) => T): value is T;
 export function isEnum(value: unknown, choices: unknown[] | Set<string | number> | {
@@ -28,14 +29,8 @@ export function isArrayOf<T>(values: unknown, validator: (value: unknown) => val
 export function isPlainObjectOf<T>(record: {
     [key: string | number]: any;
 }, validator: (value: unknown) => value is T): record is Record<string | number, T>;
-export function isAnyOf<A, B>(value: unknown, a: (value: unknown) => value is A, b: (value: unknown) => value is B): value is A | B;
 export function refineValidator<T>(base: (value: unknown) => value is T, predicate: (value: T) => boolean, name?: string | null): (value: unknown) => value is T;
-export function isGt(value: number, min: number): boolean;
-export function isGtOrEq(value: number, min: number): boolean;
-export function isLe(value: number, min: number): boolean;
-export function isLeOrEq(value: number, min: number): boolean;
-export function isInRange(value: number, min: number, max: number): boolean;
-export function isEq(value: number, expected: number): boolean;
+export function isAnyOf<A, B>(a: (value: unknown) => value is A, b: (value: unknown) => value is B): (value: unknown) => value is A | B;
 export function isNumberGreater(min: any): (value: unknown) => value is number;
 export function isNumberGreaterOrEqual(min: any): (value: unknown) => value is number;
 export function isNumberLess(min: any): (value: unknown) => value is number;

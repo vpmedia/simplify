@@ -1,6 +1,8 @@
 /* eslint-disable jsdoc/reject-any-type */
 /* eslint-disable jsdoc/no-undefined-types */
 
+import { isEq, isGt, isGtOrEq, isInRange, isLe, isLeOrEq } from './number.js';
+
 export class TypeCheckError extends TypeError {
   /**
    * Creates a new `TypeCheckError` instance.
@@ -132,6 +134,13 @@ export const isNull = (value) => value === null;
 export const isUndefined = (value) => value === undefined;
 
 /**
+ * Validates `value` as `null` or `undefined`
+ * @param {unknown} value - Input value.
+ * @returns {value is null | undefined} `true` if `value` is `null` or `undefined` type.
+ */
+export const isNullOrUndefined = (value) => isNull(value) || isUndefined(value);
+
+/**
  * Validates `value` as plain `object`.
  * @param {unknown} value - Input value.
  * @returns {value is Record<string, unknown>} `true` if `value` is `object` type.
@@ -203,16 +212,6 @@ export const isPlainObjectOf = (record, validator) => {
 };
 
 /**
- * Logical OR of two validators.
- * @template A, B
- * @param {unknown} value - Input value.
- * @param {(value: unknown) => value is A} a - Validator A.
- * @param {(value: unknown) => value is B} b - Validator B.
- * @returns {value is A | B} `true` if `value` is any of the checked types.
- */
-export const isAnyOf = (value, a, b) => a(value) || b(value);
-
-/**
  * Refine a base validator with an extra condition.
  * @template T
  * @param {(value: unknown) => value is T} base - The base validator.
@@ -230,67 +229,17 @@ export const refineValidator = (base, predicate, name = null) => {
 };
 
 //
-// Boundary check helpers
-//
-
-/**
- * Value greater than check.
- * @param {number} value - Input value.
- * @param {number} min - Limit that `value` must be greater than.
- * @returns {boolean} `true` is check success.
- * @private
- */
-export const isGt = (value, min) => value > min;
-
-/**
- * Value greater than check.
- * @param {number} value - Input value.
- * @param {number} min - Limit that `value` must be greater or equal than.
- * @returns {boolean} `true` is check success.
- * @private
- */
-export const isGtOrEq = (value, min) => value >= min;
-
-/**
- * Value less than check.
- * @param {number} value - Input value.
- * @param {number} min - Limit that `value` must be greater than.
- * @returns {boolean} `true` is check success.
- * @private
- */
-export const isLe = (value, min) => value < min;
-
-/**
- * Value less than check.
- * @param {number} value - Input value.
- * @param {number} min - Limit that `value` must be greater than.
- * @returns {boolean} `true` is check success.
- * @private
- */
-export const isLeOrEq = (value, min) => value <= min;
-
-/**
- * Value greater than check.
- * @param {number} value - Input value.
- * @param {number} min - Limit `value` must be greater or equal than.
- * @param {number} max - Limit `value` must be less or equal than.
- * @returns {boolean} `true` is check success.
- * @private
- */
-export const isInRange = (value, min, max) => value >= min && value <= max;
-
-/**
- * Value equal check.
- * @param {number} value - Input value.
- * @param {number} expected - `expected` that `value` must equal.
- * @returns {boolean} `true` is check success.
- * @private
- */
-export const isEq = (value, expected) => value === expected;
-
-//
 // Refined validators
 //
+
+/**
+ * Logical OR of two validators.
+ * @template A, B
+ * @param {(value: unknown) => value is A} a - Validator A.
+ * @param {(value: unknown) => value is B} b - Validator B.
+ * @returns {(value: unknown) => value is A | B} `true` if `value` is any of the checked types.
+ */
+export const isAnyOf = (a, b) => (value) => a(value) || b(value);
 
 export const isNumberGreater = (min) => refineValidator(isNumber, (value) => isGt(value, min));
 export const isNumberGreaterOrEqual = (min) => refineValidator(isNumber, (value) => isGtOrEq(value, min));
