@@ -1,13 +1,13 @@
 /* eslint-disable jsdoc/reject-any-type */
 
-export class ValidatorError extends TypeError {
+export class TypeCheckError extends TypeError {
   /**
-   * Creates a new ValidatorError instance.
+   * Creates a new `TypeCheckError` instance.
    * @param {string} message - Error message.
    */
   constructor(message) {
     super(message);
-    this.name = 'ValidatorError';
+    this.name = 'TypeCheckError';
   }
 }
 
@@ -17,13 +17,30 @@ export class ValidatorError extends TypeError {
  * @param {unknown} value - The value to check.
  * @param {(value: unknown) => value is T} validator - The validator to check with.
  * @returns {T} The type checked value.
- * @throws {ValidatorError}
+ * @throws {TypeCheckError}
  */
-export const typecheck = (value, validator) => {
+export const typeCheck = (value, validator) => {
   if (!validator(value)) {
     const name = validator.name || '<anonymous>';
     const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
-    throw new ValidatorError(`Validation failed: ${name}(${display})`);
+    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+  }
+  return value;
+};
+
+/**
+ * Type check a value using a validator.
+ * @template T
+ * @param {unknown} value - The value to check.
+ * @param {(value: unknown) => value is T} validator - The validator to check the array with.
+ * @returns {T[]} The type checked value.
+ * @throws {TypeCheckError}
+ */
+export const typeCheckArray = (value, validator) => {
+  if (!isArrayOf(value, validator)) {
+    const name = validator.name || '<anonymous>';
+    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
+    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
   }
   return value;
 };
@@ -149,7 +166,7 @@ export const isEnum = (value, choices) => {
 /**
  * Type check an array of values using a validator.
  * @template T
- * @param {unknown[]} values - The value to check.
+ * @param {unknown} values - The value to check.
  * @param {(value: unknown) => value is T} validator - The validator to check with.
  * @returns {values is T[]} `true` if `values` has only `validator` checked types.
  */

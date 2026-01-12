@@ -18,9 +18,10 @@ import {
   isPositiveNumber,
   isString,
   isUndefined,
-  typecheck,
-  ValidatorError,
-} from './validate.js';
+  typeCheck,
+  typeCheckArray,
+  TypeCheckError,
+} from './typeCheck.js';
 
 describe('validate', () => {
   test('isArray', () => {
@@ -196,6 +197,8 @@ describe('validate', () => {
   });
 
   test('isEnum', () => {
+    expect(isEnum(0, [1, 2])).toBe(false);
+    expect(isEnum(1, [1, 2])).toBe(true);
     expect(isEnum('AB', ['AB', 'CD'])).toBe(true);
     expect(isEnum('EF', ['AB', 'CD'])).toBe(false);
     expect(isEnum('AB', { AB: 'AB', CD: 'CD' })).toBe(true);
@@ -225,9 +228,16 @@ describe('validate', () => {
     expect(isObjectOf({ a: 1, b: 2 }, isInteger)).toBe(true);
   });
 
-  test('typecheck', () => {
-    expect(() => typecheck(0.1, isNumber)).not.toThrowError(ValidatorError);
-    expect(() => typecheck(-0.1, isPositiveInteger)).toThrowError(ValidatorError);
-    expect(() => typecheck('string', isNumber)).toThrowError(ValidatorError);
+  test('typeCheck', () => {
+    expect(() => typeCheck(0.1, isNumber)).not.toThrowError(TypeCheckError);
+    expect(() => typeCheck(-0.1, isPositiveInteger)).toThrowError(TypeCheckError);
+    expect(() => typeCheck('string', isNumber)).toThrowError(TypeCheckError);
+  });
+
+  test('typeCheckArray', () => {
+    expect(() => typeCheckArray([0.1], isNumber)).not.toThrowError(TypeCheckError);
+    expect(() => typeCheckArray(['string'], isNumber)).toThrowError(TypeCheckError);
+    expect(() => typeCheckArray(-0.1, isPositiveInteger)).toThrowError(TypeCheckError);
+    expect(() => typeCheckArray('string', isNumber)).toThrowError(TypeCheckError);
   });
 });

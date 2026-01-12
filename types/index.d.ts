@@ -4,7 +4,7 @@ export * from "./pagelifecycle/const.js";
 export * from "./pagelifecycle/event.js";
 export * from "./pagelifecycle/typedef.js";
 export * from "./pagelifecycle/util.js";
-export * from "./util/validate.js";
+export * from "./util/typeCheck.js";
 export { AbstractLogHandler } from "./logging/AbstractLogHandler.js";
 export { ConsoleLogHandler } from "./logging/ConsoleLogHandler.js";
 export { Logger } from "./logging/Logger.js";
