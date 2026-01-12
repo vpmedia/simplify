@@ -1,3 +1,39 @@
+## [1.55.0] - 2026-01-12
+
+### 🚀 Features
+
+- Added type guard helpers
+- Improve validate utils
+- Improve type check validators
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Improve naming conventions
+- Improve runtime type checking utils
+- Improve type checker validators
+- Improved validators
+- Merged util methods to more compact structure
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Cleanup
+- Improve linting with oxlint
+- Fixed lint errors
+- Fixed lint errors
+- *(release)* V1.55.0
 ## [1.54.0] - 2025-12-29
 
 ### 💼 Other
