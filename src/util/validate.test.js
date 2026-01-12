@@ -22,7 +22,7 @@ import {
   typeCheck,
   typeCheckArray,
   TypeCheckError,
-  isRefined as isRefined,
+  refineValidator,
   isNumberLess,
   isNumberGreater,
   isNumberLessOrEqual,
@@ -263,9 +263,10 @@ describe('validate', () => {
     expect(isAnyOf('string', isNumber, isNull)).toBe(false);
   });
 
-  test('isRefined', () => {
-    expect(isRefined(isNumber, (v) => v > 0)(-1)).toBe(false);
-    expect(isRefined(isNumber, (v) => v > 0)(1)).toBe(true);
+  test('refineValidator', () => {
+    expect(refineValidator(isNumber, (v) => v > 0)(-1)).toBe(false);
+    expect(refineValidator(isNumber, (v) => v > 0)(1)).toBe(true);
+    expect(refineValidator(isNumber, (v) => v > 0).name).toBe('isNumberRefined');
   });
 
   test('isRefinedExtensions', () => {
@@ -276,6 +277,7 @@ describe('validate', () => {
     expect(isNumberGreater(0)(1.1)).toBe(true);
     expect(isNumberGreaterOrEqual(0)(0)).toBe(true);
     expect(isNumberInRange(0, 1.1)(0)).toBe(true);
+    expect(isNumberInRange.name).toBe('isNumberInRange');
 
     expect(isIntegerLess(0)(-1)).toBe(true);
     expect(isIntegerLess(0)(0)).toBe(false);

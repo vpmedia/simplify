@@ -29,7 +29,7 @@ export function isPlainObjectOf<T>(record: {
     [key: string | number]: any;
 }, validator: (value: unknown) => value is T): record is Record<string | number, T>;
 export function isAnyOf<A, B>(value: unknown, a: (value: unknown) => value is A, b: (value: unknown) => value is B): value is A | B;
-export function isRefined<T>(base: (value: unknown) => value is T, predicate: (value: T) => boolean): (value: unknown) => value is T;
+export function refineValidator<T>(base: (value: unknown) => value is T, predicate: (value: T) => boolean, name?: string | null): (value: unknown) => value is T;
 export function isGt(value: number, min: number): boolean;
 export function isGtOrEq(value: number, min: number): boolean;
 export function isLe(value: number, min: number): boolean;
