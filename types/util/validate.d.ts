@@ -42,13 +42,4 @@ export function isArrayLengthLess(min: any): (value: unknown) => value is unknow
 export function isArrayLengthLessOrEqual(min: any): (value: unknown) => value is unknown[];
 export function isArrayLengthInRange(min: any, max: any): (value: unknown) => value is unknown[];
 export function isArrayLengthEqual(expected: any): (value: unknown) => value is unknown[];
-export class TypeCheckError extends TypeError {
-    /**
-     * Creates a new `TypeCheckError` instance.
-     * @param {string} message - Error message.
-     */
-    constructor(message: string);
-}
-export function typeCheck<T>(value: unknown, validator: (value: unknown) => value is T): T;
-export function typeCheckArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[];
 //# sourceMappingURL=validate.d.ts.map

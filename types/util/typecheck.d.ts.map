@@ -1,0 +1,1 @@
+{"version":3,"file":"typecheck.d.ts","sourceRoot":"","sources":["../../src/util/typecheck.js"],"names":[],"mappings":"AAEA;IACE;;;OAGG;IACH,qBAFW,MAAM,EAKhB;CACF;AAUM,0BANM,CAAC,SACH,OAAO,aACP,CAAC,KAAK,EAAE,OAAO,KAAK,KAAK,IAAI,CAAC,GAC5B,CAAC,CAUb;AAUM,+BANM,CAAC,SACH,OAAO,EAAE,aACT,CAAC,KAAK,EAAE,OAAO,KAAK,KAAK,IAAI,CAAC,GAC5B,CAAC,EAAE,CAUf"}

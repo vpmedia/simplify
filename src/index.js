@@ -19,4 +19,5 @@ export * from './util/object.js';
 export * from './util/query.js';
 export * from './util/state.js';
 export * from './util/string.js';
+export * from './util/typecheck.js';
 export * from './util/validate.js';
