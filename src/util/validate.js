@@ -1,4 +1,3 @@
-/* eslint-disable jsdoc/reject-function-type */
 /* eslint-disable jsdoc/reject-any-type */
 
 export class ValidatorError extends TypeError {
