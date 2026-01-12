@@ -23,11 +23,21 @@ import {
   typeCheckArray,
   TypeCheckError,
   isRefined as isRefined,
+  isNumberLess,
+  isNumberGreater,
+  isNumberLessOrEqual,
+  isNumberGreaterOrEqual,
+  isIntegerLess,
+  isIntegerGreater,
+  isIntegerLessOrEqual,
+  isIntegerGreaterOrEqual,
   isNumberInRange,
-  isStringWithLength,
-  isArrayWithSize,
   isIntegerInRange,
-} from './typeCheck.js';
+  isArrayLengthEqual,
+  isArrayLengthInRange,
+  isStringLengthEqual,
+  isStringLengthInRange,
+} from './validate.js';
 
 describe('validate', () => {
   test('isArray', () => {
@@ -247,31 +257,44 @@ describe('validate', () => {
     expect(() => typeCheckArray('string', isNumber)).toThrowError(TypeCheckError);
   });
 
-  test('isRefined', () => {
-    expect(isRefined(isNumber, (v) => v > 0)(-1)).toBe(false);
-    expect(isRefined(isNumber, (v) => v > 0)(1)).toBe(true);
-  });
-
   test('isAnyOf', () => {
     expect(isAnyOf(1, isNumber, isNull)).toBe(true);
     expect(isAnyOf(null, isNumber, isNull)).toBe(true);
     expect(isAnyOf('string', isNumber, isNull)).toBe(false);
   });
 
+  test('isRefined', () => {
+    expect(isRefined(isNumber, (v) => v > 0)(-1)).toBe(false);
+    expect(isRefined(isNumber, (v) => v > 0)(1)).toBe(true);
+  });
+
   test('isRefinedExtensions', () => {
-    expect(isNumberInRange(1, 3)(0)).toBe(false);
-    expect(isNumberInRange(1, 3)(1)).toBe(true);
-    expect(isNumberInRange(1, 3)(2)).toBe(true);
-    expect(isNumberInRange(1, 3)(3)).toBe(true);
-    expect(isNumberInRange(1, 3)(4)).toBe(false);
+    expect(isNumberLess(0)(-1.1)).toBe(true);
+    expect(isNumberLess(0)(0)).toBe(false);
+    expect(isNumberLessOrEqual(0)(0)).toBe(true);
+    expect(isNumberGreater(0)(0)).toBe(false);
+    expect(isNumberGreater(0)(1.1)).toBe(true);
+    expect(isNumberGreaterOrEqual(0)(0)).toBe(true);
+    expect(isNumberInRange(0, 1.1)(0)).toBe(true);
 
-    expect(isIntegerInRange(1, 3)(2.1)).toBe(false);
-    expect(isIntegerInRange(1, 3)(2)).toBe(true);
+    expect(isIntegerLess(0)(-1)).toBe(true);
+    expect(isIntegerLess(0)(0)).toBe(false);
+    expect(isIntegerLessOrEqual(0)(0)).toBe(true);
+    expect(isIntegerGreater(0)(0)).toBe(false);
+    expect(isIntegerGreater(0)(1)).toBe(true);
+    expect(isIntegerGreater(0)(1.1)).toBe(false);
+    expect(isIntegerGreaterOrEqual(0)(0)).toBe(true);
+    expect(isIntegerInRange(0, 1)(0)).toBe(true);
+    expect(isIntegerInRange(0, 1)(2)).toBe(false);
 
-    expect(isStringWithLength(3)('abc')).toBe(true);
-    expect(isStringWithLength(3)('abcd')).toBe(false);
+    expect(isStringLengthEqual(1)('a')).toBe(true);
+    expect(isStringLengthEqual(1)('ab')).toBe(false);
+    expect(isStringLengthInRange(1, 2)('ab')).toBe(true);
+    expect(isStringLengthInRange(1, 2)('abc')).toBe(false);
 
-    expect(isArrayWithSize(3)([1, 2, 3])).toBe(true);
-    expect(isArrayWithSize(3)([1, 2, 3, 4])).toBe(false);
+    expect(isArrayLengthEqual(1)([1])).toBe(true);
+    expect(isArrayLengthEqual(1)([1, 2])).toBe(false);
+    expect(isArrayLengthInRange(1, 2)([1, 2])).toBe(true);
+    expect(isArrayLengthInRange(1, 2)([1, 2, 3])).toBe(false);
   });
 });

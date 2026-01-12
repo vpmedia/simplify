@@ -11,7 +11,7 @@ export * from './pagelifecycle/const.js';
 export * from './pagelifecycle/event.js';
 export * from './pagelifecycle/typedef.js';
 export * from './pagelifecycle/util.js';
-export * from './util/typeCheck.js';
+export * from './util/validate.js';
 export { addLeadingZero } from './util/addLeadingZero.js';
 export { capitalize } from './util/capitalize.js';
 export { deepMerge } from './util/deepMerge.js';

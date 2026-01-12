@@ -1,0 +1,63 @@
+export class TypeCheckError extends TypeError {
+    /**
+     * Creates a new `TypeCheckError` instance.
+     * @param {string} message - Error message.
+     */
+    constructor(message: string);
+}
+export function typeCheck<T>(value: unknown, validator: (value: unknown) => value is T): T;
+export function typeCheckArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[];
+export function isBoolean(value: unknown): value is boolean;
+export function isFunction(value: unknown): value is (...args: any[]) => any;
+export function isNumber(value: unknown): value is number;
+export function isPositiveNumber(value: unknown): value is number;
+export function isNonNegativeNumber(value: unknown): value is number;
+export function isInteger(value: unknown): value is number;
+export function isPositiveInteger(value: unknown): value is number;
+export function isNonNegativeInteger(value: unknown): value is number;
+export function isString(value: unknown): value is string;
+export function isArray<T>(value: unknown): value is T[];
+export function isNull(value: unknown): value is null;
+export function isUndefined(value: unknown): value is undefined;
+export function isPlainObject(value: unknown): value is Record<string, unknown>;
+export function isInstance<T>(value: unknown, type: new (...args: any[]) => T): value is T;
+export function isEnum(value: unknown, choices: unknown[] | Set<string | number> | {
+    [key: string | number]: unknown;
+}): boolean;
+export function isArrayOf<T>(values: unknown, validator: (value: unknown) => value is T): values is T[];
+export function isPlainObjectOf<T>(record: {
+    [key: string | number]: any;
+}, validator: (value: unknown) => value is T): record is Record<string | number, T>;
+export function isAnyOf<A, B>(value: unknown, a: (value: unknown) => value is A, b: (value: unknown) => value is B): value is A | B;
+export function isRefined<T>(base: (value: unknown) => value is T, predicate: (value: T) => boolean): (value: unknown) => value is T;
+export function isGt(value: number, min: number): boolean;
+export function isGtOrEq(value: number, min: number): boolean;
+export function isLe(value: number, min: number): boolean;
+export function isLeOrEq(value: number, min: number): boolean;
+export function isInRange(value: number, min: number, max: number): boolean;
+export function isEq(value: number, expected: number): boolean;
+export function isNumberGreater(min: any): (value: unknown) => value is number;
+export function isNumberGreaterOrEqual(min: any): (value: unknown) => value is number;
+export function isNumberLess(min: any): (value: unknown) => value is number;
+export function isNumberLessOrEqual(min: any): (value: unknown) => value is number;
+export function isNumberInRange(min: any, max: any): (value: unknown) => value is number;
+export function isNumberEqual(expected: any): (value: unknown) => value is number;
+export function isIntegerGreater(min: any): (value: unknown) => value is number;
+export function isIntegerGreaterOrEqual(min: any): (value: unknown) => value is number;
+export function isIntegerLess(min: any): (value: unknown) => value is number;
+export function isIntegerLessOrEqual(min: any): (value: unknown) => value is number;
+export function isIntegerInRange(min: any, max: any): (value: unknown) => value is number;
+export function isIntegerEqual(expected: any): (value: unknown) => value is number;
+export function isStringLengthGreater(min: any): (value: unknown) => value is string;
+export function isStringLengthGreaterOrEqual(min: any): (value: unknown) => value is string;
+export function isStringLengthLess(min: any): (value: unknown) => value is string;
+export function isStringLengthLessOrEqual(min: any): (value: unknown) => value is string;
+export function isStringLengthInRange(min: any, max: any): (value: unknown) => value is string;
+export function isStringLengthEqual(expected: any): (value: unknown) => value is string;
+export function isArrayLengthGreater(min: any): (value: unknown) => value is unknown[];
+export function isArrayLengthGreaterOrEqual(min: any): (value: unknown) => value is unknown[];
+export function isArrayLengthLess(min: any): (value: unknown) => value is unknown[];
+export function isArrayLengthLessOrEqual(min: any): (value: unknown) => value is unknown[];
+export function isArrayLengthInRange(min: any, max: any): (value: unknown) => value is unknown[];
+export function isArrayLengthEqual(expected: any): (value: unknown) => value is unknown[];
+//# sourceMappingURL=validate.d.ts.map

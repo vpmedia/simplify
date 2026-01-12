@@ -222,19 +222,93 @@ export const isAnyOf = (value, a, b) => a(value) || b(value);
 // @ts-expect-error
 export const isRefined = (base, predicate) => (value) => base(value) && predicate(value);
 
-export const isNumberGreaterThan = (min) => isRefined(isNumber, (value) => value > min);
-export const isNumberLessThan = (max) => isRefined(isNumber, (value) => value < max);
-export const isNumberInRange = (min, max) => isRefined(isNumber, (value) => value >= min && value <= max);
+//
+// Boundary check helpers
+//
 
-export const isIntegerGreaterThan = (min) => isRefined(isInteger, (value) => value > min);
-export const isIntegerLessThan = (max) => isRefined(isInteger, (value) => value < max);
-export const isIntegerInRange = (min, max) => isRefined(isInteger, (value) => value >= min && value <= max);
+/**
+ * Value greater than check.
+ * @param {number} value - Input value.
+ * @param {number} min - Limit that `value` must be greater than.
+ * @returns {boolean} `true` is check success.
+ * @private
+ */
+export const isGt = (value, min) => value > min;
 
-export const isStringWithMinLength = (min) => isRefined(isString, (value) => value.length >= min);
-export const isStringWithMaxLength = (max) => isRefined(isString, (value) => value.length <= max);
-export const isStringWithLength = (length) => isRefined(isString, (value) => value.length === length);
-export const isStringMatches = (regex) => isRefined(isString, (value) => regex.test(value));
+/**
+ * Value greater than check.
+ * @param {number} value - Input value.
+ * @param {number} min - Limit that `value` must be greater or equal than.
+ * @returns {boolean} `true` is check success.
+ * @private
+ */
+export const isGtOrEq = (value, min) => value >= min;
 
-export const isArrayWithMinSize = (min) => isRefined(isArray, (value) => value.length >= min);
-export const isArrayWithMaxSize = (max) => isRefined(isArray, (value) => value.length <= max);
-export const isArrayWithSize = (size) => isRefined(isArray, (value) => value.length === size);
+/**
+ * Value less than check.
+ * @param {number} value - Input value.
+ * @param {number} min - Limit that `value` must be greater than.
+ * @returns {boolean} `true` is check success.
+ * @private
+ */
+export const isLe = (value, min) => value < min;
+
+/**
+ * Value less than check.
+ * @param {number} value - Input value.
+ * @param {number} min - Limit that `value` must be greater than.
+ * @returns {boolean} `true` is check success.
+ * @private
+ */
+export const isLeOrEq = (value, min) => value <= min;
+
+/**
+ * Value greater than check.
+ * @param {number} value - Input value.
+ * @param {number} min - Limit `value` must be greater or equal than.
+ * @param {number} max - Limit `value` must be less or equal than.
+ * @returns {boolean} `true` is check success.
+ * @private
+ */
+export const isInRange = (value, min, max) => value >= min && value <= max;
+
+/**
+ * Value equal check.
+ * @param {number} value - Input value.
+ * @param {number} expected - `expected` that `value` must equal.
+ * @returns {boolean} `true` is check success.
+ * @private
+ */
+export const isEq = (value, expected) => value === expected;
+
+//
+// Refined validators
+//
+
+export const isNumberGreater = (min) => isRefined(isNumber, (value) => isGt(value, min));
+export const isNumberGreaterOrEqual = (min) => isRefined(isNumber, (value) => isGtOrEq(value, min));
+export const isNumberLess = (min) => isRefined(isNumber, (value) => isLe(value, min));
+export const isNumberLessOrEqual = (min) => isRefined(isNumber, (value) => isLeOrEq(value, min));
+export const isNumberInRange = (min, max) => isRefined(isNumber, (value) => isInRange(value, min, max));
+export const isNumberEqual = (expected) => isRefined(isNumber, (value) => isEq(value, expected));
+
+export const isIntegerGreater = (min) => isRefined(isInteger, (value) => isGt(value, min));
+export const isIntegerGreaterOrEqual = (min) => isRefined(isInteger, (value) => isGtOrEq(value, min));
+export const isIntegerLess = (min) => isRefined(isInteger, (value) => isLe(value, min));
+export const isIntegerLessOrEqual = (min) => isRefined(isInteger, (value) => isLeOrEq(value, min));
+export const isIntegerInRange = (min, max) => isRefined(isInteger, (value) => isInRange(value, min, max));
+export const isIntegerEqual = (expected) => isRefined(isNumber, (value) => isEq(value, expected));
+
+export const isStringLengthGreater = (min) => isRefined(isString, (value) => isGt(value.length, min));
+export const isStringLengthGreaterOrEqual = (min) => isRefined(isString, (value) => isGtOrEq(value.length, min));
+export const isStringLengthLess = (min) => isRefined(isString, (value) => isLe(value.length, min));
+export const isStringLengthLessOrEqual = (min) => isRefined(isString, (value) => isLeOrEq(value.length, min));
+export const isStringLengthInRange = (min, max) => isRefined(isString, (value) => isInRange(value.length, min, max));
+export const isStringLengthEqual = (expected) => isRefined(isString, (value) => isEq(value.length, expected));
+
+export const isArrayLengthGreater = (min) => isRefined(isArray, (value) => isGt(value.length, min));
+export const isArrayLengthGreaterOrEqual = (min) => isRefined(isArray, (value) => isGtOrEq(value.length, min));
+export const isArrayLengthLess = (min) => isRefined(isArray, (value) => isLe(value.length, min));
+export const isArrayLengthLessOrEqual = (min) => isRefined(isArray, (value) => isLeOrEq(value.length, min));
+export const isArrayLengthInRange = (min, max) => isRefined(isArray, (value) => isInRange(value.length, min, max));
+export const isArrayLengthEqual = (expected) => isRefined(isArray, (value) => isEq(value.length, expected));
