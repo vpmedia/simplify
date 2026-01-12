@@ -1,4 +1,5 @@
 /* eslint-disable jsdoc/reject-function-type */
+/* eslint-disable jsdoc/reject-any-type */
 
 export class ValidatorError extends TypeError {
   /**
@@ -13,26 +14,32 @@ export class ValidatorError extends TypeError {
 
 /**
  * Type check a value using a validator.
+ * @template T
  * @param {unknown} value - The value to check.
- * @param {(value: unknown) => boolean} validator - The validator to check with.
+ * @param {(value: unknown) => value is T} validator - The validator to check with.
+ * @returns {T} The type checked value.
+ * @throws {ValidatorError}
  */
 export const typecheck = (value, validator) => {
-  if (validator(value) === false) {
-    throw new ValidatorError(`Validation failed with ${validator.name} for ${value}`);
+  if (!validator(value)) {
+    const name = validator.name || '<anonymous>';
+    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
+    throw new ValidatorError(`Validation failed: ${name}(${display})`);
   }
+  return value;
 };
 
 /**
  * Validates `value` as `boolean`.
  * @param {unknown} value - Input value.
- * @returns {value is number} `true` if `value` is `boolean` type.
+ * @returns {value is boolean} `true` if `value` is `boolean` type.
  */
 export const isBoolean = (value) => typeof value === 'boolean';
 
 /**
  * Validates `value` as `function`.
  * @param {unknown} value - Input value.
- * @returns {value is Function} `true` if `value` is `function` type.
+ * @returns {value is (...args: any[]) => any} `true` if `value` is `function` type.
  */
 export const isFunction = (value) => typeof value === 'function';
 
@@ -41,7 +48,7 @@ export const isFunction = (value) => typeof value === 'function';
  * @param {unknown} value - Input value.
  * @returns {value is number} `true` if `value` is `number` type.
  */
-export const isNumber = (value) => typeof value === 'number';
+export const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);
 
 /**
  * Validates `value` as positive `number`.
@@ -62,7 +69,7 @@ export const isNonNegativeNumber = (value) => isNumber(value) && value >= 0;
  * @param {unknown} value - Input value.
  * @returns {value is number} `true` if `value` is `integer` type.
  */
-export const isInteger = (value) => typeof value === 'number' && Number.isInteger(value);
+export const isInteger = (value) => isNumber(value) && Number.isInteger(value);
 
 /**
  * Validates `value` as positive `integer`.
@@ -87,8 +94,9 @@ export const isString = (value) => typeof value === 'string';
 
 /**
  * Validates `value` as `array`.
+ * @template T
  * @param {unknown} value - Input value.
- * @returns {value is Array} `true` if `value` is `array` type.
+ * @returns {value is T[]} `true` if `value` is `array` type.
  */
 export const isArray = (value) => Array.isArray(value);
 
@@ -109,9 +117,9 @@ export const isUndefined = (value) => value === undefined;
 /**
  * Validates `value` as `object`.
  * @param {unknown} value - Input value.
- * @returns {value is object} `true` if `value` is `object` type.
+ * @returns {value is Record<string, unknown>} `true` if `value` is `object` type.
  */
-export const isObject = (value) => typeof value === 'object' && isArray(value) === false && isNull(value) === false;
+export const isObject = (value) => Object.prototype.toString.call(value) === '[object Object]';
 
 /**
  * Validates `value` as `type`
@@ -120,7 +128,7 @@ export const isObject = (value) => typeof value === 'object' && isArray(value) =
  * @param {new (...args: any[]) => T} type - A class or constructor function.
  * @returns {value is T} `true` if `value` is an instance of `type`.
  */
-export const isInstance = (value, type) => value instanceof type;
+export const isInstance = (value, type) => isFunction(type) && value instanceof type;
 
 /**
  * Validates `value` as `enum`.
@@ -129,12 +137,50 @@ export const isInstance = (value, type) => value instanceof type;
  * @returns {boolean} `true` if `value` is `enum` type.
  */
 export const isEnum = (value, choices) => {
-  if (isString(value) === false && isNumber(value) === false) {
+  if (!isString(value) && !isNumber(value)) {
     return false;
   }
   return (
     (isArray(choices) && choices.includes(value)) ||
-    (isObject(choices) && value in choices) ||
+    (isObject(choices) && Object.values(choices).includes(value)) ||
     (isInstance(choices, Set) && choices.has(value))
   );
+};
+
+/**
+ * Type check an array of values using a validator.
+ * @template T
+ * @param {unknown[]} values - The value to check.
+ * @param {(value: unknown) => value is T} validator - The validator to check with.
+ * @returns {values is T[]} `true` if `values` has only `validator` checked types.
+ */
+export const isArrayOf = (values, validator) => {
+  if (!isArray(values)) {
+    return false;
+  }
+  for (const value of values) {
+    if (!validator(value)) {
+      return false;
+    }
+  }
+  return true;
+};
+
+/**
+ * Type check an object of values using a validator.
+ * @template T
+ * @param {{[key: string | number]: any}} record - The value to check.
+ * @param {(value: unknown) => value is T} validator - The validator to check with.
+ * @returns {record is Record<string | number, T>} `true` if `values` has only `validator` checked types.
+ */
+export const isObjectOf = (record, validator) => {
+  if (!isObject(record)) {
+    return false;
+  }
+  for (const value of Object.values(record)) {
+    if (!validator(value)) {
+      return false;
+    }
+  }
+  return true;
 };

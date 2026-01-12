@@ -2,22 +2,24 @@
 
 import {
   isArray,
+  isArrayOf,
   isBoolean,
-  isNumber,
-  isString,
-  isInteger,
+  isEnum,
   isFunction,
-  isNull,
-  isUndefined,
-  isObject,
-  isPositiveNumber,
-  isNonNegativeInteger,
-  isPositiveInteger,
-  isNonNegativeNumber,
   isInstance,
+  isInteger,
+  isNonNegativeInteger,
+  isNonNegativeNumber,
+  isNull,
+  isNumber,
+  isObject,
+  isObjectOf,
+  isPositiveInteger,
+  isPositiveNumber,
+  isString,
+  isUndefined,
   typecheck,
   ValidatorError,
-  isEnum,
 } from './validate.js';
 
 describe('validate', () => {
@@ -58,6 +60,8 @@ describe('validate', () => {
     expect(isNumber(1)).toBe(true);
     expect(isNumber(false)).toBe(false);
     expect(isNumber(null)).toBe(false);
+    expect(isNumber(Number.NaN)).toBe(false);
+    expect(isNumber(Number.POSITIVE_INFINITY)).toBe(false);
     expect(isNumber(true)).toBe(false);
     expect(isNumber(undefined)).toBe(false);
     expect(isNumber(() => true)).toBe(false);
@@ -81,6 +85,7 @@ describe('validate', () => {
 
   test('isInteger', () => {
     expect(isInteger('string')).toBe(false);
+    expect(isInteger(() => true)).toBe(false);
     expect(isInteger([])).toBe(false);
     expect(isInteger([1, 2, 3])).toBe(false);
     expect(isInteger({ string: '1' })).toBe(false);
@@ -88,9 +93,10 @@ describe('validate', () => {
     expect(isInteger(1)).toBe(true);
     expect(isInteger(false)).toBe(false);
     expect(isInteger(null)).toBe(false);
+    expect(isInteger(Number.NaN)).toBe(false);
+    expect(isInteger(Number.POSITIVE_INFINITY)).toBe(false);
     expect(isInteger(true)).toBe(false);
     expect(isInteger(undefined)).toBe(false);
-    expect(isInteger(() => true)).toBe(false);
   });
 
   test('isPositiveInteger', () => {
@@ -167,20 +173,24 @@ describe('validate', () => {
 
   test('isObject', () => {
     expect(isObject('string')).toBe(false);
+    expect(isObject(() => true)).toBe(false);
     expect(isObject([])).toBe(false);
     expect(isObject([1, 2, 3])).toBe(false);
     expect(isObject({ string: '1' })).toBe(true);
     expect(isObject(0.1)).toBe(false);
     expect(isObject(1)).toBe(false);
     expect(isObject(false)).toBe(false);
+    expect(isObject(new Date())).toBe(false);
     expect(isObject(null)).toBe(false);
     expect(isObject(true)).toBe(false);
     expect(isObject(undefined)).toBe(false);
-    expect(isObject(() => true)).toBe(false);
   });
 
   test('isInstance', () => {
     class CustomError extends Error {}
+    expect(isInstance({}, {})).toBe(false);
+    expect(isInstance({}, Number)).toBe(false);
+    expect(isInstance(new CustomError(), {})).toBe(false);
     expect(isInstance(new CustomError(), Error)).toBe(true);
     expect(isInstance(new CustomError(), Number)).toBe(false);
   });
@@ -197,6 +207,22 @@ describe('validate', () => {
     expect(isEnum('EF', 1)).toBe(false);
     expect(isEnum('EF', 'string')).toBe(false);
     expect(isEnum(false, 'string')).toBe(false);
+  });
+
+  test('isArrayOf', () => {
+    expect(isArrayOf(0.1, isNumber)).toBe(false);
+    expect(isArrayOf([0.1, 'string'], isNumber)).toBe(false);
+    expect(isArrayOf([0.1, 0.2], isNumber)).toBe(true);
+    expect(isArrayOf([0.1, 1, 2], isInteger)).toBe(false);
+    expect(isArrayOf([1, 2], isInteger)).toBe(true);
+  });
+
+  test('isObjectOf', () => {
+    expect(isObjectOf(0.1, isNumber)).toBe(false);
+    expect(isObjectOf({ a: 0.1, b: 'string' }, isNumber)).toBe(false);
+    expect(isObjectOf({ a: 0.1, b: 0.2 }, isNumber)).toBe(true);
+    expect(isObjectOf({ a: 0.1, b: 1, c: 2 }, isInteger)).toBe(false);
+    expect(isObjectOf({ a: 1, b: 2 }, isInteger)).toBe(true);
   });
 
   test('typecheck', () => {
