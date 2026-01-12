@@ -1,3 +1,19 @@
+## [1.56.0] - 2026-01-12
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### 🧪 Testing
+
+- Improve test coverage
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Fixed code review issues
+- Fixed lint errors, improved test coverage
+- *(release)* V1.56.0
 ## [1.55.0] - 2026-01-12
 
 ### 🚀 Features
