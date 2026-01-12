@@ -19,18 +19,22 @@ export const purgeObject = (target) => {
  * @returns {object} Merged result object.
  */
 export const deepMerge = (target, source) => {
-  if (typeof target !== 'object' || target === null) return source;
-  if (typeof source !== 'object' || source === null) return target;
-
+  if (typeof target !== 'object' || target === null) {
+    return source;
+  }
+  if (typeof source !== 'object' || source === null) {
+    return target;
+  }
   for (const key of Object.keys(source)) {
-    if (key === '__proto__' || key === 'constructor') continue;
-    if (typeof source[key] === 'object' && source[key] !== null) {
-      if (!target[key] || typeof target[key] !== 'object') {
-        target[key] = {};
+    if (key !== '__proto__' && key !== 'constructor') {
+      if (typeof source[key] === 'object' && source[key] !== null) {
+        if (!target[key] || typeof target[key] !== 'object') {
+          target[key] = {};
+        }
+        deepMerge(target[key], source[key]);
+      } else {
+        target[key] = source[key];
       }
-      deepMerge(target[key], source[key]);
-    } else {
-      target[key] = source[key];
     }
   }
 
@@ -60,7 +64,7 @@ export const getObjValueByPath = (obj, path) => {
     return null;
   }
   const keyParts = path.split('.');
-  const nextKey = keyParts[0];
+  const [nextKey] = keyParts;
   if (keyParts.length === 1) {
     return obj[nextKey] === undefined ? null : obj[nextKey];
   }
@@ -82,7 +86,7 @@ export const setObjValueByPath = (obj, path, value) => {
     return;
   }
   const keyParts = path.split('.');
-  const nextKey = keyParts[0];
+  const [nextKey] = keyParts;
   if (nextKey === '__proto__') {
     throw new SyntaxError('Security violation error. Cannot use "__proto__" as parameter.');
   }

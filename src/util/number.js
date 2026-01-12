@@ -3,9 +3,7 @@
  * @param {number} deg - Degree value.
  * @returns {number} Radian value.
  */
-export const deg2rad = (deg) => {
-  return deg * (Math.PI / 180);
-};
+export const deg2rad = (deg) => deg * (Math.PI / 180);
 
 /**
  * Returns random integer in range.
@@ -13,16 +11,14 @@ export const deg2rad = (deg) => {
  * @param {number} max - Max value.
  * @returns {number} Random integer in given range.
  */
-export const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 /**
  * Fixes floating point number (0.20000000000000004 -> 0.2).
  * @param {number | string} value - Number to fix.
  * @returns {number} The fixed number.
  */
-export function fixFloatPrecision(value) {
+export const fixFloatPrecision = (value) => {
   // Handle string inputs by converting to number first
   if (typeof value === 'string') {
     value = Number(value);
@@ -32,7 +28,7 @@ export function fixFloatPrecision(value) {
     return Number.parseFloat(valuePlusOne.toPrecision(12)) - 1;
   }
   return Number.parseFloat(value.toPrecision(12));
-}
+};
 
 /**
  * Convenience method for floating point precision handling.
@@ -40,9 +36,7 @@ export function fixFloatPrecision(value) {
  * @param {number} p - The precision. Defaults to 2.
  * @returns {number} The processed value.
  */
-export function fixFloat(value, p = 2) {
-  return Number.parseFloat(value.toFixed(p));
-}
+export const fixFloat = (value, p = 2) => Number.parseFloat(value.toFixed(p));
 
 /**
  * Adds two value with floating point precision.
@@ -50,10 +44,10 @@ export function fixFloat(value, p = 2) {
  * @param {number} b - The number b.
  * @returns {number} The processed value.
  */
-export function addFloat(a, b) {
+export const addFloat = (a, b) => {
   const p = 100;
   return fixFloat((a * p + b * p) / p);
-}
+};
 
 /**
  * Substracts two value with floating point precision.
@@ -61,10 +55,10 @@ export function addFloat(a, b) {
  * @param {number} b - The number b.
  * @returns {number} The processed value.
  */
-export function subFloat(a, b) {
+export const subFloat = (a, b) => {
   const p = 100;
   return fixFloat((a * p - b * p) / p);
-}
+};
 
 /**
  * Value greater than check.

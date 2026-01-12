@@ -7,7 +7,7 @@ export class OpenTelemetryLogHandler extends AbstractLogHandler {
    * @param {number} level - Log handler level.
    * @param {(logger: import('./Logger.js').Logger, timestamp: number, level: number, message: string, extra: object | null | undefined, error: Error | null | undefined) => void} emitter - Log handler emitter.
    */
-  constructor(level = LOG_LEVEL_DEBUG, emitter) {
+  constructor(level, emitter) {
     super(level);
     this.emitter = emitter;
   }

@@ -1,3 +1,5 @@
+/* oxlint-disable prefer-await-to-callbacks */
+
 /**
  * Page lifecycle helper.
  * @see https://developer.chrome.com/docs/web-platform/page-lifecycle-api
@@ -135,17 +137,13 @@ export const initPageLifecycle = () => {
  * Returns the current page lifecycle state.
  * @returns {string | null | undefined} Current page lifecycle state.
  */
-export const getPageLifecycleState = () => {
-  return currentPageLifecycleState;
-};
+export const getPageLifecycleState = () => currentPageLifecycleState;
 
 /**
  * Returns the current document state.
  * @returns {import('./typedef.js').DocumentState | null | undefined} Current document state.
  */
-export const getDocumentState = () => {
-  return currentDocumentState;
-};
+export const getDocumentState = () => currentDocumentState;
 
 /**
  * Returns the event emitter instance.
@@ -162,6 +160,4 @@ export const getPageLifecycleEventEmitter = () => {
  * Returns the page lifecycle observer initialized state.
  * @returns {boolean} Page lifecycle observer initialized flag.
  */
-export const isPageLifecycleInitialized = () => {
-  return isInitialized;
-};
+export const isPageLifecycleInitialized = () => isInitialized;
