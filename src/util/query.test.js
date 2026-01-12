@@ -1,3 +1,9 @@
+/* eslint-disable jsdoc/check-tag-names, jsdoc/valid-types */
+
+/**
+ * @vitest-environment-options { "url": "https://localhost/app/?language=en&token=123-456-öüó%24D" }
+ */
+
 import { getURLParam, sanitizeURLParam } from './query.js';
 
 describe('getURLParam', () => {
@@ -14,6 +20,15 @@ describe('getURLParam', () => {
   test('Returns default value when param is null', () => {
     const result = getURLParam('key', 'default');
     expect(result).toBe('default');
+  });
+
+  test('Handles valid url parameter sanitized', () => {
+    expect(getURLParam('language')).toBe('en');
+    expect(getURLParam('token')).toBe('123-456-D');
+  });
+
+  test('Handles valid url parameter unsanitized', () => {
+    expect(getURLParam('token', null, false)).toBe('123-456-öüó$D');
   });
 });
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/no-undefined-types */
 /* oxlint-disable no-await-in-loop */
 
 import {
@@ -84,4 +85,5 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
       clearTimeout(timeoutId);
     }
   }
+  throw new Error('Fetch has failed');
 };

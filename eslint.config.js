@@ -54,7 +54,6 @@ export default defineConfig([
       camelcase: 'off',
       'capitalized-comments': 'off',
       'class-methods-use-this': 'off',
-      'consistent-return': 'warn',
       'id-length': 'off',
       'max-lines-per-function': 'off',
       'max-lines': 'off',
