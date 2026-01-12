@@ -30,19 +30,8 @@ let currentDocumentState = null;
 
 let isInitialized = false;
 
-/** @type {{[key: string]: (() => void)[]}} */
-let callbacks = {};
-
-/**
- * Add callback for a specific state change.
- * @param {import('./typedef.js').DocumentState | import('./typedef.js').PageLifecycleState} state - Callback state condition.
- * @param {() => void} callback - Callback function.
- */
-export const addPageLifecycleCallback = (state, callback) => {
-  const stateCallbacks = callbacks[state] ?? [];
-  stateCallbacks.push(callback);
-  callbacks[state] = stateCallbacks;
-};
+/** @type {Record<string, (() => void)[]>} */
+const callbacks = {};
 
 /**
  * Run callbacks for a specific state change.
@@ -161,3 +150,14 @@ export const getPageLifecycleEventEmitter = () => {
  * @returns {boolean} Page lifecycle observer initialized flag.
  */
 export const isPageLifecycleInitialized = () => isInitialized;
+
+/**
+ * Add callback for a specific state change.
+ * @param {import('./typedef.js').DocumentState | import('./typedef.js').PageLifecycleState} state - Callback state condition.
+ * @param {() => void} callback - Callback function.
+ */
+export const addPageLifecycleCallback = (state, callback) => {
+  const stateCallbacks = callbacks[state] ?? [];
+  stateCallbacks.push(callback);
+  callbacks[state] = stateCallbacks;
+};

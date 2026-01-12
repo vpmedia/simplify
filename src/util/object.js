@@ -47,12 +47,7 @@ export const deepMerge = (target, source) => {
  * @param {string} prop - The object property key.
  * @returns {number} The sum value.
  */
-export const getObjArrayPropSum = (arr, prop) => {
-  return arr.reduce((accumulator, object) => {
-    return accumulator + object[prop];
-  }, 0);
-};
-
+export const getObjArrayPropSum = (arr, prop) => arr.reduce((accumulator, object) => accumulator + object[prop], 0);
 /**
  * Get object value by path.
  * @param {object} obj - The source object to get the value from.

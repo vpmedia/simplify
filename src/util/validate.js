@@ -3,51 +3,6 @@
 
 import { isEq, isGt, isGtOrEq, isInRange, isLe, isLeOrEq } from './number.js';
 
-export class TypeCheckError extends TypeError {
-  /**
-   * Creates a new `TypeCheckError` instance.
-   * @param {string} message - Error message.
-   */
-  constructor(message) {
-    super(message);
-    this.name = 'TypeCheckError';
-  }
-}
-
-/**
- * Type check a value using a validator.
- * @template T
- * @param {unknown} value - The value to check.
- * @param {(value: unknown) => value is T} validator - The validator to check with.
- * @returns {T} The type checked value.
- * @throws {TypeCheckError}
- */
-export const typeCheck = (value, validator) => {
-  if (!validator(value)) {
-    const name = validator.name || '<anonymous>';
-    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
-    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
-  }
-  return value;
-};
-
-/**
- * Type check a value using a validator.
- * @template T
- * @param {unknown[]} value - The value to check.
- * @param {(value: unknown) => value is T} validator - The validator to check the array with.
- * @returns {T[]} The type checked value.
- * @throws {TypeCheckError}
- */
-export const typeCheckArray = (value, validator) => {
-  if (!isArrayOf(value, validator)) {
-    const name = validator.name || '<anonymous>';
-    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
-    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
-  }
-  return value;
-};
-
 /**
  * Validates `value` as `boolean`.
  * @param {unknown} value - Input value.
@@ -159,7 +114,7 @@ export const isInstance = (value, type) => isFunction(type) && value instanceof 
 /**
  * Validates `value` as `enum`.
  * @param {unknown} value - Input value.
- * @param {unknown[] | Set<string | number> | {[key: string | number]: unknown}} choices - Input value.
+ * @param {unknown[] | Set<string | number> | Record<string | number, unknown>} choices - Input value.
  * @returns {boolean} `true` if `value` is `enum` type.
  */
 export const isEnum = (value, choices) => {
@@ -195,7 +150,7 @@ export const isArrayOf = (values, validator) => {
 /**
  * Type check a plain object of values using a validator.
  * @template T
- * @param {{[key: string | number]: any}} record - The value to check.
+ * @param {Record<string | number, unknown>} record - The value to check.
  * @param {(value: unknown) => value is T} validator - The validator to check with.
  * @returns {record is Record<string | number, T>} `true` if `values` has only `validator` checked types.
  */
@@ -270,3 +225,48 @@ export const isArrayLengthLessOrEqual = (min) => refineValidator(isArray, (value
 export const isArrayLengthInRange = (min, max) =>
   refineValidator(isArray, (value) => isInRange(value.length, min, max));
 export const isArrayLengthEqual = (expected) => refineValidator(isArray, (value) => isEq(value.length, expected));
+
+export class TypeCheckError extends TypeError {
+  /**
+   * Creates a new `TypeCheckError` instance.
+   * @param {string} message - Error message.
+   */
+  constructor(message) {
+    super(message);
+    this.name = 'TypeCheckError';
+  }
+}
+
+/**
+ * Type check a value using a validator.
+ * @template T
+ * @param {unknown} value - The value to check.
+ * @param {(value: unknown) => value is T} validator - The validator to check with.
+ * @returns {T} The type checked value.
+ * @throws {TypeCheckError}
+ */
+export const typeCheck = (value, validator) => {
+  if (!validator(value)) {
+    const name = validator.name || '<anonymous>';
+    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
+    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+  }
+  return value;
+};
+
+/**
+ * Type check a value using a validator.
+ * @template T
+ * @param {unknown[]} value - The value to check.
+ * @param {(value: unknown) => value is T} validator - The validator to check the array with.
+ * @returns {T[]} The type checked value.
+ * @throws {TypeCheckError}
+ */
+export const typeCheckArray = (value, validator) => {
+  if (!isArrayOf(value, validator)) {
+    const name = validator.name || '<anonymous>';
+    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
+    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+  }
+  return value;
+};

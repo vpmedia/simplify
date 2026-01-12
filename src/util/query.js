@@ -9,7 +9,7 @@ export const sanitizeURLParam = (input) => {
   if (!input) {
     return input;
   }
-  return input.replaceAll(/[^\w-]/gi, '');
+  return input.replaceAll(/[^\w-]/giu, '');
 };
 
 /**
