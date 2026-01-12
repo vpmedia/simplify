@@ -3,12 +3,12 @@ import {
   fixFloat,
   fixFloatPrecision,
   getRandomInt,
-  isEq,
-  isGt,
-  isGtOrEq,
+  isEqual,
+  isGreater,
+  isGreaterOrEqual,
   isInRange,
-  isLe,
-  isLeOrEq,
+  isLess,
+  isLessOrEqual,
   subFloat,
   deg2rad,
 } from './number.js';
@@ -80,19 +80,19 @@ test('subFloat()', () => {
 
 describe('number', () => {
   test('isEq', () => {
-    expect(isEq(1, 0)).toBe(false);
-    expect(isEq(1, 1)).toBe(true);
+    expect(isEqual(1, 0)).toBe(false);
+    expect(isEqual(1, 1)).toBe(true);
   });
 
   test('isGt', () => {
-    expect(isGt(1, 0)).toBe(true);
-    expect(isGt(1, 1)).toBe(false);
+    expect(isGreater(1, 0)).toBe(true);
+    expect(isGreater(1, 1)).toBe(false);
   });
 
   test('isGtOrEq', () => {
-    expect(isGtOrEq(1, 0)).toBe(true);
-    expect(isGtOrEq(1, 1)).toBe(true);
-    expect(isGtOrEq(1, 2)).toBe(false);
+    expect(isGreaterOrEqual(1, 0)).toBe(true);
+    expect(isGreaterOrEqual(1, 1)).toBe(true);
+    expect(isGreaterOrEqual(1, 2)).toBe(false);
   });
 
   test('isGtOrEq', () => {
@@ -102,14 +102,14 @@ describe('number', () => {
   });
 
   test('isLe', () => {
-    expect(isLe(1, 0)).toBe(false);
-    expect(isLe(0, 0)).toBe(false);
-    expect(isLe(0, 1)).toBe(true);
+    expect(isLess(1, 0)).toBe(false);
+    expect(isLess(0, 0)).toBe(false);
+    expect(isLess(0, 1)).toBe(true);
   });
 
   test('isLeOrEq', () => {
-    expect(isLeOrEq(1, 0)).toBe(false);
-    expect(isLeOrEq(0, 0)).toBe(true);
-    expect(isLeOrEq(0, 1)).toBe(true);
+    expect(isLessOrEqual(1, 0)).toBe(false);
+    expect(isLessOrEqual(0, 0)).toBe(true);
+    expect(isLessOrEqual(0, 1)).toBe(true);
   });
 });

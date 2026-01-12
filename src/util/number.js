@@ -67,7 +67,7 @@ export const subFloat = (a, b) => {
  * @returns {boolean} `true` is check success.
  * @private
  */
-export const isGt = (value, min) => value > min;
+export const isGreater = (value, min) => value > min;
 
 /**
  * Value greater than check.
@@ -76,7 +76,7 @@ export const isGt = (value, min) => value > min;
  * @returns {boolean} `true` is check success.
  * @private
  */
-export const isGtOrEq = (value, min) => value >= min;
+export const isGreaterOrEqual = (value, min) => value >= min;
 
 /**
  * Value less than check.
@@ -85,7 +85,7 @@ export const isGtOrEq = (value, min) => value >= min;
  * @returns {boolean} `true` is check success.
  * @private
  */
-export const isLe = (value, min) => value < min;
+export const isLess = (value, min) => value < min;
 
 /**
  * Value less than check.
@@ -94,7 +94,7 @@ export const isLe = (value, min) => value < min;
  * @returns {boolean} `true` is check success.
  * @private
  */
-export const isLeOrEq = (value, min) => value <= min;
+export const isLessOrEqual = (value, min) => value <= min;
 
 /**
  * Value greater than check.
@@ -113,4 +113,4 @@ export const isInRange = (value, min, max) => value >= min && value <= max;
  * @returns {boolean} `true` is check success.
  * @private
  */
-export const isEq = (value, expected) => value === expected;
+export const isEqual = (value, expected) => value === expected;

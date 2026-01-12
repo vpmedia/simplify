@@ -4,10 +4,10 @@ export function fixFloatPrecision(value: number | string): number;
 export function fixFloat(value: number, p?: number): number;
 export function addFloat(a: number, b: number): number;
 export function subFloat(a: number, b: number): number;
-export function isGt(value: number, min: number): boolean;
-export function isGtOrEq(value: number, min: number): boolean;
-export function isLe(value: number, min: number): boolean;
-export function isLeOrEq(value: number, min: number): boolean;
+export function isGreater(value: number, min: number): boolean;
+export function isGreaterOrEqual(value: number, min: number): boolean;
+export function isLess(value: number, min: number): boolean;
+export function isLessOrEqual(value: number, min: number): boolean;
 export function isInRange(value: number, min: number, max: number): boolean;
-export function isEq(value: number, expected: number): boolean;
+export function isEqual(value: number, expected: number): boolean;
 //# sourceMappingURL=number.d.ts.map

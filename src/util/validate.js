@@ -1,7 +1,7 @@
 /* eslint-disable jsdoc/reject-any-type */
 /* eslint-disable jsdoc/no-undefined-types */
 
-import { isEq, isGt, isGtOrEq, isInRange, isLe, isLeOrEq } from './number.js';
+import { isEqual, isGreater, isGreaterOrEqual, isInRange, isLess, isLessOrEqual } from './number.js';
 
 /**
  * Validates `value` as `boolean`.
@@ -196,35 +196,38 @@ export const refineValidator = (base, predicate, name = null) => {
  */
 export const isAnyOf = (a, b) => (value) => a(value) || b(value);
 
-export const isNumberGreater = (min) => refineValidator(isNumber, (value) => isGt(value, min));
-export const isNumberGreaterOrEqual = (min) => refineValidator(isNumber, (value) => isGtOrEq(value, min));
-export const isNumberLess = (min) => refineValidator(isNumber, (value) => isLe(value, min));
-export const isNumberLessOrEqual = (min) => refineValidator(isNumber, (value) => isLeOrEq(value, min));
+export const isNumberGreater = (min) => refineValidator(isNumber, (value) => isGreater(value, min));
+export const isNumberGreaterOrEqual = (min) => refineValidator(isNumber, (value) => isGreaterOrEqual(value, min));
+export const isNumberLess = (min) => refineValidator(isNumber, (value) => isLess(value, min));
+export const isNumberLessOrEqual = (min) => refineValidator(isNumber, (value) => isLessOrEqual(value, min));
 export const isNumberInRange = (min, max) => refineValidator(isNumber, (value) => isInRange(value, min, max));
-export const isNumberEqual = (expected) => refineValidator(isNumber, (value) => isEq(value, expected));
+export const isNumberEqual = (expected) => refineValidator(isNumber, (value) => isEqual(value, expected));
 
-export const isIntegerGreater = (min) => refineValidator(isInteger, (value) => isGt(value, min));
-export const isIntegerGreaterOrEqual = (min) => refineValidator(isInteger, (value) => isGtOrEq(value, min));
-export const isIntegerLess = (min) => refineValidator(isInteger, (value) => isLe(value, min));
-export const isIntegerLessOrEqual = (min) => refineValidator(isInteger, (value) => isLeOrEq(value, min));
+export const isIntegerGreater = (min) => refineValidator(isInteger, (value) => isGreater(value, min));
+export const isIntegerGreaterOrEqual = (min) => refineValidator(isInteger, (value) => isGreaterOrEqual(value, min));
+export const isIntegerLess = (min) => refineValidator(isInteger, (value) => isLess(value, min));
+export const isIntegerLessOrEqual = (min) => refineValidator(isInteger, (value) => isLessOrEqual(value, min));
 export const isIntegerInRange = (min, max) => refineValidator(isInteger, (value) => isInRange(value, min, max));
-export const isIntegerEqual = (expected) => refineValidator(isNumber, (value) => isEq(value, expected));
+export const isIntegerEqual = (expected) => refineValidator(isInteger, (value) => isEqual(value, expected));
 
-export const isStringLengthGreater = (min) => refineValidator(isString, (value) => isGt(value.length, min));
-export const isStringLengthGreaterOrEqual = (min) => refineValidator(isString, (value) => isGtOrEq(value.length, min));
-export const isStringLengthLess = (min) => refineValidator(isString, (value) => isLe(value.length, min));
-export const isStringLengthLessOrEqual = (min) => refineValidator(isString, (value) => isLeOrEq(value.length, min));
+export const isStringLengthGreater = (min) => refineValidator(isString, (value) => isGreater(value.length, min));
+export const isStringLengthGreaterOrEqual = (min) =>
+  refineValidator(isString, (value) => isGreaterOrEqual(value.length, min));
+export const isStringLengthLess = (min) => refineValidator(isString, (value) => isLess(value.length, min));
+export const isStringLengthLessOrEqual = (min) =>
+  refineValidator(isString, (value) => isLessOrEqual(value.length, min));
 export const isStringLengthInRange = (min, max) =>
   refineValidator(isString, (value) => isInRange(value.length, min, max));
-export const isStringLengthEqual = (expected) => refineValidator(isString, (value) => isEq(value.length, expected));
+export const isStringLengthEqual = (expected) => refineValidator(isString, (value) => isEqual(value.length, expected));
 
-export const isArrayLengthGreater = (min) => refineValidator(isArray, (value) => isGt(value.length, min));
-export const isArrayLengthGreaterOrEqual = (min) => refineValidator(isArray, (value) => isGtOrEq(value.length, min));
-export const isArrayLengthLess = (min) => refineValidator(isArray, (value) => isLe(value.length, min));
-export const isArrayLengthLessOrEqual = (min) => refineValidator(isArray, (value) => isLeOrEq(value.length, min));
+export const isArrayLengthGreater = (min) => refineValidator(isArray, (value) => isGreater(value.length, min));
+export const isArrayLengthGreaterOrEqual = (min) =>
+  refineValidator(isArray, (value) => isGreaterOrEqual(value.length, min));
+export const isArrayLengthLess = (min) => refineValidator(isArray, (value) => isLess(value.length, min));
+export const isArrayLengthLessOrEqual = (min) => refineValidator(isArray, (value) => isLessOrEqual(value.length, min));
 export const isArrayLengthInRange = (min, max) =>
   refineValidator(isArray, (value) => isInRange(value.length, min, max));
-export const isArrayLengthEqual = (expected) => refineValidator(isArray, (value) => isEq(value.length, expected));
+export const isArrayLengthEqual = (expected) => refineValidator(isArray, (value) => isEqual(value.length, expected));
 
 export class TypeCheckError extends TypeError {
   /**

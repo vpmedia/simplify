@@ -1,3 +1,5 @@
+const PROHIBITED_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
+
 /**
  * Purges object properties to free up memory.
  * @param {object} target - The target object.
@@ -26,15 +28,16 @@ export const deepMerge = (target, source) => {
     return target;
   }
   for (const key of Object.keys(source)) {
-    if (key !== '__proto__' && key !== 'constructor') {
-      if (typeof source[key] === 'object' && source[key] !== null) {
-        if (!target[key] || typeof target[key] !== 'object') {
-          target[key] = {};
-        }
-        deepMerge(target[key], source[key]);
-      } else {
-        target[key] = source[key];
+    if (PROHIBITED_KEYS.has(key)) {
+      throw new SyntaxError(`Security violation error. Cannot use "${key}" as object key.`);
+    }
+    if (typeof source[key] === 'object' && source[key] !== null) {
+      if (!target[key] || typeof target[key] !== 'object') {
+        target[key] = {};
       }
+      deepMerge(target[key], source[key]);
+    } else {
+      target[key] = source[key];
     }
   }
 
@@ -82,8 +85,8 @@ export const setObjValueByPath = (obj, path, value) => {
   }
   const keyParts = path.split('.');
   const [nextKey] = keyParts;
-  if (nextKey === '__proto__') {
-    throw new SyntaxError('Security violation error. Cannot use "__proto__" as parameter.');
+  if (PROHIBITED_KEYS.has(nextKey)) {
+    throw new SyntaxError(`Security violation error. Cannot use "${nextKey}" as parameter.`);
   }
   if (keyParts.length === 1) {
     obj[nextKey] = value;
