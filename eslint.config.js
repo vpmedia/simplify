@@ -13,9 +13,9 @@ export default defineConfig([
       'build/**/*.*',
       'coverage/**/*.*',
       'dist/**/*.*',
+      'node_modules/**/*.*',
       'public/**/*.*',
       'types/**/*.*',
-      'node_modules/**/*.*',
     ],
   },
   {
