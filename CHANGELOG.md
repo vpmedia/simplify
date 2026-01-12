@@ -1,3 +1,28 @@
+## [1.57.0] - 2026-01-12
+
+### 🚀 Features
+
+- Added type checker singleton
+- Extend error logging details with cause
+- Enrich exception logging with cause
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Separate typecheck and validation modules
+
+### 🧪 Testing
+
+- Improve fetch retry tests
+- Improve fetch retry test coverage
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.57.0
 ## [1.56.0] - 2026-01-12
 
 ### 💼 Other
