@@ -29,6 +29,7 @@ export class FetchError extends Error {
     this.resource = resource;
     this.fetchOptions = fetchOptions;
     this.response = response;
+    this.cause = response?.status ?? null;
   }
 }
 
