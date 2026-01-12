@@ -41,8 +41,8 @@ export class ConsoleLogHandler extends AbstractLogHandler {
     }
     if (error) {
       extra === undefined ? consoleFunction(logMessage, error) : consoleFunction(logMessage, error, extra);
-      if (error.cause instanceof Error) {
-        consoleFunction('Error cause', error);
+      if (error.cause) {
+        consoleFunction('Error cause', error.cause);
       }
       return;
     }
