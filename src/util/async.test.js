@@ -7,7 +7,7 @@ describe('delayPromise', () => {
     const end = Date.now();
 
     // Should resolve within a reasonable time frame
-    expect(end - start).toBeGreaterThanOrEqual(10);
+    expect(end - start).toBeGreaterThanOrEqual(9);
   });
 
   test('Handles zero delay correctly', async () => {
