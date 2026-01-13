@@ -1,3 +1,18 @@
+## [1.59.0] - 2026-01-13
+
+### 🚀 Features
+
+- Updated http status codes and added map to get status names
+
+### 🧪 Testing
+
+- Fix flaky delayPromise test
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Updated http status code names
+- *(release)* V1.59.0
 ## [1.58.0] - 2026-01-13
 
 ### 💼 Other
