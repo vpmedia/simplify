@@ -1,3 +1,22 @@
+## [1.58.0] - 2026-01-13
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Use globalThis instead of window
+
+### 🧪 Testing
+
+- Fixed failing test
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Adjusted error message
+- *(release)* V1.58.0
 ## [1.57.0] - 2026-01-12
 
 ### 🚀 Features
