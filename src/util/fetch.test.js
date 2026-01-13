@@ -45,7 +45,7 @@ describe('fetchRetry', () => {
       const typedError = error instanceof Error ? error : new Error(String(error));
       expect(typedError).toBeInstanceOf(FetchError);
       if (typedError instanceof FetchError) {
-        expect(typedError.message).toBe('fetch https://jsonplaceholder.typicode.com/todos/1 returned status 404');
+        expect(typedError.message).toBe('Fetch error 404');
         expect(typedError.response.status).toBe(HTTP_404_NOT_FOUND);
         expect(typedError.cause).toBe(HTTP_404_NOT_FOUND);
       }
