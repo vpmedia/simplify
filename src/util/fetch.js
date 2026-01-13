@@ -5,7 +5,7 @@ import {
   HTTP_401_UNAUTHORIZED,
   HTTP_403_FORBIDDEN,
   HTTP_405_METHOD_NOT_ALLOWED,
-  HTTP_422_UNPROCESSABLE_ENTITY,
+  HTTP_422_UNPROCESSABLE_CONTENT,
 } from '../const/http_status.js';
 import { Logger } from '../logging/Logger.js';
 import { delayPromise } from './async.js';
@@ -49,7 +49,7 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
     HTTP_401_UNAUTHORIZED,
     HTTP_403_FORBIDDEN,
     HTTP_405_METHOD_NOT_ALLOWED,
-    HTTP_422_UNPROCESSABLE_ENTITY,
+    HTTP_422_UNPROCESSABLE_CONTENT,
   ];
   while (retryOptions.numTries > 0) {
     logger.info('request', { resource, fetchOptions, retryOptions });
