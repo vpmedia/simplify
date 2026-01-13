@@ -54,17 +54,12 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
   while (retryOptions.numTries > 0) {
     logger.info('request', { resource, fetchOptions, retryOptions });
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort('Fetch is timed out'), retryOptions.timeout);
+    const timeoutId = setTimeout(() => controller.abort('Fetch timed out'), retryOptions.timeout);
     fetchOptions.signal = controller.signal;
     try {
       const response = await fetch(resource, fetchOptions);
       if (!response.ok) {
-        throw new FetchError(
-          `fetch ${response.url} returned status ${response.status}`,
-          resource,
-          fetchOptions,
-          response
-        );
+        throw new FetchError(`Fetch error ${response.status}`, resource, fetchOptions, response);
       }
       logger.info('response', response);
       return response;
@@ -86,5 +81,5 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
       clearTimeout(timeoutId);
     }
   }
-  throw new Error('Fetch has failed');
+  throw new Error('Fetch failed');
 };
