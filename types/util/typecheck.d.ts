@@ -7,6 +7,7 @@ export class TypeCheckError extends TypeError {
 }
 export function typeCheck<T>(value: unknown, validator: (value: unknown) => value is T): T;
 export function typeCheckArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[];
+export function typeCheckEnum(value: string | number, choices: (string | number)[] | Set<string | number> | Record<string | number, string | number>): string | number;
 /**
  * Export a single shared instance.
  */
@@ -35,6 +36,14 @@ declare class TypeChecker {
      * @returns {T[]} - The type checked value.
      */
     checkArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[];
+    /**
+     * Type check an array of values.
+     * @template T
+     * @param {string | number} value - The value to check.
+     * @param {(string | number)[] | Set<string | number> | Record<string | number, string | number>} choices - Enum list.
+     * @returns {string | number} - The type checked value.
+     */
+    checkEnum<T>(value: string | number, choices: (string | number)[] | Set<string | number> | Record<string | number, string | number>): string | number;
     #private;
 }
 export {};

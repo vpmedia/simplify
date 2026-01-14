@@ -113,7 +113,7 @@ export const isInstance = (value, type) => isFunction(type) && value instanceof 
 /**
  * Validates `value` as `enum`.
  * @param {unknown} value - Input value.
- * @param {(string | number)[] | Set<string | number> | Record<string | number, string | number>} choices - Input value.
+ * @param {(string | number)[] | Set<string | number> | Record<string | number, string | number>} choices - Enum list.
  * @returns {boolean} `true` if `value` is `enum` type.
  */
 export const isEnum = (value, choices) => {

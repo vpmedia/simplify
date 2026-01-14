@@ -1,4 +1,4 @@
-import { typeCheck, typeCheckArray, TypeCheckError } from './typecheck.js';
+import { typeCheck, typeCheckArray, typeCheckEnum, TypeCheckError } from './typecheck.js';
 import { isNumber, isPositiveInteger } from './validate.js';
 
 describe('typecheck', () => {
@@ -15,5 +15,13 @@ describe('typecheck', () => {
     expect(() => typeCheckArray(-0.1, isPositiveInteger)).toThrowError(TypeCheckError);
     // @ts-expect-error
     expect(() => typeCheckArray('string', isNumber)).toThrowError(TypeCheckError);
+  });
+
+  test('typeCheckEnum', () => {
+    expect(() => typeCheckEnum('AA', ['AA'])).not.toThrowError(TypeCheckError);
+    expect(() => typeCheckEnum('AA', ['BB'])).toThrowError(TypeCheckError);
+    expect(() => typeCheckEnum(null, ['BB'])).toThrowError(TypeCheckError);
+    // @ts-expect-error
+    expect(() => typeCheckEnum(['AA'], null)).toThrowError(TypeCheckError);
   });
 });

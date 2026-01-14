@@ -1,7 +1,14 @@
 import { Logger } from '../logging/Logger.js';
-import { isArrayOf } from './validate.js';
+import { isArrayOf, isEnum } from './validate.js';
 
 const logger = new Logger('typecheck');
+
+/**
+ * Get value in human readable format.
+ * @param {unknown} value - The value to check.
+ * @returns {string} Value in human readable format.
+ */
+const getDisplayValue = (value) => (typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value));
 
 export class TypeCheckError extends TypeError {
   /**
@@ -25,7 +32,7 @@ export class TypeCheckError extends TypeError {
 export const typeCheck = (value, validator) => {
   if (!validator(value)) {
     const name = validator.name || '<anonymous>';
-    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
+    const display = getDisplayValue(value);
     throw new TypeCheckError(`Validation failed: ${name} (${display})`);
   }
   return value;
@@ -42,7 +49,22 @@ export const typeCheck = (value, validator) => {
 export const typeCheckArray = (value, validator) => {
   if (!isArrayOf(value, validator)) {
     const name = validator.name || '<anonymous>';
-    const display = typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value);
+    const display = getDisplayValue(value);
+    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+  }
+  return value;
+};
+
+/**
+ * Type check an enum.
+ * @param {string | number} value - The value to check.
+ * @param {(string | number)[] | Set<string | number> | Record<string | number, string | number>} choices - Enum list.
+ * @returns {string | number} The type checked value.
+ * @throws {TypeCheckError}
+ */
+export const typeCheckEnum = (value, choices) => {
+  if (!isEnum(value, choices)) {
+    const display = getDisplayValue(value);
     throw new TypeCheckError(`Validation failed: ${name} (${display})`);
   }
   return value;
@@ -103,6 +125,25 @@ class TypeChecker {
       if (this.#swallowErrors && error instanceof TypeCheckError) {
         logger.exception('checkArray', error);
         // @ts-expect-error
+        return value;
+      }
+      throw error;
+    }
+  }
+
+  /**
+   * Type check an array of values.
+   * @template T
+   * @param {string | number} value - The value to check.
+   * @param {(string | number)[] | Set<string | number> | Record<string | number, string | number>} choices - Enum list.
+   * @returns {string | number} - The type checked value.
+   */
+  checkEnum(value, choices) {
+    try {
+      return typeCheckEnum(value, choices);
+    } catch (error) {
+      if (this.#swallowErrors && error instanceof TypeCheckError) {
+        logger.exception('checkEnum', error);
         return value;
       }
       throw error;
