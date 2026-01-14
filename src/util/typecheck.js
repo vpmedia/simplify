@@ -9,7 +9,7 @@ const VALIDATOR_FALLBACK_NAME = '<anonymous>';
  * @param {unknown} value - The value to check.
  * @returns {string} Value in human readable format.
  */
-const getDisplayValue = (value) => (typeof value === 'string' ? `${value}` : Object.prototype.toString.call(value));
+const getDisplayValue = (value) => (typeof value === 'string' ? value : Object.prototype.toString.call(value));
 
 export class TypeCheckError extends TypeError {
   /**
