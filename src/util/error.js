@@ -22,3 +22,10 @@ export const getErrorDetails = (error, excludes = ['stack']) => {
   }
   return errorDetails;
 };
+
+/**
+ * Get typed error from an unknown type.
+ * @param {unknown} error - The error to cast.
+ * @returns {Error} The typed error object.
+ */
+export const getTypedError = (error) => (error instanceof Error ? error : new Error(String(error)));

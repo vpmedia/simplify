@@ -10,7 +10,7 @@ describe('delayPromise', () => {
     expect(end - start).toBeGreaterThanOrEqual(9);
   });
 
-  test('Handles zero delay correctly', async () => {
+  test('delayPromise with zero delay', async () => {
     const start = Date.now();
     await delayPromise(0);
     const end = Date.now();
