@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-useless-undefined */
 
-import { underscoreToCamelCase, capitalize, addLeadingZero } from './string.js';
+import { underscoreToCamelCase, capitalize, addLeadingZero, getTypeFromValue } from './string.js';
 
 test('Tests add leading zero', () => {
   expect(addLeadingZero(1)).toBe('01');
@@ -45,4 +45,15 @@ test('Converts underscore to camelCase', () => {
   expect(underscoreToCamelCase('test')).toBe('test');
   expect(underscoreToCamelCase('test_variable')).toBe('testVariable');
   expect(underscoreToCamelCase('test_variable_name')).toBe('testVariableName');
+});
+
+test('getDisplayValue', () => {
+  expect(getTypeFromValue('test')).toBe('string');
+  expect(getTypeFromValue(() => null)).toBe('function');
+  expect(getTypeFromValue([])).toBe('array');
+  expect(getTypeFromValue({})).toBe('object');
+  expect(getTypeFromValue(new Date())).toBe('date');
+  expect(getTypeFromValue(null)).toBe('null');
+  expect(getTypeFromValue(true)).toBe('boolean');
+  expect(getTypeFromValue(undefined)).toBe('undefined');
 });

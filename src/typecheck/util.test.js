@@ -1,5 +1,6 @@
-import { typeCheck, typeCheckArray, typeCheckEnum, TypeCheckError } from './typecheck.js';
-import { isNumber, isPositiveInteger } from './validate.js';
+import { isNumber, isPositiveInteger } from '../util/validate.js';
+import { TypeCheckError } from './TypeCheckError.js';
+import { typeCheck, typeCheckArray, typeCheckEnum } from './util.js';
 
 describe('typecheck', () => {
   test('typeCheck', () => {

@@ -1,13 +1,3 @@
-export class TypeCheckError extends TypeError {
-    /**
-     * Creates a new `TypeCheckError` instance.
-     * @param {string} message - Error message.
-     */
-    constructor(message: string);
-}
-export function typeCheck<T>(value: unknown, validator: (value: unknown) => value is T): T;
-export function typeCheckArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[];
-export function typeCheckEnum(value: string | number, choices: (string | number)[] | Set<string | number> | Record<string | number, string | number>): string | number;
 /**
  * Export a single shared instance.
  */
@@ -47,4 +37,4 @@ declare class TypeChecker {
     #private;
 }
 export {};
-//# sourceMappingURL=typecheck.d.ts.map
+//# sourceMappingURL=TypeChecker.d.ts.map

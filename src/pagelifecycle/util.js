@@ -8,15 +8,16 @@
 import { EventEmitter } from 'eventemitter3';
 import { Logger } from '../logging/Logger.js';
 import {
+  DOCUMENT_STATE_CHANGE_EVENT,
   DOCUMENT_STATE_DOM_LOADED,
   DOCUMENT_STATE_FULLY_LOADED,
   PAGE_LIFECYCLE_STATE_ACTIVE,
+  PAGE_LIFECYCLE_STATE_CHANGE_EVENT,
   PAGE_LIFECYCLE_STATE_FROZEN,
   PAGE_LIFECYCLE_STATE_HIDDEN,
   PAGE_LIFECYCLE_STATE_PASSIVE,
   PAGE_LIFECYCLE_STATE_TERMINATED,
 } from './const.js';
-import { DOCUMENT_STATE_CHANGE_EVENT, PAGE_LIFECYCLE_STATE_CHANGE_EVENT } from './event.js';
 
 const logger = new Logger('pagelifecycle');
 

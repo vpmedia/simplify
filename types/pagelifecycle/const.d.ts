@@ -8,4 +8,6 @@ export const DOCUMENT_STATE_FULLY_LOADED: "fullyLoaded";
 export const DOCUMENT_STATE_COMPLETE: "complete";
 export const DOCUMENT_STATE_INTERACTIVE: "interactive";
 export const DOCUMENT_STATE_LOADING: "loading";
+export const PAGE_LIFECYCLE_STATE_CHANGE_EVENT: "pageLifecycleStateChange";
+export const DOCUMENT_STATE_CHANGE_EVENT: "documentStateChange";
 //# sourceMappingURL=const.d.ts.map

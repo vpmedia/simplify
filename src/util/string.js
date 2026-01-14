@@ -52,3 +52,10 @@ export const saveAsFile = (filename, text) => {
   element.click();
   element.remove();
 };
+
+/**
+ * Get type from value in human readable format.
+ * @param {unknown} value - The value to check.
+ * @returns {string} Type in human readable format.
+ */
+export const getTypeFromValue = (value) => Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
