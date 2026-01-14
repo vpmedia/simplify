@@ -31,9 +31,9 @@ export class TypeCheckError extends TypeError {
  */
 export const typeCheck = (value, validator) => {
   if (!validator(value)) {
-    const name = validator.name || '<anonymous>';
-    const display = getDisplayValue(value);
-    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+    const validatorName = validator.name || '<anonymous>';
+    const displayValue = getDisplayValue(value);
+    throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
   }
   return value;
 };
@@ -48,9 +48,9 @@ export const typeCheck = (value, validator) => {
  */
 export const typeCheckArray = (value, validator) => {
   if (!isArrayOf(value, validator)) {
-    const name = validator.name || '<anonymous>';
-    const display = getDisplayValue(value);
-    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+    const validatorName = validator.name || '<anonymous>';
+    const displayValue = getDisplayValue(value);
+    throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
   }
   return value;
 };
@@ -64,8 +64,9 @@ export const typeCheckArray = (value, validator) => {
  */
 export const typeCheckEnum = (value, choices) => {
   if (!isEnum(value, choices)) {
-    const display = getDisplayValue(value);
-    throw new TypeCheckError(`Validation failed: ${name} (${display})`);
+    const validatorName = isEnum.name || '<anonymous>';
+    const displayValue = getDisplayValue(value);
+    throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
   }
   return value;
 };
