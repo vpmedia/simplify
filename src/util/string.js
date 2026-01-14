@@ -59,3 +59,18 @@ export const saveAsFile = (filename, text) => {
  * @returns {string} Type in human readable format.
  */
 export const getTypeFromValue = (value) => Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+
+/**
+ * Get value in human readable format.
+ * @param {unknown} value - The value to check.
+ * @returns {string} Value in human readable format.
+ */
+export const getDisplayValue = (value) => {
+  if (typeof value === 'string') {
+    return `"${value}"`;
+  }
+  if (typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+  return String(value);
+};

@@ -1,9 +1,17 @@
-import { getTypeFromValue } from '../util/string.js';
+import { getDisplayValue, getTypeFromValue } from '../util/string.js';
 import { isArrayOf, isEnum } from '../util/validate.js';
 import { TypeCheckError } from './TypeCheckError.js';
 
-const VALIDATOR_FALLBACK_NAME = '<anonymous>';
-
+/**
+ * Get error message for validator exceptions.
+ * @param {string} validatorName - Validator name.
+ * @param {unknown} value - Input value.
+ */
+const getErrorMessage = (validatorName, value) => {
+  const displayValue = getDisplayValue(value);
+  const displayType = getTypeFromValue(value);
+  throw new TypeCheckError(`Validation failed: ${validatorName || '<anonymous>'} - ${displayValue} (${displayType})`);
+};
 /**
  * Type check a value using a validator.
  * @template T
@@ -14,9 +22,8 @@ const VALIDATOR_FALLBACK_NAME = '<anonymous>';
  */
 export const typeCheck = (value, validator) => {
   if (!validator(value)) {
-    const validatorName = validator.name || VALIDATOR_FALLBACK_NAME;
-    const displayValue = getTypeFromValue(value);
-    throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
+    const errorMessage = getErrorMessage(validator.name, value);
+    throw new TypeCheckError(errorMessage);
   }
   return value;
 };
@@ -31,9 +38,8 @@ export const typeCheck = (value, validator) => {
  */
 export const typeCheckArray = (value, validator) => {
   if (!isArrayOf(value, validator)) {
-    const validatorName = validator.name || VALIDATOR_FALLBACK_NAME;
-    const displayValue = getTypeFromValue(value);
-    throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
+    const errorMessage = getErrorMessage(validator.name, value);
+    throw new TypeCheckError(errorMessage);
   }
   return value;
 };
@@ -47,9 +53,8 @@ export const typeCheckArray = (value, validator) => {
  */
 export const typeCheckEnum = (value, choices) => {
   if (!isEnum(value, choices)) {
-    const validatorName = 'isEnum';
-    const displayValue = getTypeFromValue(value);
-    throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
+    const errorMessage = getErrorMessage('isEnum', value);
+    throw new TypeCheckError(errorMessage);
   }
   return value;
 };

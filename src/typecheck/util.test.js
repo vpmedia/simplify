@@ -24,5 +24,12 @@ describe('typecheck', () => {
     expect(() => typeCheckEnum(null, ['BB'])).toThrowError(TypeCheckError);
     // @ts-expect-error
     expect(() => typeCheckEnum(['AA'], null)).toThrowError(TypeCheckError);
+    try {
+      typeCheckEnum('AA', ['BB']);
+    } catch (error) {
+      if (error instanceof Error) {
+        expect(error.message).toBe('Validation failed: isEnum - "AA" (string)');
+      }
+    }
   });
 });

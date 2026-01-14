@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-useless-undefined */
 
-import { underscoreToCamelCase, capitalize, addLeadingZero, getTypeFromValue } from './string.js';
+import { underscoreToCamelCase, capitalize, addLeadingZero, getTypeFromValue, getDisplayValue } from './string.js';
 
 test('Tests add leading zero', () => {
   expect(addLeadingZero(1)).toBe('01');
@@ -47,7 +47,7 @@ test('Converts underscore to camelCase', () => {
   expect(underscoreToCamelCase('test_variable_name')).toBe('testVariableName');
 });
 
-test('getDisplayValue', () => {
+test('getTypeFromValue', () => {
   expect(getTypeFromValue('test')).toBe('string');
   expect(getTypeFromValue(() => null)).toBe('function');
   expect(getTypeFromValue([])).toBe('array');
@@ -56,4 +56,15 @@ test('getDisplayValue', () => {
   expect(getTypeFromValue(null)).toBe('null');
   expect(getTypeFromValue(true)).toBe('boolean');
   expect(getTypeFromValue(undefined)).toBe('undefined');
+});
+
+test('getDisplayValue', () => {
+  expect(getDisplayValue('test')).toBe('"test"');
+  expect(getDisplayValue(() => null)).toBe('() => null');
+  expect(getDisplayValue([])).toBe('[]');
+  expect(getDisplayValue({})).toBe('{}');
+  expect(getDisplayValue(new Date())).not.toBe(null);
+  expect(getDisplayValue(null)).toBe('null');
+  expect(getDisplayValue(true)).toBe('true');
+  expect(getDisplayValue(undefined)).toBe('undefined');
 });
