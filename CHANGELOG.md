@@ -1,3 +1,13 @@
+## [1.62.0] - 2026-01-14
+
+### 🧪 Testing
+
+- Improve test coverage, added getTypedError
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.62.0
 ## [1.61.0] - 2026-01-14
 
 ### 🚜 Refactor
