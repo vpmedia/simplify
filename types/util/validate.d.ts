@@ -13,7 +13,7 @@ export function isNullOrUndefined(value: unknown): value is null | undefined;
 export function isPlainObject(value: unknown): value is Record<string, unknown>;
 export function isFunction(value: unknown): value is (...args: any[]) => any;
 export function isInstance<T>(value: unknown, type: new (...args: any[]) => T): value is T;
-export function isEnum(value: unknown, choices: unknown[] | Set<string | number> | Record<string | number, unknown>): boolean;
+export function isEnum(value: unknown, choices: (string | number)[] | Set<string | number> | Record<string | number, string | number>): boolean;
 export function isArrayOf<T>(values: unknown[], validator: (value: unknown) => value is T): values is T[];
 export function isPlainObjectOf<T>(record: Record<string | number, unknown>, validator: (value: unknown) => value is T): record is Record<string | number, T>;
 export function refineValidator<T>(base: (value: unknown) => value is T, predicate: (value: T) => boolean, name?: string | null): (value: unknown) => value is T;
