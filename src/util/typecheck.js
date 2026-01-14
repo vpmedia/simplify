@@ -2,13 +2,14 @@ import { Logger } from '../logging/Logger.js';
 import { isArrayOf, isEnum } from './validate.js';
 
 const logger = new Logger('typecheck');
+const VALIDATOR_FALLBACK_NAME = '<anonymous>';
 
 /**
  * Get value in human readable format.
  * @param {unknown} value - The value to check.
  * @returns {string} Value in human readable format.
  */
-const getDisplayValue = (value) => (typeof value === 'string' ? `"${value}"` : Object.prototype.toString.call(value));
+const getDisplayValue = (value) => (typeof value === 'string' ? `${value}` : Object.prototype.toString.call(value));
 
 export class TypeCheckError extends TypeError {
   /**
@@ -31,7 +32,7 @@ export class TypeCheckError extends TypeError {
  */
 export const typeCheck = (value, validator) => {
   if (!validator(value)) {
-    const validatorName = validator.name || '<anonymous>';
+    const validatorName = validator.name || VALIDATOR_FALLBACK_NAME;
     const displayValue = getDisplayValue(value);
     throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
   }
@@ -48,7 +49,7 @@ export const typeCheck = (value, validator) => {
  */
 export const typeCheckArray = (value, validator) => {
   if (!isArrayOf(value, validator)) {
-    const validatorName = validator.name || '<anonymous>';
+    const validatorName = validator.name || VALIDATOR_FALLBACK_NAME;
     const displayValue = getDisplayValue(value);
     throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
   }
@@ -64,7 +65,7 @@ export const typeCheckArray = (value, validator) => {
  */
 export const typeCheckEnum = (value, choices) => {
   if (!isEnum(value, choices)) {
-    const validatorName = isEnum.name || '<anonymous>';
+    const validatorName = isEnum.name || VALIDATOR_FALLBACK_NAME;
     const displayValue = getDisplayValue(value);
     throw new TypeCheckError(`Validation failed: ${validatorName} (${displayValue})`);
   }
