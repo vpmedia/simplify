@@ -1,3 +1,13 @@
+## [1.61.0] - 2026-01-14
+
+### 🚜 Refactor
+
+- Improve validation error message
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.61.0
 ## [1.60.0] - 2026-01-14
 
 ### 💼 Other
