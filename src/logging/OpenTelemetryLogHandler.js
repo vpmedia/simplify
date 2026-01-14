@@ -1,5 +1,4 @@
 import { AbstractLogHandler } from './AbstractLogHandler.js';
-import { LOG_LEVEL_DEBUG } from './const.js';
 
 export class OpenTelemetryLogHandler extends AbstractLogHandler {
   /**

@@ -74,7 +74,7 @@ class TypeChecker {
    * @template T
    * @param {unknown} value - The value to check.
    * @param {(value: unknown) => value is T} validator - The validator to check with.
-   * @returns {T | null} - The type checked value.
+   * @returns {T} - The type checked value.
    */
   check(value, validator) {
     try {
@@ -82,7 +82,8 @@ class TypeChecker {
     } catch (error) {
       if (this.#swallowErrors && error instanceof TypeCheckError) {
         logger.exception('check', error);
-        return null;
+        // @ts-expect-error
+        return value;
       }
       throw error;
     }
@@ -93,7 +94,7 @@ class TypeChecker {
    * @template T
    * @param {unknown[]} value - The value to check.
    * @param {(value: unknown) => value is T} validator - The validator to check the array with.
-   * @returns {T[] | null} - The type checked value.
+   * @returns {T[]} - The type checked value.
    */
   checkArray(value, validator) {
     try {
@@ -101,7 +102,8 @@ class TypeChecker {
     } catch (error) {
       if (this.#swallowErrors && error instanceof TypeCheckError) {
         logger.exception('checkArray', error);
-        return null;
+        // @ts-expect-error
+        return value;
       }
       throw error;
     }

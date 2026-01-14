@@ -24,17 +24,17 @@ declare class TypeChecker {
      * @template T
      * @param {unknown} value - The value to check.
      * @param {(value: unknown) => value is T} validator - The validator to check with.
-     * @returns {T | null} - The type checked value.
+     * @returns {T} - The type checked value.
      */
-    check<T>(value: unknown, validator: (value: unknown) => value is T): T | null;
+    check<T>(value: unknown, validator: (value: unknown) => value is T): T;
     /**
      * Type check an array of values.
      * @template T
      * @param {unknown[]} value - The value to check.
      * @param {(value: unknown) => value is T} validator - The validator to check the array with.
-     * @returns {T[] | null} - The type checked value.
+     * @returns {T[]} - The type checked value.
      */
-    checkArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[] | null;
+    checkArray<T>(value: unknown[], validator: (value: unknown) => value is T): T[];
     #private;
 }
 export {};
