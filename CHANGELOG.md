@@ -1,3 +1,23 @@
+## [1.60.0] - 2026-01-14
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Adjusted exports and namespaces
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Cleanup, improve typechecker class
+- Improve isEnum validator jsdoc types
+- Improve validators and type checker
+- Apply naming conventions
+- Adjust exception message format
+- Cleanup
+- *(release)* V1.60.0
 ## [1.59.0] - 2026-01-13
 
 ### 🚀 Features
