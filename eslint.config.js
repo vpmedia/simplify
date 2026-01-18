@@ -49,7 +49,7 @@ export default defineConfig([
     },
     rules: {
       ...js.configs.all.rules,
-      ...jsdocPlugin.configs['flat/recommended'].rules,
+      ...jsdocPlugin.configs['flat/recommended-typescript-flavor'].rules,
       ...unicornPlugin.configs.recommended.rules,
       camelcase: 'off',
       'capitalized-comments': 'off',
