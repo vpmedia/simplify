@@ -19,7 +19,7 @@
   "types": "./types/index.d.ts",
   "type": "module",
   "dependencies": {
-    "eventemitter3": "^5.0.1"
+    "eventemitter3": "^5.0.2"
   },
   "optionalDependencies": {
     "@sentry/browser": "^10.34.0"
