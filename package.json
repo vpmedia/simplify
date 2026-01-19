@@ -19,10 +19,10 @@
   "types": "./types/index.d.ts",
   "type": "module",
   "dependencies": {
-    "eventemitter3": "^5.0.2"
+    "eventemitter3": "^5.0.4"
   },
   "optionalDependencies": {
-    "@sentry/browser": "^10.34.0"
+    "@sentry/browser": "^10.35.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.3.1",
@@ -31,17 +31,17 @@
     "@types/node": "^25.0.9",
     "@vitest/coverage-v8": "^4.0.17",
     "eslint": "^9.39.2",
-    "eslint-plugin-jsdoc": "^62.1.0",
-    "eslint-plugin-oxlint": "^1.39.0",
+    "eslint-plugin-jsdoc": "^62.2.0",
+    "eslint-plugin-oxlint": "^1.40.0",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.0.0",
     "jsdom": "^27.4.0",
     "msw": "^2.12.7",
-    "oxlint": "^1.39.0",
+    "oxlint": "^1.40.0",
     "oxlint-tsgolint": "^0.11.1",
     "prettier": "^3.8.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.53.0",
+    "typescript-eslint": "^8.53.1",
     "vitest": "^4.0.17"
   },
   "scripts": {
