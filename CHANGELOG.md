@@ -1,3 +1,39 @@
+## [1.63.0] - 2026-01-28
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Improve fetch retry options and abort usage
+
+### 🧪 Testing
+
+- Optimize vitest performance, use standard config format
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Use eslint plugin jsdoc typescript flavor
+- Regenerate types
+- *(release)* V1.63.0
 ## [1.62.0] - 2026-01-14
 
 ### 🧪 Testing
