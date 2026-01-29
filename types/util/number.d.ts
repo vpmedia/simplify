@@ -1,4 +1,5 @@
-export function deg2rad(deg: number): number;
+export function deg2rad(degrees: number): number;
+export function rad2deg(radians: number): number;
 export function getRandomInt(min: number, max: number): number;
 export function fixFloatPrecision(value: number | string): number;
 export function fixFloat(value: number, p?: number): number;

@@ -34,9 +34,10 @@ export {
   isInRange,
   isLess,
   isLessOrEqual,
+  rad2deg,
   subFloat,
 } from './util/number.js';
-export { purgeObject, deepMerge, getObjArrayPropSum, getObjValueByPath, setObjValueByPath } from './util/object.js';
+export { deepMerge, getObjArrayPropSum, getObjValueByPath, purgeObject, setObjValueByPath } from './util/object.js';
 export { getURLParam, sanitizeURLParam } from './util/query.js';
 export { serverDataToState } from './util/state.js';
 export { addLeadingZero, capitalize, getTypeFromValue, saveAsFile, underscoreToCamelCase } from './util/string.js';

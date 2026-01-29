@@ -1,4 +1,3 @@
-/* eslint-disable jsdoc/no-undefined-types */
 /* oxlint-disable no-await-in-loop */
 
 import {

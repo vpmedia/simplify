@@ -1,4 +1,4 @@
-/* eslint-disable jsdoc/reject-any-type, jsdoc/no-undefined-types */
+/* eslint-disable jsdoc/reject-any-type */
 
 import { isEqual, isGreater, isGreaterOrEqual, isInRange, isLess, isLessOrEqual } from './number.js';
 

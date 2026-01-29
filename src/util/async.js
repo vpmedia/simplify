@@ -11,9 +11,12 @@ export const delayPromise = (delayMS) =>
 /**
  * Load JSON file using a fetch GET request.
  * @param {string} url - URL to load.
- * @returns {Promise<string>} The parsed JSON data.
+ * @returns {Promise<unknown>} The parsed JSON data.
  */
 export const loadJSON = async (url) => {
   const response = await fetch(url);
-  return await response.json();
+  if (!response.ok) {
+    throw new DOMException(`Fetch error ${response.status}`, 'FetchError');
+  }
+  return response.json();
 };

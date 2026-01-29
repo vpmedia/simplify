@@ -1,17 +1,45 @@
+const DEG_TO_RAD = Math.PI / 180;
+const RAD_TO_DEG = 180 / Math.PI;
+
 /**
  * Converts degrees to radians.
- * @param {number} deg - Degree value.
- * @returns {number} Radian value.
+ * @param {number} degrees - Angle in degrees.
+ * @returns {number} Angle in radians.
+ * @throws {TypeError}
  */
-export const deg2rad = (deg) => deg * (Math.PI / 180);
+export const deg2rad = (degrees) => {
+  if (!Number.isFinite(degrees)) {
+    throw new TypeError(`Argument degrees must be a finite number`);
+  }
+  return degrees * DEG_TO_RAD;
+};
+
+/**
+ * Converts radians to degrees.
+ * @param {number} radians - Angle in radians.
+ * @returns {number} Angle in degrees.
+ * @throws {TypeError}
+ */
+export const rad2deg = (radians) => {
+  if (!Number.isFinite(radians)) {
+    throw new TypeError(`Argument radians must be a finite number`);
+  }
+  return radians * RAD_TO_DEG;
+};
 
 /**
  * Returns random integer in range.
  * @param {number} min - Min value.
  * @param {number} max - Max value.
  * @returns {number} Random integer in given range.
+ * @throws {TypeError}
  */
-export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+export const getRandomInt = (min, max) => {
+  if (!Number.isFinite(min) || !Number.isFinite(max)) {
+    throw new TypeError('Argument min and max must be finite number');
+  }
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 /**
  * Fixes floating point number (0.20000000000000004 -> 0.2).
