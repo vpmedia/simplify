@@ -52,8 +52,11 @@ test('Tests Logger custom handler', () => {
   logger.info('info');
   expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_INFO);
   expect(testLogHandler.emitLogMessage).toBe('info');
-  // info
+  // warning
   logger.warn('warning');
+  expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_WARNING);
+  expect(testLogHandler.emitLogMessage).toBe('warning');
+  logger.warning('warning');
   expect(testLogHandler.emitLogLevel).toBe(LOG_LEVEL_WARNING);
   expect(testLogHandler.emitLogMessage).toBe('warning');
   // error

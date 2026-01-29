@@ -7,6 +7,7 @@ export default defineConfig({
     include: ['./src/**/*.test.{js,jsx,ts,tsx}'],
     isolate: false,
     pool: 'threads',
+    setupFiles: ['./vitest.setup.js'],
     watch: false,
     coverage: {
       include: ['src/**/*.{js,jsx,ts,tsx}'],

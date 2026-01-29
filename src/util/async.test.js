@@ -1,4 +1,4 @@
-import { delayPromise } from './async.js';
+import { delayPromise, loadJSON } from './async.js';
 
 describe('delayPromise', () => {
   test('Returns a promise that resolves after specified delay', async () => {
@@ -17,5 +17,15 @@ describe('delayPromise', () => {
 
     // Should resolve immediately
     expect(end - start).toBeGreaterThanOrEqual(0);
+  });
+});
+
+describe('loadJSON', () => {
+  test('Load JSON data', async () => {
+    const data = await loadJSON('/test.json');
+    expect(data).toMatchObject({
+      method: 'GET',
+      success: true,
+    });
   });
 });

@@ -1,9 +1,19 @@
 import { HTTP_404_NOT_FOUND } from '../const/http_status.js';
 import { fetchRetry, FetchError } from './fetch.js';
 
+describe('FetchError', () => {
+  test('constructor', () => {
+    const error = new FetchError('message', 'url', { method: 'GET' }, null);
+    expect(error.message).toEqual('message');
+    expect(error.resource).toEqual('url');
+    expect(error.fetchOptions).toMatchObject({ method: 'GET' });
+    expect(error.response).toBe(null);
+  });
+});
+
 describe('fetchRetry', () => {
   test('fetch OK', async () => {
-    const response = await fetchRetry('https://jsonplaceholder.typicode.com/todos/1', {
+    const response = await fetchRetry('/test.json', {
       cache: 'no-cache',
       keepalive: false,
       method: 'GET',
@@ -11,16 +21,14 @@ describe('fetchRetry', () => {
     });
     const json = await response.json();
     const expectedJSON = {
-      completed: false,
-      id: 1,
-      title: 'delectus aut autem',
-      userId: 1,
+      success: true,
+      method: 'GET',
     };
     expect(json).toEqual(expectedJSON);
   });
   test('fetch unknown scheme', async () => {
     try {
-      await fetchRetry('htps://jsonplaceholder', {});
+      await fetchRetry('htps://', {});
     } catch (error) {
       const typedError = error instanceof Error ? error : new Error(String(error));
       expect(typedError.message).toEqual('fetch failed');
@@ -32,7 +40,7 @@ describe('fetchRetry', () => {
   test('fetch 404 error with retry', async () => {
     try {
       await fetchRetry(
-        'https://jsonplaceholder.typicode.com/todos/1',
+        '/test_error.json',
         {
           cache: 'no-cache',
           keepalive: false,

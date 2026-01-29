@@ -3,11 +3,13 @@ export const PAGE_LIFECYCLE_STATE_ACTIVE: "active";
 export const PAGE_LIFECYCLE_STATE_PASSIVE: "passive";
 export const PAGE_LIFECYCLE_STATE_FROZEN: "frozen";
 export const PAGE_LIFECYCLE_STATE_TERMINATED: "terminated";
+export const PAGE_LIFECYCLE_STATES: Set<string>;
 export const DOCUMENT_STATE_DOM_LOADED: "domLoaded";
 export const DOCUMENT_STATE_FULLY_LOADED: "fullyLoaded";
 export const DOCUMENT_STATE_COMPLETE: "complete";
 export const DOCUMENT_STATE_INTERACTIVE: "interactive";
 export const DOCUMENT_STATE_LOADING: "loading";
+export const DOCUMENT_STATES: Set<string>;
 export const PAGE_LIFECYCLE_STATE_CHANGE_EVENT: "pageLifecycleStateChange";
 export const DOCUMENT_STATE_CHANGE_EVENT: "documentStateChange";
 //# sourceMappingURL=const.d.ts.map
