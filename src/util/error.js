@@ -1,10 +1,12 @@
+const DEFAULT_EXCLUDES = new Set(['stack']);
+
 /**
  * Retrieves detailed information from an error object.
  * @param {Error} error - The error to extract details from.
- * @param {string[]} [excludes] - An array of property names to exclude from the result.
+ * @param {null | undefined | string[]} [excludes] - An array of property names to exclude from the result.
  * @returns {object} - An object containing the error details.
  */
-export const getErrorDetails = (error, excludes = ['stack']) => {
+export const getErrorDetails = (error, excludes) => {
   const errorDetails = {
     name: error.name,
     type: error.constructor?.name ?? typeof error,
@@ -16,7 +18,7 @@ export const getErrorDetails = (error, excludes = ['stack']) => {
     errorDetails.cause = error.cause;
   }
   for (const key of Object.getOwnPropertyNames(error)) {
-    if (!excludes.includes(key)) {
+    if (!excludes?.includes(key) && !DEFAULT_EXCLUDES.has(key)) {
       errorDetails[key] = error[key];
     }
   }

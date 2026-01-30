@@ -23,9 +23,7 @@ export { delayPromise, loadJSON } from './util/async.js';
 export { getErrorDetails, getTypedError } from './util/error.js';
 export { FetchError, fetchRetry, HTTP_0_ANY } from './util/fetch.js';
 export {
-  addFloat,
   deg2rad,
-  fixFloat,
   fixFloatPrecision,
   getRandomInt,
   isEqual,
@@ -35,7 +33,6 @@ export {
   isLess,
   isLessOrEqual,
   rad2deg,
-  subFloat,
 } from './util/number.js';
 export { deepMerge, getObjArrayPropSum, getObjValueByPath, purgeObject, setObjValueByPath } from './util/object.js';
 export { getURLParam, sanitizeURLParam } from './util/query.js';

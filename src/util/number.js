@@ -1,15 +1,20 @@
+import { TypeCheckError } from '../typecheck/TypeCheckError.js';
+
 const DEG_TO_RAD = Math.PI / 180;
 const RAD_TO_DEG = 180 / Math.PI;
+
+const PRECISION = 12;
+const EPSILON = 1e-11;
 
 /**
  * Converts degrees to radians.
  * @param {number} degrees - Angle in degrees.
  * @returns {number} Angle in radians.
- * @throws {TypeError}
+ * @throws {TypeCheckError}
  */
 export const deg2rad = (degrees) => {
   if (!Number.isFinite(degrees)) {
-    throw new TypeError(`Argument degrees must be a finite number`);
+    throw new TypeCheckError('Argument degrees must be a finite number', { value: degrees });
   }
   return degrees * DEG_TO_RAD;
 };
@@ -18,11 +23,11 @@ export const deg2rad = (degrees) => {
  * Converts radians to degrees.
  * @param {number} radians - Angle in radians.
  * @returns {number} Angle in degrees.
- * @throws {TypeError}
+ * @throws {TypeCheckError}
  */
 export const rad2deg = (radians) => {
   if (!Number.isFinite(radians)) {
-    throw new TypeError(`Argument radians must be a finite number`);
+    throw new TypeCheckError('Argument radians must be a finite number', { value: radians });
   }
   return radians * RAD_TO_DEG;
 };
@@ -35,57 +40,26 @@ export const rad2deg = (radians) => {
  * @throws {TypeError}
  */
 export const getRandomInt = (min, max) => {
-  if (!Number.isFinite(min) || !Number.isFinite(max)) {
-    throw new TypeError('Argument min and max must be finite number');
+  if (!Number.isFinite(min)) {
+    throw new TypeCheckError('Argument min must be finite number', { value: min });
+  }
+  if (!Number.isFinite(max)) {
+    throw new TypeCheckError('Argument max must be finite number', { value: max });
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 /**
- * Fixes floating point number (0.20000000000000004 -> 0.2).
- * @param {number | string} value - Number to fix.
- * @returns {number} The fixed number.
+ * Normalizes floating point precision (e.g. 0.20000000000000004 → 0.2).
+ * @param {number | string} value - Input value.
+ * @returns {number} Fixed float precision value.
  */
 export const fixFloatPrecision = (value) => {
-  // Handle string inputs by converting to number first
-  if (typeof value === 'string') {
-    value = Number(value);
+  const parsedValue = typeof value === 'string' ? Number(value) : value;
+  if (!Number.isFinite(parsedValue)) {
+    throw new TypeCheckError('Value must be a finite number.', { value });
   }
-  if (value >= 0 && value < 0.00000000001) {
-    const valuePlusOne = value + 1;
-    return Number.parseFloat(valuePlusOne.toPrecision(12)) - 1;
-  }
-  return Number.parseFloat(value.toPrecision(12));
-};
-
-/**
- * Convenience method for floating point precision handling.
- * @param {number} value - The number to process.
- * @param {number} p - The precision. Defaults to 2.
- * @returns {number} The processed value.
- */
-export const fixFloat = (value, p = 2) => Number.parseFloat(value.toFixed(p));
-
-/**
- * Adds two value with floating point precision.
- * @param {number} a - The number a.
- * @param {number} b - The number b.
- * @returns {number} The processed value.
- */
-export const addFloat = (a, b) => {
-  const p = 100;
-  return fixFloat((a * p + b * p) / p);
-};
-
-/**
- * Substracts two value with floating point precision.
- * @param {number} a - The number a.
- * @param {number} b - The number b.
- * @returns {number} The processed value.
- */
-export const subFloat = (a, b) => {
-  const p = 100;
-  return fixFloat((a * p - b * p) / p);
+  return Math.abs(parsedValue) < EPSILON ? 0 : Number(parsedValue.toPrecision(PRECISION));
 };
 
 /**

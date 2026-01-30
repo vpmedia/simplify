@@ -1,6 +1,7 @@
+/* eslint-disable unicorn/no-useless-undefined */
+
+import { TypeCheckError } from '../typecheck/TypeCheckError.js';
 import {
-  addFloat,
-  fixFloat,
   fixFloatPrecision,
   getRandomInt,
   isEqual,
@@ -9,7 +10,6 @@ import {
   isInRange,
   isLess,
   isLessOrEqual,
-  subFloat,
   deg2rad,
   rad2deg,
 } from './number.js';
@@ -17,13 +17,13 @@ import {
 test('Converts angle in degrees to radians', () => {
   expect(deg2rad(90)).toBe(1.5707963267948966);
   // @ts-expect-error
-  expect(() => deg2rad('')).toThrowError(TypeError);
+  expect(() => deg2rad('')).toThrowError(TypeCheckError);
 });
 
 test('Converts angle in radians to degrees', () => {
   expect(rad2deg(1.5707963267948966)).toBe(90);
   // @ts-expect-error
-  expect(() => rad2deg('')).toThrowError(TypeError);
+  expect(() => rad2deg('')).toThrowError(TypeCheckError);
 });
 
 describe('fixFloatPrecision', () => {
@@ -41,23 +41,30 @@ describe('fixFloatPrecision', () => {
 
   test('Handles very small numbers', () => {
     expect(fixFloatPrecision(0.0000000000001)).toBe(0);
+    expect(fixFloatPrecision(-0.0000000000001)).toBe(0);
   });
 
   test('Handles integer numbers', () => {
     expect(fixFloatPrecision(5)).toBe(5);
   });
 
-  test('Handles string input', () => {
+  test('Handles string number input', () => {
     expect(fixFloatPrecision('5.123456789')).toBe(5.123456789);
+  });
+
+  test('Throws error for invalid input', () => {
+    expect(() => fixFloatPrecision('abc')).toThrowError(TypeCheckError);
+    expect(() => fixFloatPrecision(null)).toThrowError(TypeCheckError);
+    expect(() => fixFloatPrecision(undefined)).toThrowError(TypeCheckError);
   });
 });
 
 describe('getRandomInt', () => {
   test('Throws error if min or max is not finite number', () => {
     // @ts-expect-error
-    expect(() => getRandomInt('', 1)).toThrowError(TypeError);
+    expect(() => getRandomInt('', 1)).toThrowError(TypeCheckError);
     // @ts-expect-error
-    expect(() => getRandomInt(1, '')).toThrowError(TypeError);
+    expect(() => getRandomInt(1, '')).toThrowError(TypeCheckError);
   });
 
   test('Returns random integer within range when min equals max', () => {
@@ -80,18 +87,6 @@ describe('getRandomInt', () => {
     const result = getRandomInt(0, 0);
     expect(result).toBe(0);
   });
-});
-
-test('fixFloat()', () => {
-  expect(fixFloat(0.20000000000000004)).toBe(0.2);
-});
-
-test('addFloat()', () => {
-  expect(addFloat(0.20000000000000004, 0.1000001)).toBe(0.3);
-});
-
-test('subFloat()', () => {
-  expect(subFloat(0.20000000000000004, 0.1000001)).toBe(0.1);
 });
 
 describe('number', () => {

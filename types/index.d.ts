@@ -17,7 +17,7 @@ export { typeCheck, typeCheckArray, typeCheckEnum } from "./typecheck/util.js";
 export { delayPromise, loadJSON } from "./util/async.js";
 export { getErrorDetails, getTypedError } from "./util/error.js";
 export { FetchError, fetchRetry, HTTP_0_ANY } from "./util/fetch.js";
-export { addFloat, deg2rad, fixFloat, fixFloatPrecision, getRandomInt, isEqual, isGreater, isGreaterOrEqual, isInRange, isLess, isLessOrEqual, rad2deg, subFloat } from "./util/number.js";
+export { deg2rad, fixFloatPrecision, getRandomInt, isEqual, isGreater, isGreaterOrEqual, isInRange, isLess, isLessOrEqual, rad2deg } from "./util/number.js";
 export { deepMerge, getObjArrayPropSum, getObjValueByPath, purgeObject, setObjValueByPath } from "./util/object.js";
 export { getURLParam, sanitizeURLParam } from "./util/query.js";
 export { addLeadingZero, capitalize, getTypeFromValue, saveAsFile, underscoreToCamelCase } from "./util/string.js";

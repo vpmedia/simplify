@@ -9,6 +9,7 @@ describe('error', () => {
     expect(errorDetails.type).toBe('Error');
     expect(errorDetails.message).toBe('Test error');
     expect(errorDetails.cause).toBe('Test cause');
+    expect(errorDetails.stack).toBe(undefined);
   });
 
   test('getErrorDetails with Error cause', () => {
