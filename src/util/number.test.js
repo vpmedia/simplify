@@ -53,9 +53,9 @@ describe('fixFloatPrecision', () => {
   });
 
   test('Throws error for invalid input', () => {
-    expect(() => fixFloatPrecision('abc')).toThrowError(TypeCheckError);
-    expect(() => fixFloatPrecision(null)).toThrowError(TypeCheckError);
-    expect(() => fixFloatPrecision(undefined)).toThrowError(TypeCheckError);
+    expect(fixFloatPrecision('abc')).toBe(Number.NaN);
+    expect(fixFloatPrecision(null)).toBe(Number.NaN);
+    expect(fixFloatPrecision(undefined)).toBe(Number.NaN);
   });
 });
 

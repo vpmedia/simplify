@@ -57,7 +57,7 @@ export const getRandomInt = (min, max) => {
 export const fixFloatPrecision = (value) => {
   const parsedValue = typeof value === 'string' ? Number(value) : value;
   if (!Number.isFinite(parsedValue)) {
-    throw new TypeCheckError('Value must be a finite number.', { value });
+    return Number.NaN;
   }
   return Math.abs(parsedValue) < EPSILON ? 0 : Number(parsedValue.toPrecision(PRECISION));
 };
