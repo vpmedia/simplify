@@ -1,3 +1,17 @@
+## [1.65.0] - 2026-01-30
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Relax fixFloatPrecision error handling
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.65.0
 ## [1.64.0] - 2026-01-30
 
 ### 💼 Other
