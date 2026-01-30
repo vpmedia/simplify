@@ -1,3 +1,23 @@
+## [1.64.0] - 2026-01-30
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Improve error handling
+- Improve type guards and performance optimizations
+
+### 🧪 Testing
+
+- Improve test coverage
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.64.0
 ## [1.63.0] - 2026-01-28
 
 ### 💼 Other
