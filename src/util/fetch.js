@@ -51,7 +51,8 @@ export const fetchRetry = async (resource, fetchOptions, retryOptions) => {
     HTTP_422_UNPROCESSABLE_CONTENT,
   ];
   while (retryOptions.numTries > 0) {
-    logger.info('request', { resource, fetchOptions, retryOptions });
+    const isOnline = globalThis.navigator?.onLine;
+    logger.info('request', { resource, fetchOptions, retryOptions, isOnline });
     const controller = new AbortController();
     const timeoutId = setTimeout(
       () => controller.abort(new DOMException('Fetch timed out', 'AbortError')),
