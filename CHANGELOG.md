@@ -1,3 +1,10 @@
+## [1.66.0] - 2026-01-30
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Added isOnline log info to fetch
+- *(release)* V1.66.0
 ## [1.65.0] - 2026-01-30
 
 ### 💼 Other
