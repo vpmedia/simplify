@@ -8,9 +8,8 @@ export const purgeObject = (target) => {
   if (!target) {
     return;
   }
-  const reference = target;
   for (const entry of Object.keys(target)) {
-    reference[entry] = null;
+    target[entry] = null;
   }
 };
 
@@ -51,6 +50,7 @@ export const deepMerge = (target, source) => {
  * @returns {number} The sum value.
  */
 export const getObjArrayPropSum = (arr, prop) => arr.reduce((accumulator, object) => accumulator + object[prop], 0);
+
 /**
  * Get object value by path.
  * @param {object} obj - The source object to get the value from.
