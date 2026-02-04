@@ -4,5 +4,5 @@ export function getDocumentState(): import("./typedef.js").DocumentState | null 
 export function getPageLifecycleEventEmitter(): EventEmitter;
 export function isPageLifecycleInitialized(): boolean;
 export function addPageLifecycleCallback(state: import("./typedef.js").DocumentState | import("./typedef.js").PageLifecycleState, callback: () => void): void;
-import { EventEmitter } from 'eventemitter3';
+import { EventEmitter } from '../util/event_emitter.js';
 //# sourceMappingURL=util.d.ts.map

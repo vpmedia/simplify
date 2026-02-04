@@ -10,7 +10,7 @@ export { OpenTelemetryLogHandler } from "./logging/OpenTelemetryLogHandler.js";
 export { SentryLogHandler } from "./logging/SentryLogHandler.js";
 export { typeChecker } from "./typecheck/TypeChecker.js";
 export { TypeCheckError } from "./typecheck/TypeCheckError.js";
-export { EventEmitter3 } from "./util/event_emitter.js";
+export { EventEmitter as EventEmitter3 } from "./util/event_emitter.js";
 export { serverDataToState } from "./util/state.js";
 export { formatLogMessage, getLogLevelName } from "./logging/util.js";
 export { addPageLifecycleCallback, getDocumentState, getPageLifecycleEventEmitter, getPageLifecycleState, initPageLifecycle, isPageLifecycleInitialized } from "./pagelifecycle/util.js";

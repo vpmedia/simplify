@@ -2,7 +2,7 @@
  * Event emitter implementation inspired by Node.js/EventEmitter3.
  * Allows registering, emitting, and removing event listeners.
  */
-export class EventEmitter3 {
+export class EventEmitter {
     /**
      * Get all registered event names.
      * @returns {(string | symbol)[]} Array of event identifiers.
@@ -33,33 +33,33 @@ export class EventEmitter3 {
      * @param {string | symbol} event - Event name.
      * @param {EventListener} fn - Listener callback.
      * @param {any} [context] - Optional execution context.
-     * @returns {EventEmitter3} The emitter instance.
+     * @returns {EventEmitter} The emitter instance.
      */
-    on(event: string | symbol, fn: EventListener, context?: any): EventEmitter3;
+    on(event: string | symbol, fn: EventListener, context?: any): EventEmitter;
     /**
      * Register a one-time listener for an event.
      * The listener is removed after its first invocation.
      * @param {string | symbol} event - Event name.
      * @param {EventListener} fn - Listener callback.
      * @param {any} [context] - Optional execution context.
-     * @returns {EventEmitter3} The emitter instance.
+     * @returns {EventEmitter} The emitter instance.
      */
-    once(event: string | symbol, fn: EventListener, context?: any): EventEmitter3;
+    once(event: string | symbol, fn: EventListener, context?: any): EventEmitter;
     /**
      * Remove a specific listener, or all listeners for an event.
      * @param {string | symbol} event - Event name.
      * @param {EventListener} [fn] - Listener callback to remove.
      * @param {any} [context] - Context to match when removing.
-     * @returns {EventEmitter3} The emitter instance.
+     * @returns {EventEmitter} The emitter instance.
      */
-    off(event: string | symbol, fn?: EventListener, context?: any): EventEmitter3;
+    off(event: string | symbol, fn?: EventListener, context?: any): EventEmitter;
     /**
      * Remove all listeners from the emitter,
      * or all listeners for a specific event.
      * @param {string | symbol} [event] - Optional event name.
-     * @returns {EventEmitter3} The emitter instance.
+     * @returns {EventEmitter} The emitter instance.
      */
-    removeAllListeners(event?: string | symbol): EventEmitter3;
+    removeAllListeners(event?: string | symbol): EventEmitter;
     #private;
 }
 /**

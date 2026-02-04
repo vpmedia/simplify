@@ -1,12 +1,13 @@
 /* oxlint-disable prefer-await-to-callbacks */
+/* eslint-disable unicorn/prefer-event-target */
 
 /**
  * Page lifecycle helper.
  * @see https://developer.chrome.com/docs/web-platform/page-lifecycle-api
  */
 
-import { EventEmitter } from 'eventemitter3';
 import { Logger } from '../logging/Logger.js';
+import { EventEmitter } from '../util/event_emitter.js';
 import {
   DOCUMENT_STATE_CHANGE_EVENT,
   DOCUMENT_STATE_DOM_LOADED,

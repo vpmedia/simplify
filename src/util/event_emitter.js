@@ -32,7 +32,7 @@ class Listener {
  * Event emitter implementation inspired by Node.js/EventEmitter3.
  * Allows registering, emitting, and removing event listeners.
  */
-export class EventEmitter3 {
+export class EventEmitter {
   #events;
 
   constructor() {
@@ -102,7 +102,7 @@ export class EventEmitter3 {
    * @param {EventListener} fn - Listener callback.
    * @param {any} context - Execution context for the callback.
    * @param {boolean} once - Whether the listener is one-time.
-   * @returns {EventEmitter3} The emitter instance.
+   * @returns {EventEmitter} The emitter instance.
    */
   #addListener(event, fn, context, once) {
     if (typeof fn !== 'function') {
@@ -126,7 +126,7 @@ export class EventEmitter3 {
    * @param {string | symbol} event - Event name.
    * @param {EventListener} fn - Listener callback.
    * @param {any} [context] - Optional execution context.
-   * @returns {EventEmitter3} The emitter instance.
+   * @returns {EventEmitter} The emitter instance.
    */
   on(event, fn, context) {
     return this.#addListener(event, fn, context, false);
@@ -138,7 +138,7 @@ export class EventEmitter3 {
    * @param {string | symbol} event - Event name.
    * @param {EventListener} fn - Listener callback.
    * @param {any} [context] - Optional execution context.
-   * @returns {EventEmitter3} The emitter instance.
+   * @returns {EventEmitter} The emitter instance.
    */
   once(event, fn, context) {
     return this.#addListener(event, fn, context, true);
@@ -149,7 +149,7 @@ export class EventEmitter3 {
    * @param {string | symbol} event - Event name.
    * @param {EventListener} [fn] - Listener callback to remove.
    * @param {any} [context] - Context to match when removing.
-   * @returns {EventEmitter3} The emitter instance.
+   * @returns {EventEmitter} The emitter instance.
    */
   off(event, fn, context) {
     if (!this.#events.has(event)) {
@@ -184,7 +184,7 @@ export class EventEmitter3 {
    * Remove all listeners from the emitter,
    * or all listeners for a specific event.
    * @param {string | symbol} [event] - Optional event name.
-   * @returns {EventEmitter3} The emitter instance.
+   * @returns {EventEmitter} The emitter instance.
    */
   removeAllListeners(event) {
     if (event === undefined) {
