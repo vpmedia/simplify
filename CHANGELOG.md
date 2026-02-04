@@ -1,3 +1,24 @@
+## [1.67.0] - 2026-02-04
+
+### 🚀 Features
+
+- Added es6 event emitter implementation
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Simplify purgeObject helper
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Fixed lint errors
+- *(release)* V1.67.0
 ## [1.66.0] - 2026-01-30
 
 ### ⚙️ Miscellaneous Tasks
