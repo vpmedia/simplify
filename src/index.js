@@ -21,7 +21,7 @@ export { TypeCheckError } from './typecheck/TypeCheckError.js';
 export { typeCheck, typeCheckArray, typeCheckEnum } from './typecheck/util.js';
 export { delayPromise, loadJSON } from './util/async.js';
 export { getErrorDetails, getTypedError } from './util/error.js';
-export { EventEmitter as EventEmitter3 } from './util/event_emitter.js';
+export { EventEmitter } from './util/event_emitter.js';
 export { FetchError, fetchRetry, HTTP_0_ANY } from './util/fetch.js';
 export {
   deg2rad,
