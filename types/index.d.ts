@@ -12,6 +12,7 @@ export { typeChecker } from "./typecheck/TypeChecker.js";
 export { TypeCheckError } from "./typecheck/TypeCheckError.js";
 export { EventEmitter } from "./util/event_emitter.js";
 export { serverDataToState } from "./util/state.js";
+export { uuidv4 } from "./util/uuid.js";
 export { formatLogMessage, getLogLevelName } from "./logging/util.js";
 export { addPageLifecycleCallback, getDocumentState, getPageLifecycleEventEmitter, getPageLifecycleState, initPageLifecycle, isPageLifecycleInitialized } from "./pagelifecycle/util.js";
 export { typeCheck, typeCheckArray, typeCheckEnum } from "./typecheck/util.js";

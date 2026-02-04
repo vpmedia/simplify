@@ -39,4 +39,5 @@ export { deepMerge, getObjArrayPropSum, getObjValueByPath, purgeObject, setObjVa
 export { getURLParam, sanitizeURLParam } from './util/query.js';
 export { serverDataToState } from './util/state.js';
 export { addLeadingZero, capitalize, getTypeFromValue, saveAsFile, underscoreToCamelCase } from './util/string.js';
+export { uuidv4 } from './util/uuid.js';
 export * from './util/validate.js';
