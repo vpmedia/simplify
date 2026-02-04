@@ -1,3 +1,13 @@
+## [1.68.0] - 2026-02-04
+
+### 🚜 Refactor
+
+- Use event emitter custom internally
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.68.0
 ## [1.67.0] - 2026-02-04
 
 ### 🚀 Features
