@@ -1,3 +1,13 @@
+## [1.70.0] - 2026-02-04
+
+### 🚀 Features
+
+- Added uuidv4 generator
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.70.0
 ## [1.69.0] - 2026-02-04
 
 ### 🐛 Bug Fixes
