@@ -1,3 +1,13 @@
+## [1.69.0] - 2026-02-04
+
+### 🐛 Bug Fixes
+
+- Fixed export name
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.69.0
 ## [1.68.0] - 2026-02-04
 
 ### 🚜 Refactor
