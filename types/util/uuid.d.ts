@@ -1,4 +1,4 @@
-export function hex(s: any, b: any): string;
+export function byteToHex(byte: number): string;
 export function randomUUIDFallback(): string;
-export function uuidv4(): `${string}-${string}-${string}-${string}-${string}`;
+export function uuidv4(): string;
 //# sourceMappingURL=uuid.d.ts.map
