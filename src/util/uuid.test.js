@@ -33,6 +33,7 @@ describe('UUID functions', () => {
   });
 
   it('randomUUIDFallback fallback works if crypto.randomUUID not available', () => {
+    delete crypto.randomUUID;
     const uuid = randomUUIDFallback();
     expect(uuid).toMatch(uuidV4Regex);
   });
