@@ -1,3 +1,19 @@
+## [1.71.0] - 2026-02-05
+
+### 🚜 Refactor
+
+- Improve uuidv4 generator
+
+### 🧪 Testing
+
+- Adjusted uuid test
+- Improve uuid tests
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Regenerate types and source maps
+- *(release)* V1.71.0
 ## [1.70.0] - 2026-02-04
 
 ### 🚀 Features
