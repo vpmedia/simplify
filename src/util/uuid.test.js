@@ -37,4 +37,17 @@ describe('UUID functions', () => {
     const uuid = randomUUIDFallback();
     expect(uuid).toMatch(uuidV4Regex);
   });
+
+  it('randomUUIDFallback does not generate duplicates', () => {
+    const uuidMap = new Map();
+    const numSamples = 1000;
+    for (let i = 0; i < numSamples; i += 1) {
+      const uuid = randomUUIDFallback();
+      if (uuidMap.has(uuid)) {
+        throw new Error('Duplicate UUIDv4 found');
+      }
+      uuidMap.set(uuid, true);
+    }
+    expect(uuidMap.size).toBe(numSamples);
+  });
 });
