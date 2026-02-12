@@ -39,7 +39,7 @@
     "build": "rm -rf types && tsc -p ./tsconfig.build.json",
     "check": "pnpm build && pnpm lint && pnpm test && pnpm typecheck",
     "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,css}\"",
-    "lint": "oxlint \"**/*.{js,jsx}\"",
+    "lint": "oxlint src",
     "test": "vitest --coverage",
     "typecheck": "tsc"
   }
