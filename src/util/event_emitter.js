@@ -9,7 +9,6 @@
  * Internal listener wrapper that stores metadata
  * about a registered event listener.
  */
-// oxlint-disable-next-line no-extraneous-class
 class Listener {
   /**
    * @param {EventListener} fn - The listener callback function.
@@ -85,7 +84,6 @@ export class EventEmitter {
     }
 
     // Clone to prevent mutation during iteration
-    // eslint-disable-next-line unicorn/no-useless-spread
     for (const listener of [...listeners]) {
       listener.fn.apply(listener.context, args);
       if (listener.once) {

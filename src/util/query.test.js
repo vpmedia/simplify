@@ -1,5 +1,3 @@
-/* eslint-disable jsdoc/check-tag-names, jsdoc/valid-types */
-
 /**
  * @vitest-environment-options { "url": "https://localhost/app/?language=en&token=123-456-öüó%24D" }
  */

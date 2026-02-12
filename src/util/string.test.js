@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/no-useless-undefined */
-
 import {
   underscoreToCamelCase,
   capitalize,

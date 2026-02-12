@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/no-useless-undefined */
-
 import { TypeCheckError } from '../typecheck/TypeCheckError.js';
 import {
   fixFloatPrecision,

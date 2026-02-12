@@ -24,12 +24,8 @@
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
     "@commitlint/config-conventional": "^20.4.1",
-    "@eslint/js": "^10.0.1",
     "@types/node": "^25.2.3",
     "@vitest/coverage-v8": "^4.0.18",
-    "eslint": "^10.0.0",
-    "eslint-plugin-jsdoc": "^62.5.4",
-    "eslint-plugin-unicorn": "^63.0.0",
     "globals": "^17.3.0",
     "jsdom": "^28.0.0",
     "msw": "^2.12.10",
@@ -43,7 +39,7 @@
     "build": "rm -rf types && tsc -p ./tsconfig.build.json",
     "check": "pnpm build && pnpm lint && pnpm test && pnpm typecheck",
     "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,css}\"",
-    "lint": "oxlint src && eslint",
+    "lint": "oxlint \"**/*.{js,jsx}\"",
     "test": "vitest --coverage",
     "typecheck": "tsc"
   }

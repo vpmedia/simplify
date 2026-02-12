@@ -1,5 +1,3 @@
-/* eslint-disable jsdoc/reject-any-type */
-
 import { isEqual, isGreater, isGreaterOrEqual, isInRange, isLess, isLessOrEqual } from './number.js';
 
 /**

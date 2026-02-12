@@ -1,6 +1,3 @@
-/* oxlint-disable prefer-await-to-callbacks */
-/* eslint-disable unicorn/prefer-event-target */
-
 /**
  * Page lifecycle helper.
  * @see https://developer.chrome.com/docs/web-platform/page-lifecycle-api

@@ -1,5 +1,3 @@
-/* oxlint-disable no-await-in-loop */
-
 import {
   HTTP_401_UNAUTHORIZED,
   HTTP_403_FORBIDDEN,

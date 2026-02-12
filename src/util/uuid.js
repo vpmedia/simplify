@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise, unicorn/number-literal-case */
-
 /**
  * Convert a byte (0–255) to a 2‑character hex string.
  * @param {number} byte - Byte value.

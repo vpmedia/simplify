@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/prefer-event-target, no-empty-function, no-invalid-this, func-names, func-style, unicorn/consistent-function-scoping */
-
 import { describe, it, expect } from 'vitest';
 import { EventEmitter } from './event_emitter.js';
 

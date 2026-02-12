@@ -1,5 +1,3 @@
-/* eslint-disable dot-notation */
-
 import { LOG_LEVEL_NAMES } from './const.js';
 
 /**
