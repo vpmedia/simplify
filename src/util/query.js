@@ -1,4 +1,4 @@
-const urlSearchParams = new URLSearchParams(globalThis.location.search);
+const urlSearchParams = new URLSearchParams(globalThis.location?.search);
 
 /**
  * Sanitizes URL parameters allowing only alpha-numeric characters and dash.
