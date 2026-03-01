@@ -22,12 +22,11 @@ tests/
 .gitignore
 .npmignore
 .oxlintrc.json
-.prettierignore
+.oxfmtrc.json
 commitlint.config.js
 lefthook.yml
 pnpm-lock.yaml
 pnpm-workspace.yaml
-prettier.config.js
 tsconfig.build.json
 tsconfig.json
 vitest.config.js
