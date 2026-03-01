@@ -1,3 +1,10 @@
+## [1.74.0] - 2026-03-01
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Improve type checking for retryAsync
+- *(release)* V1.74.0
 ## [1.73.0] - 2026-03-01
 
 ### 🚀 Features
