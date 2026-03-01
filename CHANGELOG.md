@@ -1,3 +1,18 @@
+## [1.73.0] - 2026-03-01
+
+### 🚀 Features
+
+- Added generic async retry helper
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Migrate from prettier to oxfmt
+- *(release)* V1.73.0
 ## [1.72.0] - 2026-02-28
 
 ### 🐛 Bug Fixes
