@@ -16,7 +16,7 @@ export { uuidv4 } from "./util/uuid.js";
 export { formatLogMessage, getLogLevelName } from "./logging/util.js";
 export { addPageLifecycleCallback, getDocumentState, getPageLifecycleEventEmitter, getPageLifecycleState, initPageLifecycle, isPageLifecycleInitialized } from "./pagelifecycle/util.js";
 export { typeCheck, typeCheckArray, typeCheckEnum } from "./typecheck/util.js";
-export { delayPromise, loadJSON } from "./util/async.js";
+export { delayPromise, loadJSON, retryAsync } from "./util/async.js";
 export { getErrorDetails, getTypedError } from "./util/error.js";
 export { FetchError, fetchRetry, HTTP_0_ANY } from "./util/fetch.js";
 export { deg2rad, fixFloatPrecision, getRandomInt, isEqual, isGreater, isGreaterOrEqual, isInRange, isLess, isLessOrEqual, rad2deg } from "./util/number.js";

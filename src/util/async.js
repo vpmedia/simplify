@@ -1,3 +1,5 @@
+import { getTypedError } from './error.js';
+
 /**
  * Returns a promise with delayed resolve.
  * @param {number} delayMS - Promise resolve delay in milliseconds.
@@ -7,6 +9,31 @@ export const delayPromise = (delayMS) =>
   new Promise((resolve) => {
     setTimeout(resolve, delayMS);
   });
+
+/**
+ * Async method call retry helper.
+ * @param {Function} method - Async function to call.
+ * @param {number} numTries - Max retries.
+ * @param {number} delayMs - Delay between attempts in ms.
+ * @returns {Promise<any>} Async function result.
+ */
+export const retryAsync = async (method, numTries = 1, delayMs = 100) => {
+  for (let attempt = 0; attempt <= numTries; attempt += 1) {
+    try {
+      // oxlint-disable-next-line no-await-in-loop
+      return await method();
+    } catch (error) {
+      if (attempt === numTries) {
+        throw getTypedError(error);
+      }
+      if (delayMs > 0) {
+        // oxlint-disable-next-line no-await-in-loop
+        await delayPromise(delayMs);
+      }
+    }
+  }
+  throw new Error('Unknown error');
+};
 
 /**
  * Load JSON file using a fetch GET request.

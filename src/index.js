@@ -19,7 +19,7 @@ export {
 export { typeChecker } from './typecheck/TypeChecker.js';
 export { TypeCheckError } from './typecheck/TypeCheckError.js';
 export { typeCheck, typeCheckArray, typeCheckEnum } from './typecheck/util.js';
-export { delayPromise, loadJSON } from './util/async.js';
+export { delayPromise, loadJSON, retryAsync } from './util/async.js';
 export { getErrorDetails, getTypedError } from './util/error.js';
 export { EventEmitter } from './util/event_emitter.js';
 export { FetchError, fetchRetry, HTTP_0_ANY } from './util/fetch.js';
