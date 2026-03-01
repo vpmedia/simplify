@@ -12,10 +12,11 @@ export const delayPromise = (delayMS) =>
 
 /**
  * Async method call retry helper.
- * @param {Function} method - Async function to call.
+ * @template T
+ * @param {() => Promise<T>} method - Async function to call.
  * @param {number} numTries - Max retries.
  * @param {number} delayMs - Delay between attempts in ms.
- * @returns {Promise<any>} Async function result.
+ * @returns {Promise<T>} Async function result.
  */
 export const retryAsync = async (method, numTries = 1, delayMs = 100) => {
   for (let attempt = 0; attempt <= numTries; attempt += 1) {
