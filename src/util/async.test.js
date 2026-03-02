@@ -32,7 +32,7 @@ describe('loadJSON', () => {
 
 describe('retryAsync', () => {
   beforeEach(() => {
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
   });
 
   afterEach(() => {
@@ -49,7 +49,6 @@ describe('retryAsync', () => {
   it('retries once and then succeeds', async () => {
     const method = vi.fn().mockRejectedValueOnce(new Error('fail')).mockResolvedValueOnce('success');
     const promise = retryAsync(method, 1, 100);
-    await vi.advanceTimersByTimeAsync(100);
     const result = await promise;
     expect(result).toBe('success');
     expect(method).toHaveBeenCalledTimes(2);
@@ -57,8 +56,7 @@ describe('retryAsync', () => {
 
   it('throws after exceeding retries', async () => {
     const method = vi.fn().mockRejectedValue(new Error('fail'));
-    const promise = retryAsync(method, 1, 0);
-    // await vi.advanceTimersByTimeAsync(0);
+    const promise = retryAsync(method, 1, 100);
     await expect(promise).rejects.toThrow('fail');
     expect(method).toHaveBeenCalledTimes(2);
   });
