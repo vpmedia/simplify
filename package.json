@@ -22,8 +22,8 @@
     "@sentry/browser": "^10.42.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.2",
-    "@commitlint/config-conventional": "^20.4.2",
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
     "@types/node": "^25.3.3",
     "@vitest/coverage-v8": "^4.0.18",
     "jsdom": "^28.1.0",
