@@ -19,7 +19,7 @@
   "types": "./types/index.d.ts",
   "type": "module",
   "optionalDependencies": {
-    "@sentry/browser": "^10.44.0"
+    "@sentry/browser": "^10.45.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
