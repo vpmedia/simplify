@@ -19,7 +19,7 @@
   "types": "./types/index.d.ts",
   "type": "module",
   "optionalDependencies": {
-    "@sentry/browser": "^10.45.0"
+    "@sentry/browser": "^10.46.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
@@ -28,9 +28,9 @@
     "@vitest/coverage-v8": "^4.1.1",
     "jsdom": "^29.0.1",
     "msw": "^2.12.14",
-    "oxfmt": "^0.41.0",
-    "oxlint": "^1.56.0",
-    "oxlint-tsgolint": "^0.17.1",
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.57.0",
+    "oxlint-tsgolint": "^0.17.4",
     "typescript": "^6.0.2",
     "vitest": "^4.1.1"
   },
