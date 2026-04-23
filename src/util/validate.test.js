@@ -214,7 +214,9 @@ describe('validate', () => {
   });
 
   test('isInstance', () => {
-    class CustomError extends Error {}
+    class CustomError extends Error {
+      name = 'CustomError';
+    }
     // @ts-expect-error
     expect(isInstance({}, {})).toBe(false);
     expect(isInstance({}, Number)).toBe(false);
