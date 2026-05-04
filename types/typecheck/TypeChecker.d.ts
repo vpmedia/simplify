@@ -4,7 +4,7 @@
 export const typeChecker: TypeChecker;
 declare class TypeChecker {
     /** @type {TypeChecker} */
-    static "__#private@#instance": TypeChecker;
+    static #instance: TypeChecker;
     /**
      * Enable or disable swallowing of TypeCheckErrors.
      * @param {boolean} value - Swallow errors flag.
