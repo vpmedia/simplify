@@ -1,3 +1,63 @@
+## [1.75.0] - 2026-05-10
+
+### 🐛 Bug Fixes
+
+- Fixed ts6 compat issues
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+
+### 🚜 Refactor
+
+- Convert project to TypeScript with strict settings
+
+### 🧪 Testing
+
+- Fixed failing async test
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- Update deps
+- *(deps)* Bump slack github action to v3
+- *(deps)* Update pnpm/action-setup to v5
+- *(security)* Set pnpm minimum release age to 1 day
+- *(security)* Pin github actions to immutable releases
+- *(ai)* Added CLAUDE.md
+- Fixed lint error
+- *(release)* V1.75.0
 ## [1.74.0] - 2026-03-01
 
 ### ⚙️ Miscellaneous Tasks
