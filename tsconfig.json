@@ -1,20 +1,34 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "types": ["node", "vitest/globals"],
-    "allowJs": true,
-    "checkJs": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "skipLibCheck": true,
     "noEmit": true,
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "skipLibCheck": true
+    "useDefineForClassFields": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "useUnknownInCatchVariables": true,
+
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "./tests/**/*", "./vitest.config.ts", "./vitest.setup.ts"]
 }

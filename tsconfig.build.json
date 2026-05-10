@@ -1,25 +1,14 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "react-jsx",
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
-    "types": ["node", "vitest/globals"],
-    "allowJs": true,
-    "checkJs": true,
+    "noEmit": false,
     "declaration": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "declarationDir": "./types",
-    "rootDir": "./src",
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "skipLibCheck": true
+    "sourceMap": true,
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "rootDir": "./src"
   },
   "include": ["./src/**/*"],
-  "exclude": ["./src/**/*.test.js"]
+  "exclude": ["./src/**/*.test.ts", "./src/**/*.test.tsx"]
 }

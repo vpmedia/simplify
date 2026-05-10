@@ -8,7 +8,6 @@
 .github/
 build/
 coverage/
-dist/
 logs/
 node_modules/
 out/
@@ -16,6 +15,7 @@ tests/
 
 # files
 *.test.js
+*.test.ts
 .DS_Store
 .editorconfig
 .gitattributes
@@ -29,5 +29,5 @@ pnpm-lock.yaml
 pnpm-workspace.yaml
 tsconfig.build.json
 tsconfig.json
-vitest.config.js
-vitest.setup.js
+vitest.config.ts
+vitest.setup.ts
