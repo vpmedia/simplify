@@ -34,15 +34,15 @@
   ],
   "type": "module",
   "optionalDependencies": {
-    "@sentry/browser": "^10.51.0"
+    "@sentry/browser": "^10.52.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
-    "@types/node": "^25.6.0",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
+    "@types/node": "^25.6.2",
     "@vitest/coverage-v8": "^4.1.5",
     "jsdom": "^29.1.1",
-    "msw": "^2.14.3",
+    "msw": "^2.14.5",
     "oxfmt": "^0.48.0",
     "oxlint": "^1.63.0",
     "oxlint-tsgolint": "^0.22.1",
