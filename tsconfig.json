@@ -5,11 +5,15 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "types": ["node", "vitest/globals"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "noEmit": true,
     "useDefineForClassFields": true,
 
     "strict": true,
@@ -30,5 +34,6 @@
     "allowUnusedLabels": false,
     "allowUnreachableCode": false
   },
-  "include": ["./src/**/*", "./tests/**/*", "./vitest.config.ts", "./vitest.setup.ts"]
+  "include": ["./src/**/*", "./typedefs/**/*.d.ts"],
+  "exclude": ["./src/**/*.test.ts", "./src/**/*.test.tsx", "./dist", "./node_modules"]
 }
