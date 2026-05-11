@@ -8,3 +8,5 @@ trustPolicy: no-downgrade
 
 trustPolicyExclude:
   - ts-api-utils
+
+blockExoticSubdeps: true
