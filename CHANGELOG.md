@@ -1,3 +1,18 @@
+## [1.76.0] - 2026-05-11
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- Migrate to rolldown bundler and unify strict tsconfig
+
+### 🚜 Refactor
+
+- Migrate commitlint config to ts
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(release)* V1.76.0
 ## [1.75.0] - 2026-05-10
 
 ### 🐛 Bug Fixes
