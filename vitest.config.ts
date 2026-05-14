@@ -3,9 +3,6 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'happy-dom',
-    environmentOptions: {
-      happyDOM: { url: 'http://localhost/' },
-    },
     globals: true,
     include: ['./src/**/*.test.{js,jsx,ts,tsx}'],
     isolate: false,

@@ -20,7 +20,7 @@ describe('delayPromise', () => {
 
 describe('loadJSON', () => {
   test('Load JSON data', async () => {
-    const data = await loadJSON('/test.json');
+    const data = await loadJSON('http://localhost:3000/test.json');
     expect(data).toMatchObject({
       method: 'GET',
       success: true,

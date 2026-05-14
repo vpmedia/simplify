@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
 export const fetchHandlers = [
-  http.get('/test.json', () => {
+  http.get('http://localhost:3000/test.json', () => {
     const response = HttpResponse.json(
       {
         success: true,
@@ -11,7 +11,7 @@ export const fetchHandlers = [
     );
     return response;
   }),
-  http.post('/test.json', () => {
+  http.post('http://localhost:3000/test.json', () => {
     const response = HttpResponse.json(
       {
         success: true,
@@ -21,7 +21,7 @@ export const fetchHandlers = [
     );
     return response;
   }),
-  http.post('/test_error.json', () => {
+  http.post('http://localhost:3000/test_error.json', () => {
     const response = HttpResponse.json(
       {
         success: false,

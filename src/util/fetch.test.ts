@@ -13,7 +13,7 @@ describe('FetchError', () => {
 
 describe('fetchRetry', () => {
   test('fetch OK', async () => {
-    const response = await fetchRetry('/test.json', {
+    const response = await fetchRetry('http://localhost:3000/test.json', {
       cache: 'no-cache',
       keepalive: false,
       method: 'GET',
@@ -38,7 +38,7 @@ describe('fetchRetry', () => {
   test('fetch 404 error with retry', async () => {
     try {
       await fetchRetry(
-        '/test_error.json',
+        'http://localhost:3000/test_error.json',
         {
           cache: 'no-cache',
           keepalive: false,
