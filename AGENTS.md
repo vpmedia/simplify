@@ -11,7 +11,7 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 - **Package Manager:** pnpm (workspaces)
 - **Optional Dependencies:** `@sentry/browser` (error tracking integration)
 - **Build:** Rolldown + `tsc --emitDeclarationOnly`
-- **Testing:** Vitest, @vitest/coverage-v8, jsdom, msw (Mock Service Worker)
+- **Testing:** Vitest, @vitest/coverage-v8, happy-dom, msw (Mock Service Worker)
 - **Lint/Format:** oxlint (+ `oxlint-tsgolint`), oxfmt
 - **Type Checking:** TypeScript
 - **Tooling:** lefthook (git hooks), commitlint (conventional commits)
@@ -19,10 +19,11 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 ## Documentation
 
 - Lefthook: https://lefthook.dev/llms.txt
-- MSW: https://mswjs.io/llms.txt
+- MSW: https://context7.com/websites/mswjs_io/llms.txt
 - OXC (oxlint, oxfmt): https://oxc.rs/llms.txt
 - Rolldown: https://rolldown.rs/llms.txt
 - Sentry (JavaScript): https://context7.com/getsentry/sentry-javascript/llms.txt
+- TypeScript: https://context7.com/websites/typescriptlang/llms.txt
 - Vitest: https://vitest.dev/llms.txt
 
 ## Commands
@@ -52,4 +53,4 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 - Tests are co-located with source as `*.test.ts` under `src/`
 - Shared mocks live in `tests/mocks/`; HTTP mocking via `msw`
 - Run a single file: `pnpm test src/util/uuid.test.ts`
-- DOM APIs available via jsdom environment
+- DOM APIs available via happy-dom environment
