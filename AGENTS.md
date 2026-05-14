@@ -17,6 +17,16 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 - **Type Checking:** TypeScript
 - **Tooling:** lefthook (git hooks), commitlint (conventional commits)
 
+## Documentation
+
+- Lefthook: https://lefthook.dev/llms.txt
+- MSW: https://mswjs.io/llms.txt
+- OXC (oxlint, oxfmt): https://oxc.rs/llms.txt
+- Rolldown: https://rolldown.rs/llms.txt
+- Sentry (JavaScript): https://context7.com/getsentry/sentry-javascript/llms.txt
+- TypeScript: https://www.typescriptlang.org/llms.txt
+- Vitest: https://vitest.dev/llms.txt
+
 ## Commands
 
 - **Install:** `pnpm install`
