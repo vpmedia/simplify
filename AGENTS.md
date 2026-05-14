@@ -23,7 +23,6 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 - OXC (oxlint, oxfmt): https://oxc.rs/llms.txt
 - Rolldown: https://rolldown.rs/llms.txt
 - Sentry (JavaScript): https://context7.com/getsentry/sentry-javascript/llms.txt
-- TypeScript: https://www.typescriptlang.org/llms.txt
 - Vitest: https://vitest.dev/llms.txt
 
 ## Commands
