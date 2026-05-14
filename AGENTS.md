@@ -9,7 +9,6 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 - **Language:** TypeScript (ESM, `"type": "module"`)
 - **Runtime:** Node.js / Browser
 - **Package Manager:** pnpm (workspaces)
-- **Domain:** General-purpose utility library
 - **Optional Dependencies:** `@sentry/browser` (error tracking integration)
 - **Build:** Rolldown + `tsc --emitDeclarationOnly`
 - **Testing:** Vitest, @vitest/coverage-v8, jsdom, msw (Mock Service Worker)
@@ -45,9 +44,9 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 
 ## Conventions
 
-- **Commits:** Conventional Commits with custom rules (header ≤ 100, body line ≤ 100, no sentence/start/pascal/upper-case subjects)
+- **Commits:** Conventional Commits (`@commitlint/config-conventional`)
 - **Modules:** ESM only
-- **Style:** Enforced by oxlint + oxfmt
+- **Style:** Enforced by oxlint + oxfmt — do not hand-format
 
 ## Testing
 
