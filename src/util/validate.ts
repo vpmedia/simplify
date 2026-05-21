@@ -119,10 +119,7 @@ export const isArrayOf = <T>(values: unknown, validator: Validator<T>): values i
 /**
  * Type check a plain object of values using a validator.
  */
-export const isPlainObjectOf = <T>(
-  record: unknown,
-  validator: Validator<T>
-): record is Record<string | number, T> => {
+export const isPlainObjectOf = <T>(record: unknown, validator: Validator<T>): record is Record<string | number, T> => {
   if (!isPlainObject(record)) {
     return false;
   }

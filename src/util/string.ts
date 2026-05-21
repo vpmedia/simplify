@@ -29,8 +29,7 @@ export const capitalize = (value: string | null | undefined): string | null => {
 /**
  * Converts underscore case string to camel case.
  */
-export const underscoreToCamelCase = (value: string): string =>
-  value.replaceAll(/(_\w)/gu, (m) => m[1]!.toUpperCase());
+export const underscoreToCamelCase = (value: string): string => value.replaceAll(/(_\w)/gu, (m) => m[1]!.toUpperCase());
 
 /**
  * Saves text file.

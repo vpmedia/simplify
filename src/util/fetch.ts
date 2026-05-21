@@ -83,8 +83,7 @@ export const fetchRetry = async (
       if (
         opts.numTries === 0 ||
         (typedError instanceof FetchError &&
-          (opts.statusExcludes.includes(typedError.response?.status ?? -1) ||
-            opts.statusExcludes.includes(HTTP_0_ANY)))
+          (opts.statusExcludes.includes(typedError.response?.status ?? -1) || opts.statusExcludes.includes(HTTP_0_ANY)))
       ) {
         throw error;
       }

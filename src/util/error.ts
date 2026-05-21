@@ -33,5 +33,4 @@ export const getErrorDetails = (error: Error, excludes?: string[] | null): Error
 /**
  * Get typed error from an unknown type.
  */
-export const getTypedError = (error: unknown): Error =>
-  error instanceof Error ? error : new Error(String(error));
+export const getTypedError = (error: unknown): Error => (error instanceof Error ? error : new Error(String(error)));
