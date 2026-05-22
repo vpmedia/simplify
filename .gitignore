@@ -10,3 +10,4 @@ dist/
 out/
 logs/
 node_modules/
+.claude/settings.local.json
