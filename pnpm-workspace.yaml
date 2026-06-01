@@ -5,8 +5,5 @@ onlyBuiltDependencies:
   - msw
 
 trustPolicy: no-downgrade
-
-trustPolicyExclude:
-  - ts-api-utils
-
+trustPolicyIgnoreAfter: 1440
 blockExoticSubdeps: true
