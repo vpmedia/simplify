@@ -35,6 +35,7 @@
     "no-undefined": "off",
     "no-unused-expressions": "off",
     "no-unused-vars": "off",
+    "prefer-named-capture-group": "off",
     "sort-imports": "off",
     "sort-keys": "off",
     "import/exports-last": "off",
