@@ -66,6 +66,7 @@
     "unicorn/no-useless-undefined": "off",
     "unicorn/number-literal-case": "off",
     "unicorn/numeric-separators-style": "off",
-    "unicorn/prefer-event-target": "off"
+    "unicorn/prefer-event-target": "off",
+    "unicorn/prefer-number-coercion": "off"
   }
 }
