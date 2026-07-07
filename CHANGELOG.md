@@ -1,3 +1,47 @@
+## [1.77.0] - 2026-07-07
+
+### 🚀 Features
+
+- *(http)* Add Cloudflare-specific 5xx status codes (520-527, 530)
+
+### 🐛 Bug Fixes
+
+- *(test)* Set happy-dom base url so msw can resolve relative paths
+- *(test)* Use absolute urls so happy-dom + msw resolve consistently
+
+### 💼 Other
+
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+- *(deps)* Bump dependency versions
+
+### 📚 Documentation
+
+- Expand AGENTS.md with overview, tech stack, and project guide
+- *(agents)* Add Documentation section with llms.txt links
+- *(agents)* Standardize structure and commit-config wording
+- *(agents)* Remove non-existent TypeScript llms.txt link
+- Refresh AGENTS.md
+
+### ⚙️ Miscellaneous Tasks
+
+- Release
+- *(ai)* Add shared clean-code rules for Claude
+- *(lint)* Switch oxlint categories to error and disable current violations
+- Enable blockExoticSubdeps in pnpm workspace
+- Migrate from jsdom to happy-dom
+- Gitignore .claude/settings.local.json
+- Update dependencies
+- Pin GitHub Actions to commit SHAs and upgrade to latest
+- *(lint)* Disable rules newly enforced by oxlint 1.71
+- *(release)* V1.77.0
 ## [1.76.0] - 2026-05-11
 
 ### 💼 Other
