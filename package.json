@@ -34,7 +34,7 @@
   ],
   "type": "module",
   "optionalDependencies": {
-    "@sentry/browser": "^10.67.0"
+    "@sentry/browser": "^10.68.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
