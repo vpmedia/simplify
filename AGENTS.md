@@ -6,15 +6,7 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 
 ## Tech Stack
 
-- **Language:** TypeScript (ESM, `"type": "module"`)
-- **Runtime:** Node.js / Browser
-- **Package Manager:** pnpm (workspaces)
-- **Optional Dependencies:** `@sentry/browser` (error tracking integration)
-- **Build:** Rolldown + `tsc --emitDeclarationOnly`
-- **Testing:** Vitest, @vitest/coverage-v8, happy-dom, msw (Mock Service Worker)
-- **Lint/Format:** oxlint (+ `oxlint-tsgolint`), oxfmt
-- **Type Checking:** TypeScript
-- **Tooling:** lefthook (git hooks), commitlint (conventional commits)
+Read [package.json](package.json) for the language, runtime, dependencies and tooling.
 
 ## Documentation
 
@@ -33,14 +25,6 @@ A general-purpose utility library for common JavaScript operations, grouped by c
 - **Test (with coverage):** `pnpm test`
 - **Lint / Format / Typecheck:** `pnpm lint` / `pnpm format` / `pnpm typecheck`
 - **All checks (incl. build):** `pnpm check`
-
-## Project Structure
-
-- `src/index.ts` — public entry point
-- `src/util/`, `src/logging/`, `src/typecheck/`, `src/pagelifecycle/`, `src/const/` — utility modules grouped by concern
-- `tests/mocks/` — shared test mocks (used via `vitest.setup.ts`)
-- `vitest.setup.ts` — Vitest global setup (msw, mocks)
-- `dist/` — build output (gitignored)
 
 ## Conventions
 
