@@ -38,3 +38,9 @@ Read [package.json](package.json) for the language, runtime, dependencies and to
 - Shared mocks live in `tests/mocks/`; HTTP mocking via `msw`
 - Run a single file: `pnpm test src/util/uuid.test.ts`
 - DOM APIs available via happy-dom environment
+
+## Reference Documentation
+
+Read on demand:
+
+- [clean-code.md](docs/agents/clean-code.md) — general clean-code guidelines: naming, functions, comments, error handling, classes, testing, and refactoring.
