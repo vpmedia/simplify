@@ -34,7 +34,7 @@
   ],
   "type": "module",
   "optionalDependencies": {
-    "@sentry/browser": "^10.68.0"
+    "@sentry/browser": "^10.69.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
@@ -46,7 +46,7 @@
     "oxfmt": "^0.61.0",
     "oxlint": "^1.76.0",
     "oxlint-tsgolint": "^7.0.2001",
-    "rolldown": "^1.2.0",
+    "rolldown": "^1.2.1",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   },
