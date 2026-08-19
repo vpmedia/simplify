@@ -1,4 +1,4 @@
-import { addBreadcrumb, captureException, captureMessage, type SeverityLevel } from '@sentry/browser';
+import { addBreadcrumb, type Breadcrumb, captureException, captureMessage, type SeverityLevel } from '@sentry/browser';
 import { AbstractLogHandler, type LogExtra } from './AbstractLogHandler.js';
 import { LOG_LEVEL_DEBUG, LOG_LEVEL_WARNING } from './const.js';
 import type { Logger } from './Logger.js';
@@ -25,12 +25,12 @@ export class SentryLogHandler extends AbstractLogHandler {
   ): void {
     const levelName = getLogLevelName(level) as SeverityLevel;
     const logMessage = `[${logger.name}] ${message}`;
-    const breadcrumb = {
+    const breadcrumb: Breadcrumb = {
       type: 'default',
       category: 'console',
       message: logMessage,
       level: levelName,
-      data: extra ?? undefined,
+      ...(extra ? { data: extra } : {}),
     };
     addBreadcrumb(breadcrumb);
     if (error) {
