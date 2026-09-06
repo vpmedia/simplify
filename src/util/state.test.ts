@@ -1,5 +1,25 @@
 import { serverDataToState } from './state.js';
 
+interface RecursiveState {
+  myArray: { keyA: string }[];
+  myData: { keyA: string };
+  myList: number[];
+  myNull: null;
+  myNumber: number;
+  myString: string;
+  myVar: string;
+}
+
+interface ShallowState {
+  myArray: { key_a: string }[];
+  myData: { key_a: string };
+  myList: number[];
+  myNull: null;
+  myNumber: number;
+  myString: string;
+  myVar: string;
+}
+
 describe('state', () => {
   test('serverDataToState() recursive', () => {
     const state = serverDataToState(
@@ -13,8 +33,8 @@ describe('state', () => {
         my_var: 'test',
       },
       true
-    );
-    expect(state.myArray[0].keyA).toBe('value1');
+    ) as RecursiveState;
+    expect(state.myArray[0]?.keyA).toBe('value1');
     expect(state.myData.keyA).toBe('value1');
     expect(state.myList[0]).toBe(1);
     expect(state.myNull).toBe(null);
@@ -35,8 +55,8 @@ describe('state', () => {
         my_var: 'test',
       },
       false
-    );
-    expect(state.myArray[0].key_a).toBe('value1');
+    ) as ShallowState;
+    expect(state.myArray[0]?.key_a).toBe('value1');
     expect(state.myData.key_a).toBe('value1');
     expect(state.myList[0]).toBe(1);
     expect(state.myNull).toBe(null);

@@ -64,8 +64,12 @@ describe('emit()', () => {
     const e = new EventEmitter();
     const calls: number[] = [];
 
-    e.on('foo', () => calls.push(1));
-    e.on('foo', () => calls.push(2));
+    e.on('foo', () => {
+      calls.push(1);
+    });
+    e.on('foo', () => {
+      calls.push(2);
+    });
 
     e.emit('foo');
 

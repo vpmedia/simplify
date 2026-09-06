@@ -59,6 +59,6 @@ describe('string', () => {
   });
 
   test('saveAsFile', () => {
-    expect(() => saveAsFile('test.txt', 'test content')).not.toThrowError(Error);
+    expect(() => saveAsFile('test.txt', 'test content')).not.toThrow(Error);
   });
 });

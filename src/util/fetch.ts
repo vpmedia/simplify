@@ -39,6 +39,12 @@ export class FetchError extends Error {
 }
 
 /**
+ * The URL to log a request against. A Request stringifies to '[object Request]'.
+ */
+const describeResource = (resource: string | URL | Request): string =>
+  resource instanceof Request ? resource.url : String(resource);
+
+/**
  * Fetch with retry.
  */
 export const fetchRetry = async (
@@ -59,7 +65,7 @@ export const fetchRetry = async (
   };
   while (opts.numTries > 0) {
     const isOnline = globalThis.navigator?.onLine;
-    logger.info('request', { resource: String(resource), fetchOptions, retryOptions: { ...opts }, isOnline });
+    logger.info('request', { resource: describeResource(resource), fetchOptions, retryOptions: { ...opts }, isOnline });
     const controller = new AbortController();
     const timeoutId = setTimeout(
       () => controller.abort(new DOMException('Fetch timed out', 'AbortError')),

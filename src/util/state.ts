@@ -3,9 +3,9 @@ import { underscoreToCamelCase } from './string.js';
 /**
  * Maps server data to client data.
  */
-export const serverDataToState = (data: unknown, isRecursive = false): any => {
+export const serverDataToState = (data: unknown, isRecursive = false): unknown => {
   if (Array.isArray(data)) {
-    return data.map((entry) => serverDataToState(entry, isRecursive));
+    return data.map((entry: unknown) => serverDataToState(entry, isRecursive));
   }
 
   if (data !== null && typeof data === 'object') {

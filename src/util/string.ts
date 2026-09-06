@@ -60,5 +60,11 @@ export const getDisplayValue = (value: unknown): string => {
   if (typeof value === 'object') {
     return JSON.stringify(value);
   }
-  return String(value);
+  if (typeof value === 'function' || typeof value === 'symbol') {
+    return value.toString();
+  }
+  if (typeof value === 'bigint' || typeof value === 'boolean' || typeof value === 'number') {
+    return String(value);
+  }
+  return 'undefined';
 };

@@ -32,9 +32,6 @@ export class OpenTelemetryLogHandler extends AbstractLogHandler {
     extra: LogExtra | null | undefined,
     error: Error | null | undefined
   ): void {
-    if (!this.emitter) {
-      return;
-    }
     this.emitter(logger, timestamp, level, message, extra, error);
   }
 }

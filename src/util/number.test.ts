@@ -15,13 +15,13 @@ import {
 test('Converts angle in degrees to radians', () => {
   expect(deg2rad(90)).toBe(1.5707963267948966);
   // @ts-expect-error
-  expect(() => deg2rad('')).toThrowError(TypeCheckError);
+  expect(() => deg2rad('')).toThrow(TypeCheckError);
 });
 
 test('Converts angle in radians to degrees', () => {
   expect(rad2deg(1.5707963267948966)).toBe(90);
   // @ts-expect-error
-  expect(() => rad2deg('')).toThrowError(TypeCheckError);
+  expect(() => rad2deg('')).toThrow(TypeCheckError);
 });
 
 describe('fixFloatPrecision', () => {
@@ -60,9 +60,9 @@ describe('fixFloatPrecision', () => {
 describe('getRandomInt', () => {
   test('Throws error if min or max is not finite number', () => {
     // @ts-expect-error
-    expect(() => getRandomInt('', 1)).toThrowError(TypeCheckError);
+    expect(() => getRandomInt('', 1)).toThrow(TypeCheckError);
     // @ts-expect-error
-    expect(() => getRandomInt(1, '')).toThrowError(TypeCheckError);
+    expect(() => getRandomInt(1, '')).toThrow(TypeCheckError);
   });
 
   test('Returns random integer within range when min equals max', () => {

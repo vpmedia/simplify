@@ -19,7 +19,7 @@ export const getErrorDetails = (error: Error, excludes?: string[] | null): Error
   if (error.message) {
     errorDetails.message = error.message;
   }
-  if (error.cause) {
+  if (error.cause !== undefined && error.cause !== null) {
     errorDetails.cause = error.cause;
   }
   for (const key of Object.getOwnPropertyNames(error)) {

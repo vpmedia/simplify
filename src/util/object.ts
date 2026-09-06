@@ -1,6 +1,6 @@
 const PROHIBITED_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
 
-type AnyRecord = Record<string, any>;
+type AnyRecord = Record<string, unknown>;
 
 /**
  * Purges object properties to free up memory.
@@ -28,13 +28,14 @@ export const deepMerge = (target: AnyRecord | null, source: AnyRecord | null): A
     if (PROHIBITED_KEYS.has(key)) {
       throw new SyntaxError(`Security violation error. Cannot use "${key}" as object key.`);
     }
-    if (typeof source[key] === 'object' && source[key] !== null) {
-      if (!target[key] || typeof target[key] !== 'object') {
-        target[key] = {};
-      }
-      deepMerge(target[key], source[key]);
+    const sourceValue = source[key];
+    if (typeof sourceValue === 'object' && sourceValue !== null) {
+      const targetValue = target[key];
+      const branch = typeof targetValue === 'object' && targetValue !== null ? (targetValue as AnyRecord) : {};
+      target[key] = branch;
+      deepMerge(branch, sourceValue as AnyRecord);
     } else {
-      target[key] = source[key];
+      target[key] = sourceValue;
     }
   }
 
@@ -56,13 +57,14 @@ export const getObjValueByPath = (obj: AnyRecord | null | undefined, path: strin
   }
   const keyParts = path.split('.');
   const nextKey = keyParts[0]!;
+  const nextValue = obj[nextKey];
   if (keyParts.length === 1) {
-    return obj[nextKey] === undefined ? null : obj[nextKey];
+    return nextValue === undefined ? null : nextValue;
   }
-  if (obj[nextKey] === undefined || obj[nextKey] === null) {
+  if (nextValue === undefined || nextValue === null) {
     return null;
   }
-  return getObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'));
+  return getObjValueByPath(nextValue as AnyRecord, keyParts.slice(1).join('.'));
 };
 
 /**
@@ -85,9 +87,7 @@ export const setObjValueByPath = (
   if (keyParts.length === 1) {
     obj[nextKey] = value;
   } else {
-    if (obj[nextKey] === undefined || obj[nextKey] === null) {
-      obj[nextKey] = {};
-    }
-    setObjValueByPath(obj[nextKey], keyParts.slice(1).join('.'), value);
+    obj[nextKey] ??= {};
+    setObjValueByPath(obj[nextKey] as AnyRecord, keyParts.slice(1).join('.'), value);
   }
 };

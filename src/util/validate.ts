@@ -139,7 +139,7 @@ export const refineValidator = <T>(
   predicate: (value: T) => boolean,
   name: string | null = null
 ): Validator<T> => {
-  const refinedValidator = (value: unknown): value is T => base(value) && predicate(value as T);
+  const refinedValidator = (value: unknown): value is T => base(value) && predicate(value);
   Object.defineProperty(refinedValidator, 'name', {
     value: isString(name) ? name : `${base.name}Refined`,
   });

@@ -19,15 +19,15 @@ export const getAppEnvironment = (): string => {
   let appEnvironment = 'local';
   try {
     const { env } = import.meta as unknown as { env?: Record<string, string | undefined> };
-    if (env?.['VITE_APP_ENVIRONMENT']) {
-      appEnvironment = env['VITE_APP_ENVIRONMENT'];
+    if (env?.VITE_APP_ENVIRONMENT) {
+      appEnvironment = env.VITE_APP_ENVIRONMENT;
     }
   } catch {
     // pass
   }
   try {
-    if (process.env['APP_ENVIRONMENT']) {
-      appEnvironment = process.env['APP_ENVIRONMENT'];
+    if (process.env.APP_ENVIRONMENT) {
+      appEnvironment = process.env.APP_ENVIRONMENT;
     }
   } catch {
     // pass

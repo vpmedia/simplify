@@ -19,7 +19,7 @@ describe('fetchRetry', () => {
       method: 'GET',
       redirect: 'error',
     });
-    const json = await response.json();
+    const json: unknown = await response.json();
     const expectedJSON = {
       success: true,
       method: 'GET',

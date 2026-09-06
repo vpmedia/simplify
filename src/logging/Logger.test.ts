@@ -65,5 +65,5 @@ test('Tests Logger custom handler', () => {
   expect(testLogHandler.emitLogMessage).toBe('test');
   expect(testLogHandler.emitLogError?.message).toBe('test_error');
   expect(testLogHandler.emitLogLogger).toBe(logger);
-  expect(testLogHandler.emitLogExtra?.['context']).toBe('ctx');
+  expect(testLogHandler.emitLogExtra?.context).toBe('ctx');
 });

@@ -20,7 +20,7 @@ class Listener {
  * Event emitter implementation inspired by Node.js/EventEmitter3.
  */
 export class EventEmitter {
-  #events: Map<string | symbol, Listener[]>;
+  readonly #events: Map<string | symbol, Listener[]>;
 
   constructor() {
     this.#events = new Map();

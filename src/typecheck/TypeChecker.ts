@@ -5,21 +5,13 @@ import { typeCheck, typeCheckArray, typeCheckEnum, type EnumChoices } from './ut
 const logger = new Logger('typechecker');
 
 class TypeChecker {
-  static #instance: TypeChecker | undefined;
-
   #swallowErrors = false;
-
-  constructor() {
-    if (TypeChecker.#instance === undefined) {
-      TypeChecker.#instance = this;
-    }
-  }
 
   /**
    * Enable or disable swallowing of TypeCheckErrors.
    */
   setSwallowErrors(value: boolean): void {
-    this.#swallowErrors = Boolean(value);
+    this.#swallowErrors = value;
   }
 
   /**

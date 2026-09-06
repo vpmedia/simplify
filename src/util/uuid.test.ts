@@ -1,17 +1,16 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { randomUUIDFallback, uuidv4 } from './uuid.js';
 
 const uuidV4Regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
 
 describe('UUID functions', () => {
-  let originalRandomUUID: typeof crypto.randomUUID;
-
-  beforeEach(() => {
-    originalRandomUUID = crypto.randomUUID;
-  });
+  const randomUUIDDescriptor = Object.getOwnPropertyDescriptor(crypto, 'randomUUID');
 
   afterEach(() => {
-    crypto.randomUUID = originalRandomUUID;
+    vi.restoreAllMocks();
+    if (randomUUIDDescriptor) {
+      Object.defineProperty(crypto, 'randomUUID', randomUUIDDescriptor);
+    }
   });
 
   it('randomUUIDFallback generates a valid UUID v4', () => {
@@ -25,10 +24,12 @@ describe('UUID functions', () => {
   });
 
   it('uuidv4 uses crypto.randomUUID if available', () => {
-    crypto.randomUUID = vi.fn(() => 'mock-uuid' as `${string}-${string}-${string}-${string}-${string}`);
+    const randomUUID = vi
+      .spyOn(crypto, 'randomUUID')
+      .mockReturnValue('mock-uuid' as `${string}-${string}-${string}-${string}-${string}`);
     const uuid = uuidv4();
     expect(uuid).toBe('mock-uuid');
-    expect(crypto.randomUUID).toHaveBeenCalled();
+    expect(randomUUID).toHaveBeenCalled();
   });
 
   it('randomUUIDFallback fallback works if crypto.randomUUID not available', () => {

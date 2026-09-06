@@ -29,7 +29,7 @@ export function getURLParam<T = null>(
     return (defaultValue ?? null) as T;
   }
   if (isSanitize !== false) {
-    return sanitizeURLParam(paramValue) as string;
+    return sanitizeURLParam(paramValue);
   }
   return paramValue;
 }
